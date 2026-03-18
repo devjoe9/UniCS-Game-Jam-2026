@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -119,6 +120,18 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
+    }
+
+    void OnRotateLeft()
+    {
+        float curRotation = transform.rotation[2];
+        transform.Rotate(0, 0, curRotation + 90);
+    }
+
+    void OnRotateRight()
+    {
+        float curRotation = transform.rotation[2];
+        transform.Rotate(0, 0, curRotation - 90);
     }
 
     // Optional: Recalculate bounds if the camera or screen size changes
