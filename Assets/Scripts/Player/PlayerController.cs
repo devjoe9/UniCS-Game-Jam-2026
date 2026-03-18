@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float acceleration = 50f; // How quickly the player accelerates
     public float deceleration = 30f; // How quickly the player slows down
     public float collisionOffset = 0.05f;
+    public float rotateCooldown = 0.5f;
     public ContactFilter2D movementFilter;
 
     private Vector2 movementInput;
@@ -21,11 +23,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 minBounds;
     private Vector2 maxBounds;
     private Vector2 playerExtents; // Half the size of the player's collider
+    private bool canRotate;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        canRotate = true;
 
         // Initialize camera and bounds
         mainCamera = Camera.main;
@@ -124,14 +128,30 @@ public class PlayerController : MonoBehaviour
 
     void OnRotateLeft()
     {
-        float curRotation = transform.rotation[2];
-        transform.Rotate(0, 0, curRotation + 90);
+        if (canRotate)
+        {
+            transform.Rotate(0, 0, 90);
+            canRotate = false;
+
+            StartCoroutine(resetRotateCooldown());
+        }
     }
 
     void OnRotateRight()
     {
-        float curRotation = transform.rotation[2];
-        transform.Rotate(0, 0, curRotation - 90);
+        if (canRotate)
+        {
+            transform.Rotate(0, 0, - 90);
+            canRotate = false;
+
+            StartCoroutine(resetRotateCooldown());
+        }
+    }
+
+    IEnumerator resetRotateCooldown()
+    {
+        yield return new WaitForSeconds(rotateCooldown);
+        canRotate = true;
     }
 
     // Optional: Recalculate bounds if the camera or screen size changes
