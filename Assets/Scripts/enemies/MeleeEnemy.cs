@@ -15,6 +15,9 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] float dashDuration = 0.4f;
     [SerializeField] float dashCooldown = 2f;
 
+    [Header("Aggro")]
+    [SerializeField] float aggroRange = 6f;
+
     private Rigidbody2D rb;
 
     private bool isDashing = false;
@@ -32,17 +35,23 @@ public class MeleeEnemy : MonoBehaviour
 
     void Update()
     {
-        // 👀 Always face player
-        Vector2 lookDir = player.position - transform.position;
-        float rotZ = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 90f;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+        float distance = Vector2.Distance(transform.position, player.position);
+
+        // 👀 Only rotate when NOT dashing
+        if (!isDashing)
+        {
+            Vector2 lookDir = player.position - transform.position;
+            float rotZ = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 90f;
+            transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+        }
 
         if (isDashing) return;
 
         // ⏱ cooldown timer
         cooldownTimer += Time.deltaTime;
 
-        if (cooldownTimer >= dashCooldown)
+        // 🧠 Only dash if inside aggro range
+        if (distance <= aggroRange && cooldownTimer >= dashCooldown)
         {
             StartDash();
         }
@@ -59,20 +68,29 @@ public class MeleeEnemy : MonoBehaviour
             IdleMovement();
         }
 
-        ApplySidewaysDrift(); // 🔥 adds that smooth drift feel
+        ApplySidewaysDrift();
     }
 
     void IdleMovement()
     {
+        float distance = Vector2.Distance(rb.position, player.position);
         Vector2 dir = ((Vector2)player.position - rb.position).normalized;
 
-        // Accelerate toward player
-        rb.linearVelocity += dir * acceleration * Time.fixedDeltaTime;
+        if (distance > aggroRange)
+        {
+            // 🐢 Slow approach when NOT aggroed
+            rb.linearVelocity += dir * (acceleration * 0.4f) * Time.fixedDeltaTime;
+        }
+        else
+        {
+            // 💨 Normal chase when in aggro range
+            rb.linearVelocity += dir * acceleration * Time.fixedDeltaTime;
+        }
 
         // Clamp max speed
         rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, maxSpeed);
 
-        // Apply friction (controls slipperiness)
+        // Friction
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, friction * Time.fixedDeltaTime);
     }
 
@@ -84,6 +102,9 @@ public class MeleeEnemy : MonoBehaviour
 
         // 🎯 Lock direction at start
         dashDirection = ((Vector2)player.position - rb.position).normalized;
+
+        // 🔥 Optional clean launch
+        rb.linearVelocity = dashDirection * maxSpeed;
 
         Object.FindFirstObjectByType<CameraShake>()?.Shake(0.2f, 0.3f);
     }
@@ -123,7 +144,6 @@ public class MeleeEnemy : MonoBehaviour
         rb.linearVelocity = forwardVel + sidewaysVel;
     }
 
-    // 🔥 TRIGGER CHAIN DASH
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -145,7 +165,12 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (player == null) return;
 
+        // 🟡 Line to player
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, player.position);
+
+        // 🔵 Aggro range
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, aggroRange);
     }
 }
