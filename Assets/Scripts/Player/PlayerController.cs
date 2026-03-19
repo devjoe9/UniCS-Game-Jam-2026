@@ -25,12 +25,6 @@ public class PlayerController : MonoBehaviour
     private float targetAngle;
     private bool isKnockedBack;
 
-    // Camera bounds variables
-    private Camera mainCamera;
-    private Vector2 minBounds;
-    private Vector2 maxBounds;
-    private Vector2 playerExtents; // Half the size of the player's collider
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

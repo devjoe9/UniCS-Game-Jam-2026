@@ -5,9 +5,9 @@ public class PlayerData : MonoBehaviour
 {
     public int maxHealth;
     public float invulnerableTime;
+    public float flashInterval = 0.2f;
 
     private int curHealth;
-
     public bool IsVulnerable => isVulnerable;
     private bool isVulnerable;
     private bool isDead;
@@ -19,7 +19,6 @@ public class PlayerData : MonoBehaviour
         curHealth = maxHealth;
         isVulnerable = true;
         isDead = false;
-
     }
 
     // Update is called once per frame
@@ -49,7 +48,14 @@ public class PlayerData : MonoBehaviour
 
     IEnumerator InvulnerableTimer()
     {
-        yield return new WaitForSeconds(invulnerableTime);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < invulnerableTime)
+        {
+            elapsedTime += flashInterval;
+            yield return new WaitForSeconds(flashInterval);
+        }
+
         isVulnerable = true;
     }
 }
