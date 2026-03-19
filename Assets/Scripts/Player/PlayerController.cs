@@ -108,8 +108,8 @@ public class PlayerController : MonoBehaviour
         if (count == 0)
         {
             // Clamp the new position to stay within camera bounds
-            newPosition.x = Mathf.Clamp(newPosition.x, minBounds.x, maxBounds.x);
-            newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
+            // newPosition.x = Mathf.Clamp(newPosition.x, minBounds.x, maxBounds.x);
+            // newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
 
             // Apply the clamped position
             rb.MovePosition(newPosition);
