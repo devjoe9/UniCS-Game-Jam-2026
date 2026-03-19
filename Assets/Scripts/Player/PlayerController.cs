@@ -71,20 +71,6 @@ public class PlayerController : MonoBehaviour
     {
         // Get input every frame
         // Note: OnMove handles input updates
-
-        if (isRotating)
-        {
-            float currentAngle = transform.eulerAngles.z;
-            float newAngle = Mathf.MoveTowardsAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(0, 0, newAngle);
-
-            if (Mathf.Approximately(newAngle, targetAngle))
-            {
-                transform.rotation = Quaternion.Euler(0, 0, targetAngle);
-                isRotating = false;
-                StartCoroutine(ResetRotateCooldown());
-            }
-        }
     }
 
     private void FixedUpdate()
@@ -138,6 +124,23 @@ public class PlayerController : MonoBehaviour
             // Stop velocity in direction of collision
             currentVelocity = Vector2.zero;
         }
+
+        // Rotation
+        if (isRotating)
+        {
+            float currentAngle = transform.eulerAngles.z;
+            float newAngle = Mathf.MoveTowardsAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
+            rb.MoveRotation(newAngle);
+            // transform.rotation = Quaternion.Euler(0, 0, newAngle);
+
+            if (Mathf.Approximately(newAngle, targetAngle))
+            {
+                rb.rotation = targetAngle;
+                // transform.rotation = Quaternion.Euler(0, 0, targetAngle);
+                isRotating = false;
+                StartCoroutine(ResetRotateCooldown());
+            }
+        }
     }
 
     void OnMove(InputValue movementValue)
@@ -152,11 +155,6 @@ public class PlayerController : MonoBehaviour
             targetAngle = transform.eulerAngles.z + 90;
             isRotating = true;
             canRotate = false;
-            // transform.Rotate(0, 0, 90);
-            // StartCoroutine(RotateOverTime(90));
-            // canRotate = false;
-
-            // StartCoroutine(ResetRotateCooldown());
         }
     }
 
@@ -164,11 +162,6 @@ public class PlayerController : MonoBehaviour
     {
         if (canRotate && !isRotating)
         {
-            // transform.Rotate(0, 0, - 90);
-            // StartCoroutine(RotateOverTime(-90));
-            // canRotate = false;
-
-            // StartCoroutine(ResetRotateCooldown());
             targetAngle = transform.eulerAngles.z - 90;
             isRotating = true;
             canRotate = false;
