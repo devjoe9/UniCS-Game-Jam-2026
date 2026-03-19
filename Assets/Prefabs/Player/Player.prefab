@@ -160,6 +160,7 @@ MonoBehaviour:
   deceleration: 30
   collisionOffset: 0.05
   rotateCooldown: 0.5
+  rotationSpeed: 150
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -459,6 +460,7 @@ GameObject:
   - component: {fileID: 2951403641329238542}
   - component: {fileID: 7641108302690784598}
   - component: {fileID: 6608382776803111253}
+  - component: {fileID: 788794178124789697}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: Untagged
@@ -506,7 +508,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 6.2583222
+    OrthographicSize: 10
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -572,6 +574,18 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
+--- !u!114 &788794178124789697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724989132400027721}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePixelPerfect
 --- !u!1 &8814320305680365185
 GameObject:
   m_ObjectHideFlags: 0

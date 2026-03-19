@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,25 +12,29 @@ public class PlayerController : MonoBehaviour
     public float deceleration = 30f; // How quickly the player slows down
     public float collisionOffset = 0.05f;
     public float rotateCooldown = 0.5f;
+    public float rotationSpeed = 5f;
     public ContactFilter2D movementFilter;
 
     private Vector2 movementInput;
     private Vector2 currentVelocity;
     private Rigidbody2D rb;
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+    private bool canRotate;
+    private bool isRotating = false;
+    private float targetAngle;
 
     // Camera bounds variables
     private Camera mainCamera;
     private Vector2 minBounds;
     private Vector2 maxBounds;
     private Vector2 playerExtents; // Half the size of the player's collider
-    private bool canRotate;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         canRotate = true;
+        isRotating = false;
 
         // Initialize camera and bounds
         mainCamera = Camera.main;
@@ -66,6 +71,20 @@ public class PlayerController : MonoBehaviour
     {
         // Get input every frame
         // Note: OnMove handles input updates
+
+        if (isRotating)
+        {
+            float currentAngle = transform.eulerAngles.z;
+            float newAngle = Mathf.MoveTowardsAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0, 0, newAngle);
+
+            if (Mathf.Approximately(newAngle, targetAngle))
+            {
+                transform.rotation = Quaternion.Euler(0, 0, targetAngle);
+                isRotating = false;
+                StartCoroutine(ResetRotateCooldown());
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -128,27 +147,35 @@ public class PlayerController : MonoBehaviour
 
     void OnRotateLeft()
     {
-        if (canRotate)
-        {
-            transform.Rotate(0, 0, 90);
+        if (canRotate && !isRotating)
+        {   
+            targetAngle = transform.eulerAngles.z + 90;
+            isRotating = true;
             canRotate = false;
+            // transform.Rotate(0, 0, 90);
+            // StartCoroutine(RotateOverTime(90));
+            // canRotate = false;
 
-            StartCoroutine(resetRotateCooldown());
+            // StartCoroutine(ResetRotateCooldown());
         }
     }
 
     void OnRotateRight()
     {
-        if (canRotate)
+        if (canRotate && !isRotating)
         {
-            transform.Rotate(0, 0, - 90);
-            canRotate = false;
+            // transform.Rotate(0, 0, - 90);
+            // StartCoroutine(RotateOverTime(-90));
+            // canRotate = false;
 
-            StartCoroutine(resetRotateCooldown());
+            // StartCoroutine(ResetRotateCooldown());
+            targetAngle = transform.eulerAngles.z - 90;
+            isRotating = true;
+            canRotate = false;
         }
     }
 
-    IEnumerator resetRotateCooldown()
+    IEnumerator ResetRotateCooldown()
     {
         yield return new WaitForSeconds(rotateCooldown);
         canRotate = true;
