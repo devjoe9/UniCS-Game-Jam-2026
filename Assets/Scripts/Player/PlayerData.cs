@@ -6,6 +6,9 @@ public class PlayerData : MonoBehaviour
     public int maxHealth;
     public float invulnerableTime;
     public float flashInterval = 0.2f;
+    public Color defaultColour = new Color(1f, 0.922f, 0.016f, 1f);
+    public Color flashColour = new Color(1f, 0.922f, 0.016f, 0.5f);
+
 
     private int curHealth;
     public bool IsVulnerable => isVulnerable;
