@@ -337,9 +337,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.125
-    width: 1
-    height: 0.75
+    y: -0.37037036
+    width: 0.76875
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 10
@@ -637,10 +637,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 222970384652125989, guid: fc4f42a4e0b3db847905f891209886cf, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2176418454863387015, guid: fc4f42a4e0b3db847905f891209886cf, type: 3}
       propertyPath: m_Name
       value: Player Camera

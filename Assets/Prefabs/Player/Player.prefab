@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3754564184619695962}
   - component: {fileID: 6022422969396515758}
   - component: {fileID: 3589473254721778791}
+  - component: {fileID: 6698478756275792232}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -160,6 +161,7 @@ MonoBehaviour:
   collisionOffset: 0.05
   rotateCooldown: 0.5
   rotationSpeed: 150
+  knockbackDrag: 5
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -174,6 +176,21 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+--- !u!114 &6698478756275792232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626553425855599679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef88d63ea9387f4cbf24bf3ab729128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  maxHealth: 5
+  invulnerableTime: 1
+  flashInterval: 0.2
 --- !u!1 &2663886548515444216
 GameObject:
   m_ObjectHideFlags: 0
