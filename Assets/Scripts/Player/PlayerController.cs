@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float collisionOffset = 0.05f;
     public float rotateCooldown = 0.5f;
     public float rotationSpeed = 5f;
+    public float knockbackDrag = 5f;
     public ContactFilter2D movementFilter;
 
     private Vector2 movementInput;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool canRotate;
     private bool isRotating = false;
     private float targetAngle;
+    private bool isKnockedBack;
 
     // Camera bounds variables
     private Camera mainCamera;
@@ -35,35 +37,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         canRotate = true;
         isRotating = false;
-
-        // Initialize camera and bounds
-        mainCamera = Camera.main;
-        CalculateCameraBounds();
-    }
-
-    // Calculate the camera bounds and player extents
-    private void CalculateCameraBounds()
-    {
-        if (mainCamera == null) return;
-
-        // Get the world coordinates of the camera's viewport
-        minBounds = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        maxBounds = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, 0));
-
-        // Get the player's collider bounds to account for its size
-        Collider2D collider = GetComponent<Collider2D>();
-        if (collider != null)
-        {
-            playerExtents = collider.bounds.extents; // Half the width and height
-        }
-        else
-        {
-            playerExtents = Vector2.zero; // Fallback if no collider
-        }
-
-        // Adjust bounds to prevent the player's edges from crossing the camera borders
-        minBounds += playerExtents;
-        maxBounds -= playerExtents;
+        isKnockedBack = false;
     }
 
     // Update is called once per frame
@@ -75,6 +49,20 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Taking knockback
+        if (isKnockedBack)
+        {
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, knockbackDrag * Time.fixedDeltaTime);
+
+            if (rb.linearVelocity.magnitude < 0.1f)
+            {
+                rb.linearVelocity = Vector2.zero;
+                isKnockedBack = false;
+            }
+
+            return;
+        }
+
         // Calculate target velocity based on input
         Vector2 targetVelocity = movementInput * maxSpeed;
 
@@ -112,11 +100,6 @@ public class PlayerController : MonoBehaviour
         // Move if no collisions detected
         if (count == 0)
         {
-            // Clamp the new position to stay within camera bounds
-            // newPosition.x = Mathf.Clamp(newPosition.x, minBounds.x, maxBounds.x);
-            // newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
-
-            // Apply the clamped position
             rb.MovePosition(newPosition);
         }
         else
@@ -174,10 +157,9 @@ public class PlayerController : MonoBehaviour
         canRotate = true;
     }
 
-    // Optional: Recalculate bounds if the camera or screen size changes
-    void OnEnable()
+    public void TakeKnockback(Vector2 direction, float force)
     {
-        // Recalculate bounds when the object is enabled
-        CalculateCameraBounds();
+        isKnockedBack = true;
+        rb.linearVelocity = direction * force;
     }
 }
