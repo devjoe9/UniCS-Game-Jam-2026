@@ -58,7 +58,7 @@ public class SideEffectDisplay : MonoBehaviour
     public AudioClip   neutralSound;
 
     // 0=positive 1=neutral 2=negative
-    private int[] eventCategory = new int[] { 0, 1, 1, 2, 1 };
+    private int[] eventCategory = new int[] { 2, 0, 1, 1, 1};
 
     private bool isAnimating = false;
 
