@@ -1,0 +1,608 @@
+fileFormatVersion: 2
+guid: ecc61c97a73e0724caa5f54969de92ff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -75058239253809879
+    second: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_0"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_0"
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1016
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9257fc7dde655fef0800000000000000
+      internalID: -75058239253809879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_1"
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 1016
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78ddd207824c70b42837dba5f2d7117c
+      internalID: 462984318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_2"
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 1016
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 753c90a3fdd3a3047bcb13da548b7102
+      internalID: -329551566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_3"
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 1016
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cb3a2ba86e49294bb93a3b3bddd028d
+      internalID: -1986840092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_4"
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 1016
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57281226ec6f38d489f28830bb274e0e
+      internalID: -1749700204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_5"
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 716
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0230a6272346cca41b9d8c1a77d63d8c
+      internalID: 654341096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_6"
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 716
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b1ea515369d8744ca89cffb4d1ecbbc
+      internalID: 425759179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_7"
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 716
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b6e31e85662af419b3d4ddf2bc0239
+      internalID: 676265453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_8"
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 716
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37c77bbcac9dcb747ba1484332cb1dc6
+      internalID: 411082581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_9"
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 716
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5288ba7c377c4fb45ba431106bd22182
+      internalID: -1348823067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_10"
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 416
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b26ea5ec2f564d0478d5d4a31198165c
+      internalID: -438142025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_11"
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 416
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 940ed5c1420ca6f438ea32ae2e9f645d
+      internalID: 1222517924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_12"
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 416
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd72a5fc4ee8aa42accb8c6772d9381
+      internalID: -1301136943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_13"
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 416
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6dcd2727debfca4292e687bc919018a
+      internalID: 137662171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_14"
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 416
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaa17cd177c92de46a8a93691f8bf849
+      internalID: 1435861502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_15"
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 116
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e1f9f515b6a3a54b983b691493ac566
+      internalID: -639621997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_16"
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 116
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fcbe9b212e84bb429d166bf6adb90ed
+      internalID: 1553842155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_17"
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 116
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4fb5128ffa6efb4aad3aa33ffede0cd
+      internalID: -1671476143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_18"
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 116
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af18a69c44c23ae48b14a8664eb16770
+      internalID: 1891483882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_19"
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 116
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bdb501edcc98a445b60a81bcf67c25d
+      internalID: -1623669053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7818549c390eb904590899f7e006daf2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":300.0,"y":300.0},"gridSpriteOffset":{"x":275.0,"y":220.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_0": -75058239253809879
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_1": 462984318
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_10": -438142025
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_11": 1222517924
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_12": -1301136943
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_13": 137662171
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_14": 1435861502
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_15": -639621997
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_16": 1553842155
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_17": -1671476143
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_18": 1891483882
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_19": -1623669053
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_2": -329551566
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_3": -1986840092
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_4": -1749700204
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_5": 654341096
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_6": 425759179
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_7": 676265453
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_8": 411082581
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI_9": -1348823067
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
