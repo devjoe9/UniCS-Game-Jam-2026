@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6755d2f56493a8843bf13f4650863ec8
+guid: f751824e7cb8d7c4dbcb6447e4c1fa81
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8999211615839199722
-    second: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI for fab_0"
+      213: 3876083705487405034
+    second: edited-photo (3)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,6 +97,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI for fab_0"
+      name: edited-photo (3)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 103
+        y: 114
+        width: 818
+        height: 796
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 61ed55b17b06c1380800000000000000
-      internalID: -8999211615839199722
+      spriteID: aefa141089d9ac530800000000000000
+      internalID: 3876083705487405034
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI for fab_0": -8999211615839199722
+      edited-photo (3)_0: 3876083705487405034
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

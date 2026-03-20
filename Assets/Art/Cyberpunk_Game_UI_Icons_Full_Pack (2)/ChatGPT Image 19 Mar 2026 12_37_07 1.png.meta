@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b108b16841b45e248a05fa7d3b379cb0
+guid: 6e67dfdbf872ee345835c3c95a18fc07
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7011310460965514897
-    second: futuristic_frame27_0
+      213: 609381941759984495
+    second: ChatGPT Image 19 Mar 2026 12_37_07_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,6 +97,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: futuristic_frame27_0
+      name: ChatGPT Image 19 Mar 2026 12_37_07_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 195
-        height: 190
+        x: 430
+        y: 274
+        width: 700
+        height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 19e64db77bd2d4160800000000000000
-      internalID: 7011310460965514897
+      spriteID: f63442bb5a5f47800800000000000000
+      internalID: 609381941759984495
       vertices: []
       indices: 
       edges: []
@@ -138,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 793c794d734efbf4c929e83bdc73804d
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +159,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":700.0,"y":500.0},"gridSpriteOffset":{"x":430.0,"y":250.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      futuristic_frame27_0: 7011310460965514897
+      ChatGPT Image 19 Mar 2026 12_37_07_0: 609381941759984495
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

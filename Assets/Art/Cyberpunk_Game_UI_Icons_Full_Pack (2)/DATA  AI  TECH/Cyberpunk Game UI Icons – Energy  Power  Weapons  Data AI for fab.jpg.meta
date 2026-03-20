@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e78bd887a38fa0641ae8660fe319dfc4
+guid: 6755d2f56493a8843bf13f4650863ec8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5481247277722418272
-    second: for fab3_0
+      213: -8999211615839199722
+    second: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI for fab_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,11 +109,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: for fab3_0
+      name: "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI for fab_0"
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0a3474d44a2bee3b0800000000000000
-      internalID: -5481247277722418272
+      spriteID: 61ed55b17b06c1380800000000000000
+      internalID: -8999211615839199722
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      for fab3_0: -5481247277722418272
+      "Cyberpunk Game UI Icons \u2013 Energy  Power  Weapons  Data AI for fab_0": -8999211615839199722
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

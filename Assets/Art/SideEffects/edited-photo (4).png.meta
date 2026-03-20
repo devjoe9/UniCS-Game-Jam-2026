@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a4565c132f4cbc9429366d0792289523
+guid: 598f9d502e02dea44891d0d511ebc5f1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4994574638844779763
-    second: for fab1_0
+      213: 2786576479641537990
+    second: edited-photo (4)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,6 +97,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: for fab1_0
+      name: edited-photo (4)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 105
+        y: 114
+        width: 814
+        height: 799
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d036b7f04d4bfaab0800000000000000
-      internalID: -4994574638844779763
+      spriteID: 6cd0e785b88eba620800000000000000
+      internalID: 2786576479641537990
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      for fab1_0: -4994574638844779763
+      edited-photo (4)_0: 2786576479641537990
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

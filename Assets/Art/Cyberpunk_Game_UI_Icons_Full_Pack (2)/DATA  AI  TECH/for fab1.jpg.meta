@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a99500807c5519040ad678527b7b1c95
+guid: a4565c132f4cbc9429366d0792289523
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2142993682868427769
-    second: for fab4_0
+      213: -4994574638844779763
+    second: for fab1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,16 +109,29 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: for fab4_0
+      name: for fab1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2086
+        width: 1920
         height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9fb574786617dbd10800000000000000
-      internalID: 2142993682868427769
+      spriteID: d036b7f04d4bfaab0800000000000000
+      internalID: -4994574638844779763
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      for fab4_0: 2142993682868427769
+      for fab1_0: -4994574638844779763
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
