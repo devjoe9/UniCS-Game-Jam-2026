@@ -36,26 +36,31 @@ public class SideEffectDisplay : MonoBehaviour
 
     public Color[] eventColors = new Color[]
     {
-        new Color(1f,   0.15f, 0.15f),   // red    - immortality
+        new Color(0.2f, 1f,    0.35f),   // green  - immortality
         new Color(1f,   0.55f, 0.1f),    // orange - knockback
         new Color(0.2f, 0.6f,  1f),      // blue   - slow time
-        new Color(1f,   0.55f, 0.1f),    // orange - hacked
-        new Color(0.2f, 1f,    0.35f),   // green  - slippery
+        new Color(1f,   0.15f, 0.15f),   // red    - hacked
+        new Color(1f,   0.55f, 0.1f),    // orange - slippery
     };
 
     [Header("Timing")]
-    public float startInterval  = 0.08f;   // fast  - 80ms per icon
-    public float endInterval    = 0.5f;    // slow  - 500ms per icon
-    public float spinDuration   = 4f;      // total spin time
-    public float holdDuration   = 3f;      // how long result stays
+    public float startInterval  = 0.08f;
+    public float endInterval    = 0.5f;
+    public float spinDuration   = 4f;
+    public float holdDuration   = 3f;
 
     [Header("Audio")]
-    public AudioSource audioSource;
-    public AudioClip   tickSound;
-    public AudioClip   resultSound;
+    public AudioSource spinAudioSource;   // looping spin sound
+    public AudioSource resultAudioSource; // one shot result sound
+    public AudioClip   spinSound;
+    public AudioClip   positiveSound;
+    public AudioClip   negativeSound;
+    public AudioClip   neutralSound;
+
+    // 0=positive 1=neutral 2=negative
+    private int[] eventCategory = new int[] { 0, 1, 1, 2, 1 };
 
     private bool isAnimating = false;
-
 
     public void TriggerRandomEvent()
     {
@@ -69,17 +74,24 @@ public class SideEffectDisplay : MonoBehaviour
         isAnimating = true;
         panel.SetActive(true);
 
+        // Start looping spin sound
+        if (spinAudioSource != null && spinSound != null)
+        {
+            spinAudioSource.clip   = spinSound;
+            spinAudioSource.loop   = true;
+            spinAudioSource.volume = 1f;
+            spinAudioSource.Play();
+        }
+
         float elapsed         = 0f;
         float timeSinceSwitch = 0f;
         int   currentIndex    = Random.Range(0, eventNames.Length);
 
-        // ── spin phase ────────────────────────────────────────────────────────
         while (elapsed < spinDuration)
         {
             elapsed         += Time.deltaTime;
             timeSinceSwitch += Time.deltaTime;
 
-            // Cubic ease — stays fast for a long time then slows sharply
             float t        = elapsed / spinDuration;
             float eased    = t * t * t;
             float interval = Mathf.Lerp(startInterval, endInterval, eased);
@@ -88,7 +100,6 @@ public class SideEffectDisplay : MonoBehaviour
             {
                 timeSinceSwitch = 0f;
 
-                // Last 15% — steer toward final index
                 if (elapsed > spinDuration * 0.85f)
                 {
                     currentIndex = (currentIndex + 1) % eventNames.Length;
@@ -97,7 +108,6 @@ public class SideEffectDisplay : MonoBehaviour
                 }
                 else
                 {
-                    // Pure random during fast phase — avoid same icon twice
                     int next = Random.Range(0, eventNames.Length);
                     while (next == currentIndex && eventNames.Length > 1)
                         next = Random.Range(0, eventNames.Length);
@@ -105,15 +115,17 @@ public class SideEffectDisplay : MonoBehaviour
                 }
 
                 ShowIcon(currentIndex, false);
-                PlayTick();
             }
 
             yield return null;
         }
 
-        // ── result ────────────────────────────────────────────────────────────
+        // Stop spin sound — fade out
+        StartCoroutine(FadeOutSpin());
+
+        // Show result
         ShowIcon(finalIndex, true);
-        PlaySound(resultSound);
+        PlayResultSound(finalIndex);
         StartCoroutine(PunchScale(eventIcon.transform));
         StartCoroutine(FlashFrame(eventColors[finalIndex]));
 
@@ -125,6 +137,33 @@ public class SideEffectDisplay : MonoBehaviour
         isAnimating = false;
     }
 
+    private IEnumerator FadeOutSpin()
+    {
+        if (spinAudioSource == null) yield break;
+        float dur = 0.3f;
+        float e   = 0f;
+        float startVol = spinAudioSource.volume;
+        while (e < dur)
+        {
+            e += Time.deltaTime;
+            spinAudioSource.volume = Mathf.Lerp(startVol, 0f, e / dur);
+            yield return null;
+        }
+        spinAudioSource.Stop();
+        spinAudioSource.volume = 1f;
+    }
+
+    private void PlayResultSound(int index)
+    {
+        if (resultAudioSource == null) return;
+        int category = eventCategory[index];
+        AudioClip clip = category == 0 ? positiveSound :
+                         category == 2 ? negativeSound :
+                         neutralSound;
+        if (clip != null)
+            resultAudioSource.PlayOneShot(clip);
+    }
+
     private void ShowIcon(int index, bool isFinal)
     {
         if (index < 0 || index >= eventNames.Length) return;
@@ -133,6 +172,7 @@ public class SideEffectDisplay : MonoBehaviour
         {
             eventIcon.sprite = eventIcons[index];
             eventIcon.color  = Color.white;
+            if (isFinal) StartCoroutine(PunchScale(eventIcon.transform));
         }
 
         if (eventLabel != null)
@@ -166,17 +206,5 @@ public class SideEffectDisplay : MonoBehaviour
         Color bright = new Color(Mathf.Min(color.r * 2f, 1f), Mathf.Min(color.g * 2f, 1f), Mathf.Min(color.b * 2f, 1f), 1f);
         while (e < dur) { e += Time.deltaTime; frameImage.color = Color.Lerp(bright, color, e / dur); yield return null; }
         frameImage.color = color;
-    }
-
-    private void PlayTick()
-    {
-        if (audioSource != null && tickSound != null)
-            audioSource.PlayOneShot(tickSound, 0.35f);
-    }
-
-    private void PlaySound(AudioClip clip)
-    {
-        if (audioSource != null && clip != null)
-            audioSource.PlayOneShot(clip);
     }
 }
