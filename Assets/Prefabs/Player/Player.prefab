@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6022422969396515758}
   - component: {fileID: 3589473254721778791}
   - component: {fileID: 6698478756275792232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -86,9 +86,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -154301049
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2349264710817695123, guid: 22c268ba44fa3584887d6c91ef9d9c6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -125,7 +125,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &7974501328895287336
 BoxCollider2D:
@@ -220,7 +220,7 @@ MonoBehaviour:
   deceleration: 30
   collisionOffset: 0.05
   rotateCooldown: 0.5
-  rotationSpeed: 150
+  rotationSpeed: 1000
   knockbackDrag: 5
   movementFilter:
     useTriggers: 0
@@ -251,6 +251,8 @@ MonoBehaviour:
   maxHealth: 5
   invulnerableTime: 1
   flashInterval: 0.2
+  defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
+  flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
 --- !u!1 &2663886548515444216
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 266948325831069897}
   - component: {fileID: 7071376224906215708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Up Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +332,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -154301049
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -352,7 +354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8683451691141302819}
   - component: {fileID: 8811117814617456561}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Down Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +423,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -154301049
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.03735757, g: 1, b: 0, a: 1}
@@ -443,7 +445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2903141867842761037}
   - component: {fileID: 4008277036535326263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +514,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -154301049
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0.07621527, b: 1, a: 1}
@@ -534,7 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5025563895728959496}
   - component: {fileID: 8953593363689349006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +605,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -154301049
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.99722207, b: 0, a: 1}

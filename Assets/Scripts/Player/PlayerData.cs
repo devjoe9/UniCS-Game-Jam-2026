@@ -13,13 +13,14 @@ public class PlayerData : MonoBehaviour
     private int curHealth;
     public bool IsVulnerable => isVulnerable;
     private bool isVulnerable;
+    public bool IsDead => isDead;
     private bool isDead;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        curHealth = maxHealth;
+        curHealth = maxHealth-5;
         isVulnerable = true;
         isDead = false;
     }
@@ -49,6 +50,14 @@ public class PlayerData : MonoBehaviour
         }
     }
 
+    public void TakeHealing(int healing)
+    {
+        if (!isDead)
+        {
+            curHealth += healing;
+        }
+    }
+
     IEnumerator InvulnerableTimer()
     {
         float elapsedTime = 0f;
@@ -60,5 +69,10 @@ public class PlayerData : MonoBehaviour
         }
 
         isVulnerable = true;
+    }
+
+    public bool isMaxHealth()
+    {
+        return curHealth.Equals(maxHealth);
     }
 }
