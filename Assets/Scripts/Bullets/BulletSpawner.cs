@@ -6,17 +6,19 @@ public class BulletSpawner : MonoBehaviour
     public enum FirePattern
     {
         Burst,
-        SweepArc
+        SweepArc,
+        RandomArc
     }
 
     [Header("References")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform player;
 
     [Header("General Bullet Settings")]
     [SerializeField] private float bulletSpeed = 8f;
     [SerializeField] private float bulletLifetime = 5f;
-    [SerializeField] private Bullet.BulletType bulletType = Bullet.BulletType.Destructible;
+    [SerializeField] private Bullet.BulletType bulletType = Bullet.BulletType.BlueBullet;
     [SerializeField] private bool startFiringOnStart = true;
 
     [Header("Pattern Selection")]
@@ -32,6 +34,10 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private int sweepSteps = 12;
     [SerializeField] private float timeBetweenSweepShots = 0.08f;
     [SerializeField] private bool sweepContinuously = true;
+
+    [Header("Random Arc Pattern")]
+    [SerializeField] private float randomArcAngle = 90f;
+    [SerializeField] private float timeBetweenRandomShots = 0.08f;
 
     private Coroutine firingRoutine;
     private int sweepIndex = 0;
@@ -76,6 +82,10 @@ public class BulletSpawner : MonoBehaviour
                 case FirePattern.SweepArc:
                     yield return StartCoroutine(SweepArcRoutine());
                     break;
+
+                case FirePattern.RandomArc:
+                    yield return StartCoroutine(RandomArcRoutine());
+                    break;
             }
         }
     }
@@ -84,7 +94,7 @@ public class BulletSpawner : MonoBehaviour
     {
         for (int i = 0; i < bulletsPerBurst; i++)
         {
-            FireBulletInDirection(firePoint.right);
+            FireBulletInDirection(GetAimDirection());
 
             if (i < bulletsPerBurst - 1)
             {
@@ -104,6 +114,12 @@ public class BulletSpawner : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    private IEnumerator RandomArcRoutine()
+    {
+        FireRandomArcBullet();
+        yield return new WaitForSeconds(timeBetweenRandomShots);
     }
 
     private void FireSweepBullet()
@@ -135,6 +151,28 @@ public class BulletSpawner : MonoBehaviour
             sweepIndex = 0;
             sweepDirection = 1;
         }
+    }
+
+    private void FireRandomArcBullet()
+    {
+        if (firePoint == null) return;
+
+        Vector2 baseDirection = GetAimDirection();
+        float halfArc = randomArcAngle * 0.5f;
+        float randomAngle = Random.Range(-halfArc, halfArc);
+
+        Vector2 direction = RotateVector(baseDirection, randomAngle);
+        FireBulletInDirection(direction);
+    }
+
+    private Vector2 GetAimDirection()
+    {
+        if (player != null)
+        {
+            return ((Vector2)(player.position - firePoint.position)).normalized;
+        }
+
+        return firePoint.right;
     }
 
     private void FireBulletInDirection(Vector2 direction)

@@ -4,14 +4,15 @@ public class Bullet : MonoBehaviour
 {
     public enum BulletType
     {
-        Destructible,
-        Indestructible
+        BlueBullet,
+        RedBullet,
+        OrangeBullet
     }
 
     [Header("Default Settings")]
     [SerializeField] private float speed = 8f;
     [SerializeField] private float lifetime = 5f;
-    [SerializeField] private BulletType bulletType = BulletType.Indestructible;
+    [SerializeField] private BulletType bulletType = BulletType.RedBullet;
 
     private Vector2 direction = Vector2.up;
     private float timer;
@@ -26,11 +27,6 @@ public class Bullet : MonoBehaviour
 
         timer = 0f;
         UpdateVisuals();
-    }
-
-    public bool IsDestructibleByPlayer()
-    {
-        return bulletType == BulletType.Destructible;
     }
 
     private void Awake()
@@ -62,12 +58,16 @@ public class Bullet : MonoBehaviour
 
         switch (bulletType)
         {
-            case BulletType.Destructible:
+            case BulletType.BlueBullet:
                 spriteRenderer.color = Color.blue;
                 break;
 
-            case BulletType.Indestructible:
+            case BulletType.RedBullet:
                 spriteRenderer.color = Color.red;
+                break;
+
+            case BulletType.OrangeBullet:
+                spriteRenderer.color = Color.orange;
                 break;
         }
     }
@@ -81,17 +81,5 @@ public class Bullet : MonoBehaviour
         }
 
         // For future player gun shots
-        if (other.CompareTag("PlayerShot"))
-        {
-            if (bulletType == BulletType.Destructible)
-            {
-                Debug.Log("Bullet destroyed by player shot");
-                Destroy(gameObject);
-            }
-            else
-            {
-                Debug.Log("Bullet is indestructible");
-            }
-        }
     }
 }
