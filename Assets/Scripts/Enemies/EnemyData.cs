@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour
+public class EnemyData : MonoBehaviour
 {
     public int maxHealth;
     public float invulnerableTime;
@@ -10,16 +10,23 @@ public class PlayerData : MonoBehaviour
     public Color flashColour = new Color(1f, 0.922f, 0.016f, 0.5f);
 
 
+    private Rigidbody2D rb;
     private int curHealth;
     public bool IsVulnerable => isVulnerable;
     private bool isVulnerable;
     public bool IsDead => isDead;
     private bool isDead;
-
+    public bool IsKnockedBack
+    {
+        get => isKnockedBack;
+        set => isKnockedBack = value;
+    }
+    private bool isKnockedBack;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         curHealth = maxHealth;
         isVulnerable = true;
         isDead = false;
@@ -74,5 +81,11 @@ public class PlayerData : MonoBehaviour
     public bool isMaxHealth()
     {
         return curHealth.Equals(maxHealth);
+    }
+
+    public void TakeKnockback(Vector2 direction, float force)
+    {
+        isKnockedBack = true;
+        rb.linearVelocity = direction * force;
     }
 }
