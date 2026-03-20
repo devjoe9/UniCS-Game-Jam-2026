@@ -170,5 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   speed: 8
-  lifetime: 5
+  lifetime: 9
+  bulletSize: 5
   bulletType: 1
