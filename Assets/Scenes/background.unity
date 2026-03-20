@@ -331,6 +331,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &290785520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 290785521}
+  - component: {fileID: 290785523}
+  - component: {fileID: 290785522}
+  m_Layer: 5
+  m_Name: EventSignPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &290785521
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290785520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1273746776}
+  m_Father: {fileID: 1910522180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -240}
+  m_SizeDelta: {x: 300, y: 80}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &290785522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290785520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.30588236, g: 0.30588236, b: 0.30588236, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &290785523
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290785520}
+  m_CullTransparentMesh: 1
 --- !u!1 &304996765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2317883948780595414, guid: 0b56f1e6a5f485e4784665d7eefe7777, type: 3}
@@ -16416,7 +16492,7 @@ Camera:
   far clip plane: 1000
   field of view: 10
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -16564,7 +16640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -220, y: -260}
+  m_AnchoredPosition: {x: -247, y: -269}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &845186279
@@ -16671,6 +16747,65 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3338944301410487951, guid: db4ce180550677f428b16074e7ee575e, type: 3}
   m_PrefabInstance: {fileID: 3912138968277064433}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &893971632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893971628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfba7df68faebd4aa4a5000312febaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SideEffectDisplay
+  panel: {fileID: 893971628}
+  eventIcon: {fileID: 2128162460}
+  frameImage: {fileID: 1942449583}
+  eventLabel: {fileID: 0}
+  eventDescription: {fileID: 0}
+  eventIcons:
+  - {fileID: -8009282776257233064, guid: acdf90a92a858ed4caad473580dd44fe, type: 3}
+  - {fileID: -4423524739251770109, guid: 12523ba35e5a2c440995fc8c418969ce, type: 3}
+  - {fileID: 3876083705487405034, guid: f751824e7cb8d7c4dbcb6447e4c1fa81, type: 3}
+  - {fileID: 2786576479641537990, guid: 598f9d502e02dea44891d0d511ebc5f1, type: 3}
+  - {fileID: -1538822072061837155, guid: 5a2440ad8c9bd2048be9abd48eecdf9e, type: 3}
+  eventSign: {fileID: 1910522182}
+  signSprites:
+  - {fileID: -4825084967485451444, guid: f6e295019fa56394481820038a0901d9, type: 3}
+  - {fileID: -6725094948238530340, guid: a86388fb3c6ceaa478e35761cbb95a99, type: 3}
+  - {fileID: 2014233712476854377, guid: 05598118586ac8249bc1118fd1f8dc39, type: 3}
+  - {fileID: -378789996497947350, guid: a3ba37ac3280eff4a90d765d88b9cfe7, type: 3}
+  - {fileID: 7884051125340242211, guid: f2d83302f75171049b0c3e971e51cd40, type: 3}
+  effectDuration: 2
+  eventNames:
+  - IMMORTALITY
+  - KNOCKBACK
+  - SLOW TIME
+  - HACKED
+  - SLIPPERY
+  eventDescriptions:
+  - You cannot be harmed!
+  - Enemies get knocked back!
+  - Time slows to a crawl...
+  - All weapons are hacked!
+  - Movement is slippery!
+  eventColors:
+  - {r: 1, g: 0.85, b: 0, a: 1}
+  - {r: 1, g: 0.55, b: 0.1, a: 1}
+  - {r: 0.2, g: 0.6, b: 1, a: 1}
+  - {r: 1, g: 0.15, b: 0.15, a: 1}
+  - {r: 0.2, g: 1, b: 0.35, a: 1}
+  startInterval: 0.08
+  endInterval: 0.5
+  spinDuration: 4
+  holdDuration: 3
+  spinAudioSource: {fileID: 1921938574}
+  resultAudioSource: {fileID: 80360740}
+  spinSound: {fileID: 8300000, guid: 3796a56010e1858459c2eafdf5043a44, type: 3}
+  positiveSound: {fileID: 8300000, guid: 4cf8da5829d76ab48bfccda00c2e2a43, type: 3}
+  negativeSound: {fileID: 8300000, guid: 403f9dfa3bbaf07408c7b6afb3d1c629, type: 3}
+  neutralSound: {fileID: 8300000, guid: 386db3d7bd4161c438d713413796cc4b, type: 3}
 --- !u!1001 &1239551777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16736,6 +16871,81 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 304996766}
   m_SourcePrefab: {fileID: 100100000, guid: 0b56f1e6a5f485e4784665d7eefe7777, type: 3}
+--- !u!1 &1273746775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1273746776}
+  - component: {fileID: 1273746778}
+  - component: {fileID: 1273746777}
+  m_Layer: 5
+  m_Name: SignImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1273746776
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273746775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 290785521}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1273746777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273746775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1273746778
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273746775}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1510861210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16996,6 +17206,7 @@ GameObject:
   - component: {fileID: 1910522178}
   - component: {fileID: 1910522177}
   - component: {fileID: 1910522181}
+  - component: {fileID: 1910522182}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -17079,6 +17290,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 893971629}
+  - {fileID: 290785521}
   - {fileID: 1921938575}
   - {fileID: 80360741}
   - {fileID: 845186278}
@@ -17098,7 +17310,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1910522176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9c4c1b4f9b31d248898dd95f5a046ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bfba7df68faebd4aa4a5000312febaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SideEffectDisplay
   panel: {fileID: 893971628}
@@ -17112,6 +17324,14 @@ MonoBehaviour:
   - {fileID: 3876083705487405034, guid: f751824e7cb8d7c4dbcb6447e4c1fa81, type: 3}
   - {fileID: 2786576479641537990, guid: 598f9d502e02dea44891d0d511ebc5f1, type: 3}
   - {fileID: -1538822072061837155, guid: 5a2440ad8c9bd2048be9abd48eecdf9e, type: 3}
+  eventSign: {fileID: 1910522182}
+  signSprites:
+  - {fileID: 21300000, guid: f6e295019fa56394481820038a0901d9, type: 3}
+  - {fileID: 21300000, guid: a86388fb3c6ceaa478e35761cbb95a99, type: 3}
+  - {fileID: 21300000, guid: 05598118586ac8249bc1118fd1f8dc39, type: 3}
+  - {fileID: 21300000, guid: a3ba37ac3280eff4a90d765d88b9cfe7, type: 3}
+  - {fileID: 21300000, guid: f2d83302f75171049b0c3e971e51cd40, type: 3}
+  effectDuration: 3
   eventNames:
   - IMMORTALITY
   - KNOCKBACK
@@ -17125,11 +17345,11 @@ MonoBehaviour:
   - All weapons are hacked!
   - Movement is slippery!
   eventColors:
-  - {r: 0.2, g: 1, b: 0.35, a: 1}
+  - {r: 1, g: 0.85, b: 0, a: 1}
   - {r: 1, g: 0.55, b: 0.1, a: 1}
   - {r: 0.2, g: 0.6, b: 1, a: 1}
   - {r: 1, g: 0.15, b: 0.15, a: 1}
-  - {r: 1, g: 0.55, b: 0.1, a: 1}
+  - {r: 0.2, g: 1, b: 0.35, a: 1}
   startInterval: 0.08
   endInterval: 0.5
   spinDuration: 4
@@ -17140,6 +17360,23 @@ MonoBehaviour:
   positiveSound: {fileID: 8300000, guid: 4cf8da5829d76ab48bfccda00c2e2a43, type: 3}
   negativeSound: {fileID: 8300000, guid: 403f9dfa3bbaf07408c7b6afb3d1c629, type: 3}
   neutralSound: {fileID: 8300000, guid: 386db3d7bd4161c438d713413796cc4b, type: 3}
+--- !u!114 &1910522182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910522176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7ec27c2c7aaad4c9716ffb67819158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventSign
+  panel: {fileID: 290785520}
+  signImage: {fileID: 1273746777}
+  flickerCount: 4
+  flickerOnTime: 0.1
+  flickerOffTime: 0.1
 --- !u!1 &1921938573
 GameObject:
   m_ObjectHideFlags: 0
@@ -18573,7 +18810,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 875274758106799059, guid: db4ce180550677f428b16074e7ee575e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 893971632}
   m_SourcePrefab: {fileID: 100100000, guid: db4ce180550677f428b16074e7ee575e, type: 3}
 --- !u!1001 &6119916605962595035
 PrefabInstance:

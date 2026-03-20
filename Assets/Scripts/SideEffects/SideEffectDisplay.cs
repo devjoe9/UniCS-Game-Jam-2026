@@ -15,6 +15,11 @@ public class SideEffectDisplay : MonoBehaviour
     [Header("Event Icons (5 - in order)")]
     public Sprite[] eventIcons = new Sprite[5];
 
+    [Header("Event Sign")]
+    public EventSign eventSign;
+    public Sprite[]  signSprites  = new Sprite[5];
+    public float     effectDuration = 8f;
+
     [Header("Event Data")]
     public string[] eventNames = new string[]
     {
@@ -36,11 +41,11 @@ public class SideEffectDisplay : MonoBehaviour
 
     public Color[] eventColors = new Color[]
     {
-        new Color(0.2f, 1f,    0.35f),   // green  - immortality
+        new Color(1f,   0.85f, 0f),      // yellow - immortality
         new Color(1f,   0.55f, 0.1f),    // orange - knockback
         new Color(0.2f, 0.6f,  1f),      // blue   - slow time
         new Color(1f,   0.15f, 0.15f),   // red    - hacked
-        new Color(1f,   0.55f, 0.1f),    // orange - slippery
+        new Color(0.2f, 1f,    0.35f),   // green  - slippery
     };
 
     [Header("Timing")]
@@ -50,15 +55,15 @@ public class SideEffectDisplay : MonoBehaviour
     public float holdDuration   = 3f;
 
     [Header("Audio")]
-    public AudioSource spinAudioSource;   // looping spin sound
-    public AudioSource resultAudioSource; // one shot result sound
+    public AudioSource spinAudioSource;
+    public AudioSource resultAudioSource;
     public AudioClip   spinSound;
     public AudioClip   positiveSound;
     public AudioClip   negativeSound;
     public AudioClip   neutralSound;
 
     // 0=positive 1=neutral 2=negative
-    private int[] eventCategory = new int[] { 2, 0, 1, 1, 1};
+    private int[] eventCategory = new int[] { 2, 0, 1, 1, 1 };
 
     private bool isAnimating = false;
 
@@ -120,7 +125,7 @@ public class SideEffectDisplay : MonoBehaviour
             yield return null;
         }
 
-        // Stop spin sound — fade out
+        // Stop spin sound
         StartCoroutine(FadeOutSpin());
 
         // Show result
@@ -128,6 +133,14 @@ public class SideEffectDisplay : MonoBehaviour
         PlayResultSound(finalIndex);
         StartCoroutine(PunchScale(eventIcon.transform));
         StartCoroutine(FlashFrame(eventColors[finalIndex]));
+
+        // Show event sign
+       // Show event sign
+Debug.Log($"Calling ShowSign | eventSign null: {eventSign == null} | index: {finalIndex} | sprites length: {signSprites.Length}");
+if (eventSign != null && finalIndex < signSprites.Length)
+    eventSign.ShowSign(signSprites[finalIndex], effectDuration);
+else
+    Debug.Log($"ShowSign SKIPPED - eventSign null: {eventSign == null} | index valid: {finalIndex < signSprites.Length}");
 
         Debug.Log($"[SideEffectDisplay] Result: {eventNames[finalIndex]}");
 
@@ -140,8 +153,7 @@ public class SideEffectDisplay : MonoBehaviour
     private IEnumerator FadeOutSpin()
     {
         if (spinAudioSource == null) yield break;
-        float dur = 0.3f;
-        float e   = 0f;
+        float dur = 0.3f; float e = 0f;
         float startVol = spinAudioSource.volume;
         while (e < dur)
         {
@@ -172,7 +184,6 @@ public class SideEffectDisplay : MonoBehaviour
         {
             eventIcon.sprite = eventIcons[index];
             eventIcon.color  = Color.white;
-            if (isFinal) StartCoroutine(PunchScale(eventIcon.transform));
         }
 
         if (eventLabel != null)
