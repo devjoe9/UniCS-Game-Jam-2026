@@ -9,7 +9,7 @@ public class PlayerShieldController : MonoBehaviour
     public float defaultKnockbackForce = 5;
     
     private float knockbackForce;
-    private bool isBlue;
+    [SerializeField]private bool isBlue;
     private string initialDirection;
 
     private SpriteRenderer spriteRenderer;

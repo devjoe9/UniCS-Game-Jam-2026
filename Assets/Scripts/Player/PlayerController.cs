@@ -58,13 +58,13 @@ public class PlayerController : MonoBehaviour
         // Boosting
         if (isBoosting)
         {
-            Debug.Log("In isBoosting");
             Vector2 totalBoost = Vector2.zero;
             foreach (var booster in boosters)
             {
                 if (booster != null && !booster.IsDisabled)
                 {
                     totalBoost += booster.ThrustDirection * booster.boostForce;
+
                 }
             }
 
@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
             {
                 currentVelocity = Vector2.ClampMagnitude(currentVelocity += totalBoost * Time.fixedDeltaTime, maxBoostingSpeed);
             }
-            Debug.Log(totalBoost);
         }
 
         // Calculate target velocity based on input
@@ -166,7 +165,10 @@ public class PlayerController : MonoBehaviour
     void OnBoost(InputValue value)
     {
         isBoosting = value.isPressed;
-        Debug.Log("Boost pressed");
+        foreach (var booster in boosters)
+        {
+            booster.UseBoostingSprite(isBoosting);
+        }
     }
 
     IEnumerator ResetRotateCooldown()

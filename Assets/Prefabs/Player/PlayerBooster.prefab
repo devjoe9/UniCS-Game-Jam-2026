@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -153,4 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blueSprite: {fileID: 384117112329130739, guid: 302b565c85d72904dbdd784d504aa26e, type: 3}
   redSprite: {fileID: -4168812626237603031, guid: 69761c872f1a10f4d90100abfc447e52, type: 3}
+  blueBoostingSprite: {fileID: 7272162364894484529, guid: 083da054428bb494383cdbc496320c93, type: 3}
+  redBoostingSprite: {fileID: 5487807211844037830, guid: 9700e0c1648d38546a0ad6bf5ccd2eed, type: 3}
   boostForce: 200
+  isBlue: 0

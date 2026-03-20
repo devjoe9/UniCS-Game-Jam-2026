@@ -5,9 +5,13 @@ public class PlayerBoosterController : MonoBehaviour
 {
     public Sprite blueSprite;
     public Sprite redSprite;
+    public Sprite blueBoostingSprite;
+    public Sprite redBoostingSprite;
     public float boostForce = 20f;
     
-    private bool isBlue;
+    [SerializeField]private bool isBlue;
+    private Sprite defaultSprite;
+    private Sprite defaultBoostingSprite;
     private string initialDirection;
     public Vector2 ThrustDirection => -(Vector2)transform.right;
     public bool IsDisabled => isDisabled;
@@ -18,7 +22,9 @@ public class PlayerBoosterController : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         // condition ? if true : if false
-        spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
+        defaultSprite= isBlue ? blueSprite : redSprite;
+        defaultBoostingSprite = isBlue ? blueBoostingSprite : redBoostingSprite;
+        spriteRenderer.sprite = defaultSprite;
         isDisabled = false;
 
         initialDirection = transform.parent.name;
@@ -41,5 +47,10 @@ public class PlayerBoosterController : MonoBehaviour
         {
             transform.localPosition = new Vector3(0.75f, 0, 0);
         }
+    }
+
+    public void UseBoostingSprite(bool isBoosting)
+    {
+        spriteRenderer.sprite = isBoosting ? defaultBoostingSprite : defaultSprite;
     }
 }
