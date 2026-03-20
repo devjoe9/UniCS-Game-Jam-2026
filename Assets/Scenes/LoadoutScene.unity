@@ -2901,7 +2901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a113a60ca4a92b4e8282585d8fc7d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
-  gameSceneName: Level
+  gameSceneName: background
 --- !u!1 &1305356423
 GameObject:
   m_ObjectHideFlags: 0
