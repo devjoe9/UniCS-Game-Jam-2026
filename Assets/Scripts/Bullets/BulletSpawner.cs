@@ -135,7 +135,7 @@ public class BulletSpawner : MonoBehaviour
         }
 
         float localAngle = Mathf.Lerp(-halfArc, halfArc, t);
-        Vector2 direction = RotateVector(firePoint.right, localAngle);
+        Vector2 direction = RotateVector(GetAimDirection(), localAngle);
 
         FireBulletInDirection(direction);
 
@@ -172,7 +172,7 @@ public class BulletSpawner : MonoBehaviour
             return ((Vector2)(player.position - firePoint.position)).normalized;
         }
 
-        return firePoint.right;
+        return firePoint.up;
     }
 
     private void FireBulletInDirection(Vector2 direction)

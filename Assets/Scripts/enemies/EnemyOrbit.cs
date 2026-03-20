@@ -5,18 +5,13 @@ public class EnemyOrbit : MonoBehaviour
 {
     [SerializeField] Transform player;
     [SerializeField] float radius = 4f;
-
-    [Header("Movement")]
-    [SerializeField] float acceleration = 8f;
-    [SerializeField] float maxSpeed = 5f;
-    [SerializeField] float friction = 1.5f;
-
-    [Header("Orbit")]
+    [SerializeField] float speed = 4f;
     [SerializeField] float stoppingDistance = 0.1f;
-    [SerializeField] float changeInterval = 2f;
-    [SerializeField] float angleMoveSpeed = 120f;
 
-    [SerializeField] float maxStartDelay = 1f;
+    [SerializeField] float changeInterval = 2f;
+    [SerializeField] float angleMoveSpeed = 120f; // degrees per second
+
+    [SerializeField] float maxStartDelay = 1f; // 
 
     private float timer;
 
@@ -26,7 +21,7 @@ public class EnemyOrbit : MonoBehaviour
     private float angle;
     private float targetAngle;
 
-    private bool canMove = false;
+    private bool canMove = false; // 
 
     void Start()
     {
@@ -35,7 +30,7 @@ public class EnemyOrbit : MonoBehaviour
         angle = Random.Range(0f, Mathf.PI * 2f);
         targetAngle = angle;
 
-        StartCoroutine(StartMoveDelay());
+        StartCoroutine(StartMoveDelay()); // 
     }
 
     IEnumerator StartMoveDelay()
@@ -48,9 +43,8 @@ public class EnemyOrbit : MonoBehaviour
 
     void Update()
     {
-        if (!canMove) return;
-
-        // ⏱ change orbit angle
+        if (!canMove) return; //
+        // ⏱ change position every few seconds
         timer += Time.deltaTime;
 
         if (timer >= changeInterval)
@@ -59,20 +53,19 @@ public class EnemyOrbit : MonoBehaviour
             timer = 0f;
         }
 
-        // 🔄 Smooth angle movement
+        
         float angleDeg = angle * Mathf.Rad2Deg;
         float targetDeg = targetAngle * Mathf.Rad2Deg;
 
         angleDeg = Mathf.MoveTowardsAngle(angleDeg, targetDeg, angleMoveSpeed * Time.deltaTime);
         angle = angleDeg * Mathf.Deg2Rad;
 
-        // 🎯 Target orbit point
+   
         Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
         targetPoint = (Vector2)player.position + offset;
 
-        // 👀 Face player
         Vector2 direction = player.position - transform.position;
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg+135f;
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
     }
 
@@ -88,47 +81,27 @@ public class EnemyOrbit : MonoBehaviour
 
         if (direction.magnitude > stoppingDistance)
         {
-            Vector2 desiredDir = direction.normalized;
-
-            // 🚀 Accelerate instead of snap
-            rb.linearVelocity += desiredDir * acceleration * Time.fixedDeltaTime;
-
-            // 🧱 Clamp speed
-            rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, maxSpeed);
+            rb.linearVelocity = direction.normalized * speed;
         }
-
-        // 🧊 Friction (controls how floaty orbit feels)
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, friction * Time.fixedDeltaTime);
-
-        ApplySidewaysDrift(); // 🔥 makes orbit feel circular instead of robotic
-    }
-
-    void ApplySidewaysDrift()
-    {
-        Vector2 velocity = rb.linearVelocity;
-
-        Vector2 forward = transform.up;
-        Vector2 right = new Vector2(forward.y, -forward.x);
-
-        Vector2 forwardVel = forward * Vector2.Dot(velocity, forward);
-        Vector2 sidewaysVel = right * Vector2.Dot(velocity, right);
-
-        // 🔥 Lower = more orbit glide
-        sidewaysVel *= 0.65f;
-
-        rb.linearVelocity = forwardVel + sidewaysVel;
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 
     void OnDrawGizmos()
     {
         if (player == null) return;
 
+   
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(player.position, radius);
+
 
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(targetPoint, 0.2f);
 
+  
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, targetPoint);
     }
