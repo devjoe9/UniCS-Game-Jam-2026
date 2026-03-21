@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool isBoosting;
     private PlayerBoosterController[] boosters;
     private CameraManager cameraManager;
+    private PlayerGunController[] guns;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         movementFilter.useLayerMask = true;
         movementFilter.SetLayerMask(LayerMask.GetMask("border"));
         cameraManager = FindAnyObjectByType<CameraManager>();
+        guns = GetComponentsInChildren<PlayerGunController>(true);
     }
 
     private void FixedUpdate()
@@ -172,13 +174,30 @@ public class PlayerController : MonoBehaviour
 
     void OnBoost(InputValue value)
     {
-        isBoosting = value.isPressed;
-        cameraManager.ChangeOrthSize(boostOrthMult, boostOrthChangeTime, !isBoosting);
-        cameraManager.ShakeCamera(boostShakeAmplitude, boostShakeFrequency, isBoosting);
-        foreach (var booster in boosters)
+        if (!(boosters.Length == 0))
         {
-            booster.UseBoostingSprite(isBoosting);
+            isBoosting = value.isPressed;
+            cameraManager.ChangeOrthSize(boostOrthMult, boostOrthChangeTime, !isBoosting);
+            cameraManager.ShakeCamera(boostShakeAmplitude, boostShakeFrequency, isBoosting);
+            foreach (var booster in boosters)
+            {
+                booster.UseBoostingSprite(isBoosting);
+            }
         }
+    }
+
+    void OnAutoShoot(InputValue value)
+    {
+        Debug.Log("OnAutoShoot");
+        foreach(var gun in guns)
+        {
+            gun.IsAutoShooting = value.isPressed;
+        }
+    }
+
+    void OnManualShoot()
+    {
+        
     }
 
     IEnumerator ResetRotateCooldown()

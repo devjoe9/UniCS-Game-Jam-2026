@@ -6,7 +6,8 @@ public class PlayerGunController : MonoBehaviour
     public Sprite redSprite;
     public int defaultDamage = 5;
     public float defaultKnockbackForce = 5;
-    public float shotCooldown = 0.5f;
+    public float manualShotCooldown = 0.25f;
+    public float autoShotCooldown = 0.5f;
     public float bulletSpeed = 40;
     public GameObject bulletPrefab;
     public float bulletHoriOffset = 1;
@@ -20,6 +21,12 @@ public class PlayerGunController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private SideData sideData;
     private Vector3 shootDirection;
+    private bool isAutoShooting;
+    public bool IsAutoShooting
+    {
+        get {return isAutoShooting;}
+        set {isAutoShooting = value;}
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +40,7 @@ public class PlayerGunController : MonoBehaviour
         damage = defaultDamage;
         knockbackForce = defaultKnockbackForce;
         timeSinceLastShot = 0;
+        isAutoShooting = false;
 
         initialDirection = transform.parent.name;
         if (initialDirection.Equals("L"))
@@ -56,22 +64,64 @@ public class PlayerGunController : MonoBehaviour
         }
     }
 
+    // void Update()
+    // {
+    //     if (timeSinceLastShot <= manualShotCooldown)
+    //     {
+    //         timeSinceLastShot += Time.deltaTime;
+    //         return;
+    //     }
+    //     else
+    //     {
+    //         shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
+
+    //         Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
+    //         GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
+    //         newBullet.GetComponent<PlayerShot>().Initialize(shootDirection, bulletSpeed, damage, knockbackForce, isBlue);
+
+    //         timeSinceLastShot = 0;
+    //     }
+    // }
+
     void Update()
     {
-        if (timeSinceLastShot <= shotCooldown)
+        timeSinceLastShot += Time.deltaTime;
+        if (isAutoShooting)
         {
-            timeSinceLastShot += Time.deltaTime;
-            return;
-        }
-        else
-        {
-            shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
-            
-            Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
-            GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
-            newBullet.GetComponent<PlayerShot>().Initialize(shootDirection, bulletSpeed, damage, knockbackForce, isBlue);
+            if (timeSinceLastShot <= autoShotCooldown) return;
+            else
+            {
+                shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
+                
+                Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
+                GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
+                newBullet.GetComponent<PlayerShot>().Initialize(shootDirection, bulletSpeed, damage, knockbackForce, isBlue);
+                Debug.Log("Shot bullet");
 
-            timeSinceLastShot = 0;
+                timeSinceLastShot = 0;
+            }
         }
     }
+
+    // public void Shoot(bool isManual)
+    // {
+    //     Debug.Log("Shoot");
+    //     float shotCooldown = isManual ? manualShotCooldown : autoShotCooldown;
+    //     if (timeSinceLastShot <= shotCooldown)
+    //     {
+    //         timeSinceLastShot += Time.deltaTime;
+    //         return;
+    //     }
+    //     else
+    //     {
+    //         shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
+            
+    //         Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
+    //         GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
+    //         newBullet.GetComponent<PlayerShot>().Initialize(shootDirection, bulletSpeed, damage, knockbackForce, isBlue);
+    //         Debug.Log("Shot bullet");
+
+    //         timeSinceLastShot = 0;
+    //     }
+    // }
 }
