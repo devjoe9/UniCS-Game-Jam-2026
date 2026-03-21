@@ -19,6 +19,7 @@ public class PlayerGunController : MonoBehaviour
     private string initialDirection;
     private SpriteRenderer spriteRenderer;
     private SideData sideData;
+    private Vector3 shootDirection;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,9 +65,11 @@ public class PlayerGunController : MonoBehaviour
         }
         else
         {
-            Vector3 newPosition = transform.position + transform.right*bulletHoriOffset + transform.up*bulletVertOffset;
+            shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
+            
+            Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
             GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
-            newBullet.GetComponent<PlayerShot>().Initialize(transform.right, bulletSpeed, damage, knockbackForce, isBlue);
+            newBullet.GetComponent<PlayerShot>().Initialize(shootDirection, bulletSpeed, damage, knockbackForce, isBlue);
 
             timeSinceLastShot = 0;
         }
