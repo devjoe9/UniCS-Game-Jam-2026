@@ -82,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -154301049
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 384117112329130739, guid: 302b565c85d72904dbdd784d504aa26e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -154,7 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blueSprite: {fileID: 384117112329130739, guid: 302b565c85d72904dbdd784d504aa26e, type: 3}
   redSprite: {fileID: -4168812626237603031, guid: 69761c872f1a10f4d90100abfc447e52, type: 3}
-  isBlue: 0
   blueBoostingSprite: {fileID: 7272162364894484529, guid: 083da054428bb494383cdbc496320c93, type: 3}
   redBoostingSprite: {fileID: 5487807211844037830, guid: 9700e0c1648d38546a0ad6bf5ccd2eed, type: 3}
   boostForce: 100
@@ -170,3 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc25ebad83e0534da6684e86594fe7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SideData
+  isBlue: 0

@@ -34,7 +34,7 @@ public class PlayerBoosterController : MonoBehaviour
         initialDirection = transform.parent.name;
         if (initialDirection.Equals("L"))
         {
-            spriteRenderer.flipX = true;
+            transform.Rotate(0, 0, 180);
             transform.localPosition = new Vector3(-0.75f, 0, 0);
         }
         else if (initialDirection.Equals("U"))
