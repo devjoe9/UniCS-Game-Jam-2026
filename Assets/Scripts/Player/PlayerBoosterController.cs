@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBoosterController : MonoBehaviour
@@ -18,12 +19,18 @@ public class PlayerBoosterController : MonoBehaviour
     private bool isDisabled;
     private SpriteRenderer spriteRenderer;
     private SideData sideData;
+    private ParticleSystem[] smokeParticles;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         sideData = GetComponent<SideData>();
         isBlue = sideData.IsBlue;
+        smokeParticles = GetComponentsInChildren<ParticleSystem>();
+        foreach(var smoke in smokeParticles)
+        {
+            smoke.Stop();
+        }
         
         // condition ? if true : if false
         defaultSprite= isBlue ? blueSprite : redSprite;
@@ -53,8 +60,27 @@ public class PlayerBoosterController : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        
+    }
+
     public void UseBoostingSprite(bool isBoosting)
     {
         spriteRenderer.sprite = isBoosting ? defaultBoostingSprite : defaultSprite;
+        if (isBoosting)
+        {
+            foreach(var smoke in smokeParticles)
+            {
+                smoke.Play();
+            }
+        }
+        else
+        {
+            foreach(var smoke in smokeParticles)
+            {
+                smoke.Stop();
+            }
+        }
     }
 }
