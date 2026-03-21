@@ -109,10 +109,10 @@ MonoBehaviour:
   redSprite: {fileID: -6052227083387198902, guid: 1f4af3a50ccfb55468eae09809938483, type: 3}
   defaultDamage: 5
   defaultKnockbackForce: 5
-  manualShotCooldown: 0.1
+  manualShotCooldown: 0.25
   autoShotCooldown: 0.5
   bulletSpeed: 40
-  bulletPrefab: {fileID: 9172955561461582874, guid: ab128051467274d4585274729ac323f7, type: 3}
+  bulletPrefab: {fileID: 6187385120655881580, guid: ab128051467274d4585274729ac323f7, type: 3}
   bulletHoriOffset: 1.5
   bulletVertOffset: 0.45
 --- !u!114 &737843085516983510

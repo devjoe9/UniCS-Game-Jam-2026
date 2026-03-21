@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
         OrangeBullet
     }
 
+    public BulletType Type => bulletType;
+
     [Header("Default Settings")]
     [SerializeField] private float speed = 8f;
     [SerializeField] private float lifetime = 5f;
