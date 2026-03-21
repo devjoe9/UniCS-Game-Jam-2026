@@ -41,6 +41,7 @@ public class PlayerData : MonoBehaviour
             {
                 isDead = true;
                 // death
+                Debug.Log("you died cuh"); //remove this 
             }
             else
             {

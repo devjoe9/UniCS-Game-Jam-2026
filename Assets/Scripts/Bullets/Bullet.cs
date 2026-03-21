@@ -12,18 +12,26 @@ public class Bullet : MonoBehaviour
     [Header("Default Settings")]
     [SerializeField] private float speed = 8f;
     [SerializeField] private float lifetime = 5f;
+    [SerializeField] private float bulletSize = 1f;
+
     [SerializeField] private BulletType bulletType = BulletType.RedBullet;
 
     private Vector2 direction = Vector2.up;
     private float timer;
     private SpriteRenderer spriteRenderer;
 
-    public void Initialize(Vector2 newDirection, float newSpeed, float newLifetime, BulletType newBulletType)
+    public void Initialize(Vector2 newDirection, float newSpeed, float newLifetime, BulletType newBulletType, float? newBulletSize = null)
     {
         direction = newDirection.normalized;
         speed = newSpeed;
         lifetime = newLifetime;
         bulletType = newBulletType;
+        if (newBulletSize.HasValue)
+        {
+            bulletSize = newBulletSize.Value;
+        }
+
+        transform.localScale = Vector3.one * bulletSize;
 
         timer = 0f;
         UpdateVisuals();
@@ -31,12 +39,14 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
+        transform.localScale = Vector3.one * bulletSize;
         spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateVisuals();
     }
 
     private void OnEnable()
     {
+        transform.localScale = Vector3.one * bulletSize;
         timer = 0f;
         UpdateVisuals();
     }
@@ -76,10 +86,13 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player hit by bullet");
-            Destroy(gameObject);
-        }
+            PlayerData playerData = other.GetComponentInParent<PlayerData>();
 
-        // For future player gun shots
+            if (playerData != null && playerData.IsVulnerable)
+            {
+                playerData.TakeDamage(1);
+                Destroy(gameObject);
+            }
+        }
     }
 }

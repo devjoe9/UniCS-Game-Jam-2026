@@ -20,6 +20,8 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private float bulletLifetime = 5f;
     [SerializeField] private Bullet.BulletType bulletType = Bullet.BulletType.BlueBullet;
     [SerializeField] private bool startFiringOnStart = true;
+    [SerializeField] private bool overrideBulletSize = false;
+    [SerializeField] private float bulletSizeOverride = 1f;
 
     [Header("Pattern Selection")]
     [SerializeField] private FirePattern firePattern = FirePattern.Burst;
@@ -135,7 +137,7 @@ public class BulletSpawner : MonoBehaviour
         }
 
         float localAngle = Mathf.Lerp(-halfArc, halfArc, t);
-        Vector2 direction = RotateVector(firePoint.right, localAngle);
+        Vector2 direction = RotateVector(GetAimDirection(), localAngle);
 
         FireBulletInDirection(direction);
 
@@ -172,7 +174,7 @@ public class BulletSpawner : MonoBehaviour
             return ((Vector2)(player.position - firePoint.position)).normalized;
         }
 
-        return firePoint.right;
+        return firePoint.up;
     }
 
     private void FireBulletInDirection(Vector2 direction)
@@ -184,7 +186,14 @@ public class BulletSpawner : MonoBehaviour
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         if (bullet != null)
         {
-            bullet.Initialize(direction, bulletSpeed, bulletLifetime, bulletType);
+            if (overrideBulletSize)
+            {
+                bullet.Initialize(direction, bulletSpeed, bulletLifetime, bulletType, bulletSizeOverride);
+            }
+            else
+            {
+                bullet.Initialize(direction, bulletSpeed, bulletLifetime, bulletType);
+            }
         }
     }
 
