@@ -6,12 +6,14 @@ public class EnemyOrbit : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] float radius = 4f;
     [SerializeField] float speed = 4f;
-    [SerializeField] float stoppingDistance = 0.1f;
+    [SerializeField] float stoppingDistance = 0.3f;
 
     [SerializeField] float changeInterval = 2f;
-    [SerializeField] float angleMoveSpeed = 120f; // degrees per second
+    [SerializeField] float angleMoveSpeed = 120f;
 
-    [SerializeField] float maxStartDelay = 1f; // 
+    [SerializeField] float maxStartDelay = 1f;
+
+    [SerializeField] float angleChangeRange = 90f;
 
     private float timer;
 
@@ -21,7 +23,7 @@ public class EnemyOrbit : MonoBehaviour
     private float angle;
     private float targetAngle;
 
-    private bool canMove = false; // 
+    private bool canMove = false;
 
     void Start()
     {
@@ -30,7 +32,7 @@ public class EnemyOrbit : MonoBehaviour
         angle = Random.Range(0f, Mathf.PI * 2f);
         targetAngle = angle;
 
-        StartCoroutine(StartMoveDelay()); // 
+        StartCoroutine(StartMoveDelay());
     }
 
     IEnumerator StartMoveDelay()
@@ -43,29 +45,27 @@ public class EnemyOrbit : MonoBehaviour
 
     void Update()
     {
-        if (!canMove) return; //
-        // ⏱ change position every few seconds
+        if (!canMove) return;
+
         timer += Time.deltaTime;
 
         if (timer >= changeInterval)
         {
-            targetAngle = Random.Range(0f, Mathf.PI * 2f);
+            PickNewTargetAngle();
             timer = 0f;
         }
 
-        
         float angleDeg = angle * Mathf.Rad2Deg;
         float targetDeg = targetAngle * Mathf.Rad2Deg;
 
         angleDeg = Mathf.MoveTowardsAngle(angleDeg, targetDeg, angleMoveSpeed * Time.deltaTime);
         angle = angleDeg * Mathf.Deg2Rad;
 
-   
         Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
         targetPoint = (Vector2)player.position + offset;
 
         Vector2 direction = player.position - transform.position;
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg+135f;
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
     }
 
@@ -86,22 +86,27 @@ public class EnemyOrbit : MonoBehaviour
         else
         {
             rb.linearVelocity = Vector2.zero;
+            PickNewTargetAngle();
         }
+    }
+
+    void PickNewTargetAngle()
+    {
+        float currentDeg = angle * Mathf.Rad2Deg;
+        float newDeg = currentDeg + Random.Range(-angleChangeRange, angleChangeRange);
+        targetAngle = newDeg * Mathf.Deg2Rad;
     }
 
     void OnDrawGizmos()
     {
         if (player == null) return;
 
-   
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(player.position, radius);
-
 
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(targetPoint, 0.2f);
 
-  
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, targetPoint);
     }
