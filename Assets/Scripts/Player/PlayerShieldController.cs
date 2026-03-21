@@ -67,7 +67,22 @@ public class PlayerShieldController : MonoBehaviour
         }
         else if (collision.CompareTag("Bullet"))
         {
-            // code here
+            Bullet bullet = collision.GetComponent<Bullet>();
+            if (bullet == null) return;
+
+            bool shieldIsBlue = sideData.IsBlue;
+            bool bulletMatchesShield =
+                (shieldIsBlue && bullet.Type == Bullet.BulletType.BlueBullet) ||
+                (!shieldIsBlue && bullet.Type == Bullet.BulletType.RedBullet);
+
+            if (bulletMatchesShield)
+            {
+                Debug.Log("blocked");
+                Destroy(collision.gameObject);
+                spriteRenderer.enabled = false;
+                col.enabled = false;
+                StartCoroutine(resetCooldown());
+            }
         }
     }
 
