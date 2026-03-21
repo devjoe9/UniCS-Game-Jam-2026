@@ -70,15 +70,15 @@ public class Bullet : MonoBehaviour
         switch (bulletType)
         {
             case BulletType.BlueBullet:
-                spriteRenderer.color = Color.blue;
+                spriteRenderer.color = new Color(0.5f, 0.7f, 1f);
                 break;
 
             case BulletType.RedBullet:
-                spriteRenderer.color = Color.red;
+                spriteRenderer.color = new Color(1f, 0.5f, 0.5f);
                 break;
 
             case BulletType.OrangeBullet:
-                spriteRenderer.color = Color.orange;
+                spriteRenderer.color = new Color(1f, 0.7f, 0.4f);
                 break;
         }
     }

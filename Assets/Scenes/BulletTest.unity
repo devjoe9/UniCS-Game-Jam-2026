@@ -186,13 +186,13 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3587487694791285624, guid: 620eead620e87a6479843f4174863a34, type: 3}
   firePoint: {fileID: 192590792}
   player: {fileID: 1156736071}
-  bulletSpeed: 9
+  bulletSpeed: 13
   bulletLifetime: 9
   bulletType: 0
   startFiringOnStart: 1
   overrideBulletSize: 0
   bulletSizeOverride: 3
-  firePattern: 0
+  firePattern: 2
   bulletsPerBurst: 4
   timeBetweenBurstShots: 0.8
   timeBetweenBursts: 1.8
@@ -634,7 +634,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3587487694791285624, guid: 620eead620e87a6479843f4174863a34, type: 3}
   firePoint: {fileID: 989421647}
   player: {fileID: 1156736071}
-  bulletSpeed: 9
+  bulletSpeed: 13
   bulletLifetime: 9
   bulletType: 1
   startFiringOnStart: 1
@@ -735,8 +735,8 @@ GameObject:
   - component: {fileID: 1920999584}
   - component: {fileID: 1920999583}
   - component: {fileID: 1920999582}
-  - component: {fileID: 1920999581}
   - component: {fileID: 1920999587}
+  - component: {fileID: 1920999588}
   m_Layer: 0
   m_Name: S_Enemy2 (1)
   m_TagString: Untagged
@@ -744,27 +744,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1920999581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920999580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab1f51158ffa5694f8bdc2cd2f6873e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyOrbit
-  player: {fileID: 1156736071}
-  radius: 13
-  speed: 7
-  stoppingDistance: 0.5
-  changeInterval: 2
-  angleMoveSpeed: 600
-  maxStartDelay: 1
-  angleChangeRange: 50
-  knockbackDrag: 5
 --- !u!114 &1920999582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,7 +759,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3587487694791285624, guid: 620eead620e87a6479843f4174863a34, type: 3}
   firePoint: {fileID: 1077996274}
   player: {fileID: 1156736071}
-  bulletSpeed: 9
+  bulletSpeed: 13
   bulletLifetime: 9
   bulletType: 2
   startFiringOnStart: 1
@@ -951,6 +930,28 @@ MonoBehaviour:
   flashInterval: 0.2
   defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
   flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
+--- !u!114 &1920999588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920999580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5096472113e365469de8ac6d36b3605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WanderEnemy
+  player: {fileID: 1156736071}
+  boundary: {fileID: 0}
+  acceleration: 6
+  maxSpeed: 3
+  friction: 1.5
+  pointReachDistance: 0.2
+  wanderRadius: 2
+  fleeRadius: 2
+  fleeSpeedMultiplier: 1.8
+  knockbackDrag: 5
 --- !u!1001 &1977092010
 PrefabInstance:
   m_ObjectHideFlags: 0
