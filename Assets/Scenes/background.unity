@@ -331,6 +331,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &216047683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 216047685}
+  - component: {fileID: 216047684}
+  m_Layer: 0
+  m_Name: EffectTester
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &216047684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216047683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e5d48af6982694fa2abede80ed9a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VisualEffectTester
+--- !u!4 &216047685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216047683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 469.88464, y: 463.69626, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &290785520
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +410,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -240}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &290785522
@@ -16442,6 +16486,7 @@ GameObject:
   - component: {fileID: 604170708}
   - component: {fileID: 604170711}
   - component: {fileID: 604170712}
+  - component: {fileID: 604170713}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16599,11 +16644,116 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &604170713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604170707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ee120fd5d069349acd3b51b095dda2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugArrowSpawner
 --- !u!4 &685647279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8672969665130933250, guid: 23ea44ac7b5b578459f894a054670b3a, type: 3}
   m_PrefabInstance: {fileID: 327745985}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &808695628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 808695630}
+  - component: {fileID: 808695629}
+  m_Layer: 0
+  m_Name: CanvasEffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &808695629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808695628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f5d33c95d909c45adee85acbc012fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasEffectManager
+  noWeaponsEffect:
+    modeName: 
+    effectSprite: {fileID: 0}
+    spawnCount: 8
+    neonColor: {r: 0, g: 1, b: 1, a: 1}
+    glowIntensity: 2.5
+    minScale: 50
+    maxScale: 100
+  immortalityEffect:
+    modeName: 
+    effectSprite: {fileID: 0}
+    spawnCount: 8
+    neonColor: {r: 0, g: 1, b: 1, a: 1}
+    glowIntensity: 2.5
+    minScale: 50
+    maxScale: 100
+  timeSlowedDownEffect:
+    modeName: 
+    effectSprite: {fileID: 0}
+    spawnCount: 8
+    neonColor: {r: 0, g: 1, b: 1, a: 1}
+    glowIntensity: 2.5
+    minScale: 50
+    maxScale: 100
+  knockbackIncreasedEffect:
+    modeName: 
+    effectSprite: {fileID: 0}
+    spawnCount: 8
+    neonColor: {r: 0, g: 1, b: 1, a: 1}
+    glowIntensity: 2.5
+    minScale: 50
+    maxScale: 100
+  slipperyEffect:
+    modeName: 
+    effectSprite: {fileID: 21300000, guid: e398de9c6d592d849836a15e1cc5c2a7, type: 3}
+    spawnCount: 40
+    neonColor: {r: 0.21568628, g: 1, b: 0.21568628, a: 1}
+    glowIntensity: 3.5
+    minScale: 60
+    maxScale: 120
+  effectCanvas: {fileID: 0}
+  effectDuration: 20
+  enableMovement: 1
+  minSpeed: 150
+  maxSpeed: 300
+  horizontalBias: 0.7
+  enablePulseAnimation: 1
+  pulseSpeed: 2
+  pulseAmount: 0.2
+--- !u!4 &808695630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808695628}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &845186277
 GameObject:
   m_ObjectHideFlags: 0
@@ -18892,3 +19042,5 @@ SceneRoots:
   - {fileID: 1239551777}
   - {fileID: 155497172}
   - {fileID: 1910522180}
+  - {fileID: 216047685}
+  - {fileID: 808695630}
