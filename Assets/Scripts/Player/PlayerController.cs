@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     public float maxSpeed = 5f; // Maximum speed the player can reach
     public float maxBoostingSpeed = 15f;
+    public float boostOrthMult = 1.25f;
+    public float boostOrthChangeTime = 0.1f;
     public float acceleration = 50f; // How quickly the player accelerates
     public float deceleration = 30f; // How quickly the player slows down
     public float collisionOffset = 0.05f;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private bool isKnockedBack;
     private bool isBoosting;
     private PlayerBoosterController[] boosters;
+    private CameraManager cameraManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +40,7 @@ public class PlayerController : MonoBehaviour
         isKnockedBack = false;
         isBoosting = false;
         boosters = GetComponentsInChildren<PlayerBoosterController>(true);
+        cameraManager = FindAnyObjectByType<CameraManager>();
     }
 
     private void FixedUpdate()
@@ -165,6 +169,7 @@ public class PlayerController : MonoBehaviour
     void OnBoost(InputValue value)
     {
         isBoosting = value.isPressed;
+        cameraManager.ChangeOrthSize(boostOrthMult, boostOrthChangeTime, !isBoosting);
         foreach (var booster in boosters)
         {
             booster.UseBoostingSprite(isBoosting);

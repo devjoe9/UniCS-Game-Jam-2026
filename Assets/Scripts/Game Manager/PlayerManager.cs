@@ -35,14 +35,4 @@ public class PlayerManager : MonoBehaviour
         downSide.GetComponent<SideData>().IsBlue = downData.isBlue;
 
     }
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
