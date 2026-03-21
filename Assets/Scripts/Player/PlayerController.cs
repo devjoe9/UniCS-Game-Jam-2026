@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float maxBoostingSpeed = 15f;
     public float boostOrthMult = 1.25f;
     public float boostOrthChangeTime = 0.1f;
+    public float boostShakeAmplitude = 2f;
+    public float boostShakeFrequency = 5f;
     public float acceleration = 50f; // How quickly the player accelerates
     public float deceleration = 30f; // How quickly the player slows down
     public float collisionOffset = 0.05f;
@@ -170,6 +172,7 @@ public class PlayerController : MonoBehaviour
     {
         isBoosting = value.isPressed;
         cameraManager.ChangeOrthSize(boostOrthMult, boostOrthChangeTime, !isBoosting);
+        cameraManager.ShakeCamera(boostShakeAmplitude, boostShakeFrequency, isBoosting);
         foreach (var booster in boosters)
         {
             booster.UseBoostingSprite(isBoosting);

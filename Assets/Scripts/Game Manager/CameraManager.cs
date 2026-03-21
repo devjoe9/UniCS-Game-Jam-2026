@@ -8,12 +8,14 @@ public class CameraManager : MonoBehaviour
 
     private CinemachineCamera cineCam;
     private float defaultOrthSize;
+    private CamShake camShake;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         cineCam = camObj.GetComponent<CinemachineCamera>();
         defaultOrthSize = cineCam.Lens.OrthographicSize;
+        camShake = FindAnyObjectByType<CamShake>();
     }
 
     public void ChangeOrthSize(float mult, float duration, bool toDefault)
@@ -40,5 +42,15 @@ public class CameraManager : MonoBehaviour
         }
 
         cineCam.Lens.OrthographicSize = targetOrthSize;
+    }
+
+    public void ShakeCamera(float amplitude, float frequency, bool isShaking)
+    {
+        if (isShaking)
+        {
+            camShake.StartShake(amplitude, frequency);
+            return;
+        }
+        camShake.StopShake();
     }
 }

@@ -656,13 +656,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2176418454863387015, guid: fc4f42a4e0b3db847905f891209886cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1373452121}
   m_SourcePrefab: {fileID: 100100000, guid: fc4f42a4e0b3db847905f891209886cf, type: 3}
 --- !u!1 &1373452120 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2176418454863387015, guid: fc4f42a4e0b3db847905f891209886cf, type: 3}
   m_PrefabInstance: {fileID: 1373452119}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1373452121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373452120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBasicMultiChannelPerlin
+  NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  AmplitudeGain: 1
+  FrequencyGain: 1
+  m_NoiseOffsets: {x: 698.26624, y: -80.15381, z: 649.60474}
 --- !u!1 &1536581858
 GameObject:
   m_ObjectHideFlags: 0
