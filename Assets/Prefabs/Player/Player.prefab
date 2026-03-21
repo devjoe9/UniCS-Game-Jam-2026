@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxSpeed: 20
+  maxBoostingSpeed: 60
   acceleration: 50
   deceleration: 30
   collisionOffset: 0.05

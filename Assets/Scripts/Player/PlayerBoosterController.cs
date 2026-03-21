@@ -9,18 +9,22 @@ public class PlayerBoosterController : MonoBehaviour
     public Sprite redBoostingSprite;
     public float boostForce = 20f;
     
-    [SerializeField]private bool isBlue;
     private Sprite defaultSprite;
     private Sprite defaultBoostingSprite;
+    private bool isBlue;
     private string initialDirection;
     public Vector2 ThrustDirection => -(Vector2)transform.right;
     public bool IsDisabled => isDisabled;
     private bool isDisabled;
     private SpriteRenderer spriteRenderer;
+    private SideData sideData;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        sideData = GetComponent<SideData>();
+        isBlue = sideData.IsBlue;
+        
         // condition ? if true : if false
         defaultSprite= isBlue ? blueSprite : redSprite;
         defaultBoostingSprite = isBlue ? blueBoostingSprite : redBoostingSprite;

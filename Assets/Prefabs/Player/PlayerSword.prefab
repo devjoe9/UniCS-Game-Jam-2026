@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6727622919309425109}
   - component: {fileID: 6718927918932499313}
   - component: {fileID: 3462331997808169758}
+  - component: {fileID: -6777657419490731501}
   m_Layer: 8
   m_Name: PlayerSword
   m_TagString: Untagged
@@ -107,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blueSprite: {fileID: -1613646886922424301, guid: 378a47176eed57b4680d4d22ee60949c, type: 3}
   redSprite: {fileID: 4363408438007925082, guid: 071085cf8e8a7d146a7357088ad9e184, type: 3}
+  isBlue: 0
   defaultDamage: 5
   defaultKnockbackForce: 5
 --- !u!61 &3462331997808169758
@@ -155,3 +157,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &-6777657419490731501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2273668587699760413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc25ebad83e0534da6684e86594fe7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SideData
+  isBlue: 0

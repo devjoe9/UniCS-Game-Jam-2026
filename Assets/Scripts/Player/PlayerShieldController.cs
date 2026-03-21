@@ -9,16 +9,21 @@ public class PlayerShieldController : MonoBehaviour
     public float defaultKnockbackForce = 5;
     
     private float knockbackForce;
-    [SerializeField]private bool isBlue;
+    private bool isBlue;
     private string initialDirection;
 
     private SpriteRenderer spriteRenderer;
+    private SideData sideData;
     private Collider2D col;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
+        sideData = GetComponent<SideData>();
+        isBlue = sideData.IsBlue;
+        
         // condition ? if true : if false
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
         knockbackForce = defaultKnockbackForce;

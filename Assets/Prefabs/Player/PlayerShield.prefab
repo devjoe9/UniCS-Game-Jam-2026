@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5163223187194522185}
   - component: {fileID: 5934115748617128817}
   - component: {fileID: 5617462799828609315}
+  - component: {fileID: -4849833820480370463}
   m_Layer: 8
   m_Name: PlayerShield
   m_TagString: Untagged
@@ -153,5 +154,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blueSprite: {fileID: 4215020794576474916, guid: 7dc1fc76ce6b79a448f7e865fb728dcd, type: 3}
   redSprite: {fileID: 1414125399931500858, guid: 963754e3290df0d41a1dd41e950cc6b0, type: 3}
+  isBlue: 0
   cooldown: 5
   defaultKnockbackForce: 5
+--- !u!114 &-4849833820480370463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238071650179445875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc25ebad83e0534da6684e86594fe7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SideData
+  isBlue: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4645896855548950477}
   - component: {fileID: 2409558586090537849}
   - component: {fileID: 705495408135951806}
+  - component: {fileID: -5392239269145050653}
   m_Layer: 0
   m_Name: PlayerBooster
   m_TagString: Untagged
@@ -153,7 +154,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blueSprite: {fileID: 384117112329130739, guid: 302b565c85d72904dbdd784d504aa26e, type: 3}
   redSprite: {fileID: -4168812626237603031, guid: 69761c872f1a10f4d90100abfc447e52, type: 3}
+  isBlue: 0
   blueBoostingSprite: {fileID: 7272162364894484529, guid: 083da054428bb494383cdbc496320c93, type: 3}
   redBoostingSprite: {fileID: 5487807211844037830, guid: 9700e0c1648d38546a0ad6bf5ccd2eed, type: 3}
   boostForce: 100
-  isBlue: 0
+--- !u!114 &-5392239269145050653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100415585048534974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc25ebad83e0534da6684e86594fe7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SideData

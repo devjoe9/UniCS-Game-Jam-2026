@@ -11,14 +11,18 @@ public class PlayerSwordController : MonoBehaviour
     
     private int damage;
     private float knockbackForce;
-    [SerializeField]private bool isBlue;
+    private bool isBlue;
     private string initialDirection;
-
     private SpriteRenderer spriteRenderer;
+    private SideData sideData;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        sideData = GetComponent<SideData>();
+        isBlue = sideData.IsBlue;
+        
         // condition ? if true : if false
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
         damage = defaultDamage;
