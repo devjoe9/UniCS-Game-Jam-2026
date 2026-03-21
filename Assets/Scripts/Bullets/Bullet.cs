@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float speed = 8f;
     [SerializeField] private float lifetime = 5f;
     [SerializeField] private float bulletSize = 1f;
+    [SerializeField] private int damage = 1;
 
     [SerializeField] private BulletType bulletType = BulletType.RedBullet;
 
@@ -90,7 +91,7 @@ public class Bullet : MonoBehaviour
 
             if (playerData != null && playerData.IsVulnerable)
             {
-                playerData.TakeDamage(1);
+                playerData.TakeDamage(damage);
                 Destroy(gameObject);
             }
         }

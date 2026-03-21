@@ -358,6 +358,7 @@ MonoBehaviour:
   friction: 2.5
   fleeRadius: 2
   fleeMultiplier: 1.5
+  knockbackDrag: 5
 --- !u!1 &989421646
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +473,7 @@ GameObject:
   - component: {fileID: 1046838255}
   - component: {fileID: 1046838259}
   - component: {fileID: 1046838260}
+  - component: {fileID: 1046838261}
   m_Layer: 0
   m_Name: S_Enemy1
   m_TagString: Untagged
@@ -666,6 +668,24 @@ MonoBehaviour:
   friction: 2.5
   fleeRadius: 2
   fleeMultiplier: 1.5
+  knockbackDrag: 5
+--- !u!114 &1046838261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046838253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2beff7ef8cbc042bbe2e3a2f4c78e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  maxHealth: 10
+  invulnerableTime: 1
+  flashInterval: 0.2
+  defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
+  flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
 --- !u!1 &1077996273
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,6 +736,7 @@ GameObject:
   - component: {fileID: 1920999583}
   - component: {fileID: 1920999582}
   - component: {fileID: 1920999581}
+  - component: {fileID: 1920999587}
   m_Layer: 0
   m_Name: S_Enemy2 (1)
   m_TagString: Untagged
@@ -743,6 +764,7 @@ MonoBehaviour:
   angleMoveSpeed: 600
   maxStartDelay: 1
   angleChangeRange: 50
+  knockbackDrag: 5
 --- !u!114 &1920999582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,6 +934,23 @@ Transform:
   - {fileID: 1077996274}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1920999587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920999580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2beff7ef8cbc042bbe2e3a2f4c78e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  maxHealth: 10
+  invulnerableTime: 1
+  flashInterval: 0.2
+  defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
+  flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
 --- !u!1001 &1977092010
 PrefabInstance:
   m_ObjectHideFlags: 0
