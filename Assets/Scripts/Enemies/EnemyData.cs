@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class EnemyData : MonoBehaviour
 {
+    public Sprite blueSprite;
+    public Sprite redSprite;
     public int maxHealth;
     public float invulnerableTime;
     public float flashInterval = 0.2f;
     public Color defaultColour = new Color(1f, 0.922f, 0.016f, 1f);
     public Color flashColour = new Color(1f, 0.922f, 0.016f, 0.5f);
-
 
     private Rigidbody2D rb;
     private int curHealth;
@@ -22,6 +23,13 @@ public class EnemyData : MonoBehaviour
         set => isKnockedBack = value;
     }
     private bool isKnockedBack;
+    [SerializeField]private bool isBlue;
+    public bool IsBlue
+    {
+        get {return isBlue;}
+        set {isBlue = value;}
+    }
+    private SpriteRenderer spriteRenderer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +38,14 @@ public class EnemyData : MonoBehaviour
         curHealth = maxHealth;
         isVulnerable = true;
         isDead = false;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
+    }
+
+    public void SetColour(bool isBlue)
+    {
+        this.isBlue = isBlue;
+        spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
     }
 
     // Update is called once per frame
