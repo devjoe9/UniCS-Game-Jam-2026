@@ -163,12 +163,14 @@ public class MeleeEnemy : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
+{
+    if (other.CompareTag("Player"))
     {
-        if (other.CompareTag("Player"))
-        {
-            TryChainDash();
-        }
+        Debug.Log("HIT PLAYER"); // 👈 add this line
+
+        TryChainDash();
     }
+}
 
     void TryChainDash()
     {

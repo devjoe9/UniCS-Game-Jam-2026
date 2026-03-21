@@ -68,7 +68,7 @@ public class EnemyOrbit : MonoBehaviour
         targetPoint = (Vector2)player.position + offset;
 
         Vector2 direction = player.position - transform.position;
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 135f;
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
     }
 

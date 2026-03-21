@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
         isKnockedBack = false;
         isBoosting = false;
         boosters = GetComponentsInChildren<PlayerBoosterController>(true);
+        movementFilter.useLayerMask = true;
+        movementFilter.SetLayerMask(LayerMask.GetMask("border"));
     }
 
     private void FixedUpdate()
