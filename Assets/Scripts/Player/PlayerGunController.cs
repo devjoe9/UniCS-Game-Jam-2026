@@ -64,64 +64,31 @@ public class PlayerGunController : MonoBehaviour
         }
     }
 
-    // void Update()
-    // {
-    //     if (timeSinceLastShot <= manualShotCooldown)
-    //     {
-    //         timeSinceLastShot += Time.deltaTime;
-    //         return;
-    //     }
-    //     else
-    //     {
-    //         shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
-
-    //         Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
-    //         GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
-    //         newBullet.GetComponent<PlayerShot>().Initialize(shootDirection, bulletSpeed, damage, knockbackForce, isBlue);
-
-    //         timeSinceLastShot = 0;
-    //     }
-    // }
-
     void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-        if (isAutoShooting)
-        {
-            if (timeSinceLastShot <= autoShotCooldown) return;
-            else
-            {
-                shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
-                
-                Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
-                GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
-                newBullet.GetComponent<PlayerShot>().Initialize(shootDirection, bulletSpeed, damage, knockbackForce, isBlue);
-                Debug.Log("Shot bullet");
 
-                timeSinceLastShot = 0;
-            }
+        if (isAutoShooting && timeSinceLastShot >= autoShotCooldown)
+        {
+            Shoot();
+            timeSinceLastShot = 0;
         }
     }
 
-    // public void Shoot(bool isManual)
-    // {
-    //     Debug.Log("Shoot");
-    //     float shotCooldown = isManual ? manualShotCooldown : autoShotCooldown;
-    //     if (timeSinceLastShot <= shotCooldown)
-    //     {
-    //         timeSinceLastShot += Time.deltaTime;
-    //         return;
-    //     }
-    //     else
-    //     {
-    //         shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
-            
-    //         Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
-    //         GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
-    //         newBullet.GetComponent<PlayerShot>().Initialize(shootDirection, bulletSpeed, damage, knockbackForce, isBlue);
-    //         Debug.Log("Shot bullet");
+    public void TryManualShot()
+    {
+        if (timeSinceLastShot < manualShotCooldown) return;
 
-    //         timeSinceLastShot = 0;
-    //     }
-    // }
+        Shoot();
+        timeSinceLastShot = 0;
+    }
+
+    public void Shoot()
+    {
+        shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
+                
+        Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
+        GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
+        newBullet.GetComponent<PlayerShot>().Initialize(shootDirection, bulletSpeed, damage, knockbackForce, isBlue);
+    }
 }

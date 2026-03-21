@@ -188,7 +188,6 @@ public class PlayerController : MonoBehaviour
 
     void OnAutoShoot(InputValue value)
     {
-        Debug.Log("OnAutoShoot");
         foreach(var gun in guns)
         {
             gun.IsAutoShooting = value.isPressed;
@@ -197,7 +196,10 @@ public class PlayerController : MonoBehaviour
 
     void OnManualShoot()
     {
-        
+        foreach (var gun in guns)
+        {
+            gun.TryManualShot();
+        }
     }
 
     IEnumerator ResetRotateCooldown()
