@@ -49,6 +49,7 @@ public class PlayerShot : MonoBehaviour
             if (enemyData != null && !enemyData.IsDead)
             {
                 enemyData.TakeDamage(damage);
+                Debug.Log("bluh damaged");
                 enemyData.TakeKnockback(transform.right, knockbackForce);
                 Destroy(gameObject);
             }
