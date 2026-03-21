@@ -27,10 +27,13 @@ public class EnemyOrbit : MonoBehaviour
     private float targetAngle;
 
     private bool canMove = false;
+    private EnemyData data;
 
+    public float knockbackDrag = 5f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        data = GetComponent<EnemyData>();
 
         angle = Random.Range(0f, Mathf.PI * 2f);
         targetAngle = angle;
@@ -83,6 +86,20 @@ public class EnemyOrbit : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             return;
         }
+        
+         // Taking knockback
+        if (data.IsKnockedBack)
+        {
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, knockbackDrag * Time.fixedDeltaTime);
+
+            if (rb.linearVelocity.magnitude < 0.1f)
+            {
+                rb.linearVelocity = Vector2.zero;
+                data.IsKnockedBack = false;
+            }
+
+            return;
+        }
 
         Vector2 direction = targetPoint - rb.position;
 
@@ -118,6 +135,7 @@ public class EnemyOrbit : MonoBehaviour
 
         rb.linearVelocity = forwardVel + sidewaysVel;
     }
+    
 
     void OnDrawGizmos()
     {

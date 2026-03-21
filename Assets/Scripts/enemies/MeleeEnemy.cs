@@ -28,9 +28,13 @@ public class MeleeEnemy : MonoBehaviour
 
     private bool canChainDash = true;
 
+    private EnemyData data;
+    public float knockbackDrag = 5f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        data = GetComponent<EnemyData>();
     }
 
     void Update()
@@ -59,6 +63,20 @@ public class MeleeEnemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Taking knockback
+        if (data.IsKnockedBack)
+        {
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, knockbackDrag * Time.fixedDeltaTime);
+
+            if (rb.linearVelocity.magnitude < 0.1f)
+            {
+                rb.linearVelocity = Vector2.zero;
+                data.IsKnockedBack = false;
+            }
+
+            return;
+        }
+
         if (isDashing)
         {
             DashMovement();

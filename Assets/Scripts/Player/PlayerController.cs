@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float maxSpeed = 5f; // Maximum speed the player can reach
+    public float maxBoostingSpeed = 15f;
     public float acceleration = 50f; // How quickly the player accelerates
     public float deceleration = 30f; // How quickly the player slows down
     public float collisionOffset = 0.05f;
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private bool isRotating = false;
     private float targetAngle;
     private bool isKnockedBack;
+    private bool isBoosting;
+    private PlayerBoosterController[] boosters;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,13 +35,8 @@ public class PlayerController : MonoBehaviour
         canRotate = true;
         isRotating = false;
         isKnockedBack = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Get input every frame
-        // Note: OnMove handles input updates
+        isBoosting = false;
+        boosters = GetComponentsInChildren<PlayerBoosterController>(true);
     }
 
     private void FixedUpdate()
@@ -55,6 +53,25 @@ public class PlayerController : MonoBehaviour
             }
 
             return;
+        }
+
+        // Boosting
+        if (isBoosting)
+        {
+            Vector2 totalBoost = Vector2.zero;
+            foreach (var booster in boosters)
+            {
+                if (booster != null && !booster.IsDisabled)
+                {
+                    totalBoost += booster.ThrustDirection * booster.boostForce;
+
+                }
+            }
+
+            if (totalBoost != Vector2.zero)
+            {
+                currentVelocity = Vector2.ClampMagnitude(currentVelocity += totalBoost * Time.fixedDeltaTime, maxBoostingSpeed);
+            }
         }
 
         // Calculate target velocity based on input
@@ -142,6 +159,15 @@ public class PlayerController : MonoBehaviour
             targetAngle = transform.eulerAngles.z - 90;
             isRotating = true;
             canRotate = false;
+        }
+    }
+
+    void OnBoost(InputValue value)
+    {
+        isBoosting = value.isPressed;
+        foreach (var booster in boosters)
+        {
+            booster.UseBoostingSprite(isBoosting);
         }
     }
 
