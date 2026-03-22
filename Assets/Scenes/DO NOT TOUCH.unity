@@ -493,9 +493,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2158564219757527885, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: maxSpawnInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158564219757527885, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: minSpawnInterval
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4072056715052848403, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: startingSpawnInterval
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7476918501805295781, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: player
