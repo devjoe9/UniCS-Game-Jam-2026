@@ -48,9 +48,11 @@ public class PlayerShot : MonoBehaviour
         Debug.Log("Hit object: " + collision.name);
         if (collision.CompareTag("Enemy"))
         {
+            Debug.Log("In compare tag");
             EnemyData enemyData = collision.GetComponent<EnemyData>();  
             if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue))
             {
+                Debug.Log("Doing damage");
                 enemyData.TakeDamage(damage);
                 enemyData.TakeKnockback(transform.right, knockbackForce);
                 Destroy(gameObject);
