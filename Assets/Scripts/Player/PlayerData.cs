@@ -6,8 +6,8 @@ public class PlayerData : MonoBehaviour
     public int maxHealth;
     public float invulnerableTime;
     public float flashInterval = 0.2f;
-    public Color defaultColour = new Color(1f, 0.922f, 0.016f, 1f);
-    public Color flashColour = new Color(1f, 0.922f, 0.016f, 0.5f);
+    public Color defaultColour = new Color(1f, 1f, 1f, 1f);
+    public Color flashColour = new Color(1f, 0f, 0f, 0.5f); 
 
 
     private int curHealth;
@@ -15,6 +15,7 @@ public class PlayerData : MonoBehaviour
     private bool isVulnerable;
     public bool IsDead => isDead;
     private bool isDead;
+    private SpriteRenderer spriteRenderer;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,6 +24,11 @@ public class PlayerData : MonoBehaviour
         curHealth = maxHealth;
         isVulnerable = true;
         isDead = false;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = defaultColour;
+        }
     }
 
     // Update is called once per frame
@@ -62,11 +68,23 @@ public class PlayerData : MonoBehaviour
     IEnumerator InvulnerableTimer()
     {
         float elapsedTime = 0f;
+        bool useFlashColour = true;
 
         while (elapsedTime < invulnerableTime)
         {
-            elapsedTime += flashInterval;
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = useFlashColour ? flashColour : defaultColour;
+                useFlashColour = !useFlashColour;
+            }
+
             yield return new WaitForSeconds(flashInterval);
+            elapsedTime += flashInterval;
+        }
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = defaultColour;
         }
 
         isVulnerable = true;
