@@ -40,10 +40,25 @@ public class CanvasImmortalityEffect : MonoBehaviour
         
         RectTransform rect = angel.AddComponent<RectTransform>();
         rect.anchoredPosition = position;
-        rect.sizeDelta = new Vector2(angelSize, angelSize);
+        
+        // Use sprite's natural aspect ratio instead of forcing square
+        if (angelSprite != null)
+        {
+            float spriteWidth = angelSprite.rect.width;
+            float spriteHeight = angelSprite.rect.height;
+            float aspectRatio = spriteHeight / spriteWidth;
+            
+            // angelSize controls width, height is calculated from aspect ratio
+            rect.sizeDelta = new Vector2(angelSize, angelSize * aspectRatio);
+        }
+        else
+        {
+            rect.sizeDelta = new Vector2(angelSize, angelSize);
+        }
         
         UnityEngine.UI.Image image = angel.AddComponent<UnityEngine.UI.Image>();
         image.sprite = angelSprite;
+        image.preserveAspect = true;
         image.color = angelColor * glowIntensity;
         
         if (angelAnimatorController != null)
