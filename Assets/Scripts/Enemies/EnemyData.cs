@@ -94,7 +94,6 @@ public class EnemyData : MonoBehaviour
                 Die();
                 Debug.Log("enemy died cuh"); 
                 waveController.CurScore = pointsValue;
-                Destroy(gameObject);
                 return;
                 // death
             }
@@ -136,7 +135,7 @@ public class EnemyData : MonoBehaviour
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
     }
 
-    private void Die()
+    public void Die()
     {
         if (explosionPrefab != null)
         {

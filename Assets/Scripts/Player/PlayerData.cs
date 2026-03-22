@@ -16,6 +16,10 @@ public class PlayerData : MonoBehaviour
     public bool IsDead => isDead;
     private bool isDead;
     private SpriteRenderer spriteRenderer;
+    //audio stuff
+    public AudioClip hurtSound;
+    [Range(0f, 1f)] public float hurtVolume = 1f;
+    private AudioSource audioSource;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,6 +29,7 @@ public class PlayerData : MonoBehaviour
         isVulnerable = true;
         isDead = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         if (spriteRenderer != null)
         {
             spriteRenderer.color = defaultColour;
@@ -42,6 +47,10 @@ public class PlayerData : MonoBehaviour
         if (!isDead && isVulnerable)
         {
             curHealth -= damage;
+            if (audioSource != null && hurtSound != null)
+            {
+                audioSource.PlayOneShot(hurtSound, hurtVolume);
+            }
 
             if (curHealth <= 0)
             {

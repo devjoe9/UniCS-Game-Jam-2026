@@ -323,7 +323,7 @@ MonoBehaviour:
   flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
   isBlue: 0
   explosionPrefab: {fileID: 8826836481991683473, guid: 6527819ca07b0594db871f160ac8672c, type: 3}
-  hurtSound: {fileID: 8300000, guid: 9c4fef1725911db4cb3c2198fefb8377, type: 3}
+  hurtSound: {fileID: 8300000, guid: 423e16f95a14f074894cd2941b6d568c, type: 3}
   hurtVolume: 1
 --- !u!114 &4687086426024864671
 MonoBehaviour:
