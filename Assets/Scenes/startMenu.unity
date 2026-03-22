@@ -289,14 +289,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -3433344120070887051, guid: 77a5d534ed1b4aa4dbe5ea210a60c810, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -510,6 +510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1237343868}
   - component: {fileID: 1237343867}
+  - component: {fileID: 1237343869}
   m_Layer: 0
   m_Name: rbomb_0
   m_TagString: Untagged
@@ -567,7 +568,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4587582878259776375, guid: a56c67c8b26332540a9e52bf12f364f0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.02745098}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.56078434}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -576,21 +577,41 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!4 &1237343868
-Transform:
+--- !u!224 &1237343868
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237343866}
-  serializedVersion: 2
   m_LocalRotation: {x: -0.007531646, y: -0.005899662, z: 0.23500328, w: 0.9719475}
-  m_LocalPosition: {x: 8.3, y: 3.33, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -0.68, y: -0.86, z: 27.19}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 8.3, y: 3.33}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1237343869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237343866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4962e50f45014e4cb33aa347f96c3e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UILogoFloat
+  floatAmount: 0.7
+  floatSpeed: 1.2
+  glowIntensity: 0.3
+  glowSpeed: 1.2
 --- !u!224 &1253916925 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1565325304867488697, guid: 910824f2eaa57d3419720b21b503433f, type: 3}
@@ -685,6 +706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1871314498}
   - component: {fileID: 1871314497}
+  - component: {fileID: 1871314499}
   m_Layer: 0
   m_Name: bbomb_0
   m_TagString: Untagged
@@ -742,7 +764,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4634836020715427194, guid: c6f122058e16a1a49a437d9204fb5f1f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.02745098}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39607844}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -751,21 +773,41 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!4 &1871314498
-Transform:
+--- !u!224 &1871314498
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871314496}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.11242281, w: 0.9936605}
-  m_LocalPosition: {x: -8.37, y: -3.41, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 12.91}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -8.37, y: -3.41}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1871314499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871314496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4962e50f45014e4cb33aa347f96c3e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UILogoFloat
+  floatAmount: 1
+  floatSpeed: 1
+  glowIntensity: 0.3
+  glowSpeed: 1.2
 --- !u!1 &1880661721
 GameObject:
   m_ObjectHideFlags: 0
