@@ -497,6 +497,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: startingWaveInterval
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: startingSpawnInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: enemies.Array.data[0].spawnCost
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: enemies.Array.data[2].spawnCost
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7476918501805295781, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: player
       value: 

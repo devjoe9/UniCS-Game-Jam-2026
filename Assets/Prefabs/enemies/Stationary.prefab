@@ -254,7 +254,7 @@ MonoBehaviour:
   flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
   isBlue: 0
   explosionPrefab: {fileID: 8826836481991683473, guid: 6527819ca07b0594db871f160ac8672c, type: 3}
-  hurtSound: {fileID: 8300000, guid: 9c4fef1725911db4cb3c2198fefb8377, type: 3}
+  hurtSound: {fileID: 8300000, guid: 423e16f95a14f074894cd2941b6d568c, type: 3}
   hurtVolume: 1
 --- !u!114 &8972886101253705119
 MonoBehaviour:
@@ -291,18 +291,18 @@ MonoBehaviour:
   firePoint: {fileID: 3793986850259005845}
   player: {fileID: 0}
   bulletSpeed: 25
-  bulletLifetime: 3
+  bulletLifetime: 10
   bulletType: 2
   startFiringOnStart: 1
   overrideBulletSize: 1
-  bulletSizeOverride: 30
-  firePattern: 2
+  bulletSizeOverride: 8
+  firePattern: 1
   bulletsPerBurst: 3
   timeBetweenBurstShots: 0.12
   timeBetweenBursts: 1.2
   sweepArcAngle: 180
   sweepSteps: 12
-  timeBetweenSweepShots: 0.08
+  timeBetweenSweepShots: 0.1
   sweepContinuously: 1
   randomArcAngle: 0
   timeBetweenRandomShots: 2.5

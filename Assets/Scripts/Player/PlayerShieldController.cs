@@ -15,6 +15,10 @@ public class PlayerShieldController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private SideData sideData;
     private Collider2D col;
+    //audio stuff
+    public AudioClip shieldSound;
+    [Range(0f, 1f)] public float shieldVolume = 1f;
+    private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +26,7 @@ public class PlayerShieldController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
         sideData = GetComponent<SideData>();
+        audioSource = GetComponent<AudioSource>();
         isBlue = sideData.IsBlue;
         
         // condition ? if true : if false
@@ -55,11 +60,23 @@ public class PlayerShieldController : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             Debug.Log("Collision");
-            EnemyData enemyData = collision.GetComponent<EnemyData>();
+            EnemyData enemyData = collision.GetComponentInParent<EnemyData>();
+            HomingMelee homingEnemy = collision.GetComponentInParent<HomingMelee>();
             if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue))
             {
                 Debug.Log("In deep");
-                enemyData.TakeKnockback(transform.right, knockbackForce);
+                if (audioSource != null && shieldSound != null)
+                {
+                    audioSource.PlayOneShot(shieldSound, shieldVolume);
+                }
+                if (homingEnemy != null)
+                {
+                    enemyData.Die();
+                }
+                else
+                {
+                    enemyData.TakeKnockback(transform.right, knockbackForce);
+                }
                 spriteRenderer.enabled = false;
                 col.enabled = false;
                 StartCoroutine(resetCooldown());
@@ -78,6 +95,10 @@ public class PlayerShieldController : MonoBehaviour
             if (bulletMatchesShield)
             {
                 Debug.Log("blocked");
+                if (audioSource != null && shieldSound != null)
+                {
+                    audioSource.PlayOneShot(shieldSound, shieldVolume);
+                }
                 Destroy(collision.gameObject);
                 spriteRenderer.enabled = false;
                 col.enabled = false;

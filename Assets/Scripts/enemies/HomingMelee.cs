@@ -80,7 +80,21 @@ public class HomingMelee : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(RespawnRoutine());
+            PlayerData playerData = other.GetComponentInParent<PlayerData>();
+
+            if (playerData != null && playerData.IsVulnerable)
+            {
+                playerData.TakeDamage(1);
+            }
+
+            if (data != null)
+            {
+                data.Die();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
