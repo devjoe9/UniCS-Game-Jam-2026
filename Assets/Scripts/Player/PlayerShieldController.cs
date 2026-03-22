@@ -56,7 +56,7 @@ public class PlayerShieldController : MonoBehaviour
         {
             Debug.Log("Collision");
             EnemyData enemyData = collision.GetComponent<EnemyData>();
-            if (enemyData != null && !enemyData.IsDead)
+            if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue))
             {
                 Debug.Log("In deep");
                 enemyData.TakeKnockback(transform.right, knockbackForce);

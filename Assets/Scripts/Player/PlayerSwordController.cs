@@ -55,7 +55,7 @@ public class PlayerSwordController : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             EnemyData enemyData = collision.GetComponent<EnemyData>();
-            if (enemyData != null && !enemyData.IsDead)
+            if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue))
             {
                 enemyData.TakeDamage(damage);
                 enemyData.TakeKnockback(transform.right, knockbackForce);

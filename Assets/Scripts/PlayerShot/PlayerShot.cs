@@ -13,6 +13,7 @@ public class PlayerShot : MonoBehaviour
     private Vector2 direction = Vector2.right;
     private float timer;
     private SpriteRenderer spriteRenderer;
+    private bool isBlue;
 
     public void Initialize(Vector2 newDirection, float newSpeed, int newDamage, float newKnockbackForce, bool isBlue)
     {
@@ -23,6 +24,7 @@ public class PlayerShot : MonoBehaviour
         knockbackForce = newKnockbackForce;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = isBlue ? blueColour : redColour;
+        this.isBlue = isBlue;
     }
 
     private void OnEnable()
@@ -46,7 +48,7 @@ public class PlayerShot : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             EnemyData enemyData = collision.GetComponent<EnemyData>();  
-            if (enemyData != null && !enemyData.IsDead)
+            if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue))
             {
                 enemyData.TakeDamage(damage);
                 enemyData.TakeKnockback(transform.right, knockbackForce);
