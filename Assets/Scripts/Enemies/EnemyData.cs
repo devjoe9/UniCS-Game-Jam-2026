@@ -31,6 +31,12 @@ public class EnemyData : MonoBehaviour
     }
     private SpriteRenderer spriteRenderer;
 
+    void Awake()
+    {
+        int colour = Random.Range(0, 1);
+        isBlue = colour == 0 ? true : false;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

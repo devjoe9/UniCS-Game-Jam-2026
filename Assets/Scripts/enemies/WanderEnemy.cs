@@ -24,11 +24,21 @@ public class WanderEnemy : MonoBehaviour
     private EnemyData data;
     public float knockbackDrag = 5f;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         PickNewPoint(false);
         data = GetComponent<EnemyData>();
+
+        // Auto-find player if not assigned
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        if (boundary == null)
+        {
+            GameObject enemySpawner = FindAnyObjectByType<EnemySpawnController>().gameObject;
+            boundary = enemySpawner.GetComponent<BoxCollider2D>();
+        }
     }
 
     void Update()

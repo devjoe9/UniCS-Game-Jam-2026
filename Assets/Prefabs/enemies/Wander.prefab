@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 5585693553138362961}
   m_Layer: 7
   m_Name: Wander
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,11 +240,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2beff7ef8cbc042bbe2e3a2f4c78e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  blueSprite: {fileID: 0}
+  redSprite: {fileID: 0}
   maxHealth: 10
   invulnerableTime: 0
   flashInterval: 0.2
   defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
   flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
+  isBlue: 0
 --- !u!114 &5585693553138362961
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,6 +23,10 @@ public class StationaryEnemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         data = GetComponent<EnemyData>();
+
+        // Auto-find player if not assigned
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     void Update()
