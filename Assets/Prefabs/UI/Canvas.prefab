@@ -766,7 +766,7 @@ MonoBehaviour:
   - {fileID: 7062773840642939582}
   topItems:
   - displayName: BlueSword
-    description: 
+    description: This is a sword
     sprite: {fileID: -1613646886922424301, guid: 378a47176eed57b4680d4d22ee60949c, type: 3}
     previewSprite: {fileID: 0}
     slotFrameSprite: {fileID: 0}
@@ -783,7 +783,7 @@ MonoBehaviour:
     isBlue: 0
   - displayName: BlueGun
     description: 
-    sprite: {fileID: 562686318242318081, guid: 1b6ba935c0a2eee4f908d20168c0cfb2, type: 3}
+    sprite: {fileID: 2081860290900241954, guid: a543d1ff648cb1440b8d80acb0c277ba, type: 3}
     previewSprite: {fileID: 0}
     slotFrameSprite: {fileID: 0}
     pipColor: {r: 0, g: 0, b: 0, a: 0}
@@ -791,7 +791,7 @@ MonoBehaviour:
     isBlue: 1
   - displayName: RedGun
     description: 
-    sprite: {fileID: -6052227083387198902, guid: 1f4af3a50ccfb55468eae09809938483, type: 3}
+    sprite: {fileID: 5150997395849330157, guid: 01c7c7f39ceef284889442ded0c584be, type: 3}
     previewSprite: {fileID: 0}
     slotFrameSprite: {fileID: 0}
     pipColor: {r: 0, g: 0, b: 0, a: 0}
@@ -848,7 +848,7 @@ MonoBehaviour:
     isBlue: 0
   - displayName: BlueGun
     description: 
-    sprite: {fileID: 562686318242318081, guid: 1b6ba935c0a2eee4f908d20168c0cfb2, type: 3}
+    sprite: {fileID: 2081860290900241954, guid: a543d1ff648cb1440b8d80acb0c277ba, type: 3}
     previewSprite: {fileID: 0}
     slotFrameSprite: {fileID: 0}
     pipColor: {r: 0, g: 0, b: 0, a: 0}
@@ -856,7 +856,7 @@ MonoBehaviour:
     isBlue: 1
   - displayName: RedGun
     description: 
-    sprite: {fileID: -6052227083387198902, guid: 1f4af3a50ccfb55468eae09809938483, type: 3}
+    sprite: {fileID: 5150997395849330157, guid: 01c7c7f39ceef284889442ded0c584be, type: 3}
     previewSprite: {fileID: 0}
     slotFrameSprite: {fileID: 0}
     pipColor: {r: 0, g: 0, b: 0, a: 0}
@@ -913,7 +913,7 @@ MonoBehaviour:
     isBlue: 0
   - displayName: BlueGun
     description: 
-    sprite: {fileID: 562686318242318081, guid: 1b6ba935c0a2eee4f908d20168c0cfb2, type: 3}
+    sprite: {fileID: 2081860290900241954, guid: a543d1ff648cb1440b8d80acb0c277ba, type: 3}
     previewSprite: {fileID: 0}
     slotFrameSprite: {fileID: 0}
     pipColor: {r: 0, g: 0, b: 0, a: 0}
@@ -921,7 +921,7 @@ MonoBehaviour:
     isBlue: 1
   - displayName: RedGun
     description: 
-    sprite: {fileID: -6052227083387198902, guid: 1f4af3a50ccfb55468eae09809938483, type: 3}
+    sprite: {fileID: 5150997395849330157, guid: 01c7c7f39ceef284889442ded0c584be, type: 3}
     previewSprite: {fileID: 0}
     slotFrameSprite: {fileID: 0}
     pipColor: {r: 0, g: 0, b: 0, a: 0}
@@ -978,7 +978,7 @@ MonoBehaviour:
     isBlue: 0
   - displayName: BlueGun
     description: 
-    sprite: {fileID: 562686318242318081, guid: 1b6ba935c0a2eee4f908d20168c0cfb2, type: 3}
+    sprite: {fileID: 2081860290900241954, guid: a543d1ff648cb1440b8d80acb0c277ba, type: 3}
     previewSprite: {fileID: 0}
     slotFrameSprite: {fileID: 0}
     pipColor: {r: 0, g: 0, b: 0, a: 0}
@@ -986,7 +986,7 @@ MonoBehaviour:
     isBlue: 1
   - displayName: RedGun
     description: 
-    sprite: {fileID: -6052227083387198902, guid: 1f4af3a50ccfb55468eae09809938483, type: 3}
+    sprite: {fileID: 5150997395849330157, guid: 01c7c7f39ceef284889442ded0c584be, type: 3}
     previewSprite: {fileID: 0}
     slotFrameSprite: {fileID: 0}
     pipColor: {r: 0, g: 0, b: 0, a: 0}
