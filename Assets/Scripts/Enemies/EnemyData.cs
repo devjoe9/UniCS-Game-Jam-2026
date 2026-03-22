@@ -5,11 +5,13 @@ public class EnemyData : MonoBehaviour
 {
     public Sprite blueSprite;
     public Sprite redSprite;
+    public Sprite whiteFlashSprite;
+    public float flashDuration = 0.1f;
     public int maxHealth;
     public float invulnerableTime;
     public float flashInterval = 0.2f;
-    public Color defaultColour = new Color(1f, 0.922f, 0.016f, 1f);
-    public Color flashColour = new Color(1f, 0.922f, 0.016f, 0.5f);
+    public Color defaultColour = Color.white;
+    public Color flashColour = Color.white;
 
     private Rigidbody2D rb;
     private int curHealth;
@@ -24,12 +26,17 @@ public class EnemyData : MonoBehaviour
     }
     private bool isKnockedBack;
     [SerializeField]private bool isBlue;
+    [SerializeField] private GameObject explosionPrefab;
     public bool IsBlue
     {
         get {return isBlue;}
         set {isBlue = value;}
     }
     private SpriteRenderer spriteRenderer;
+    //audio stuff
+    public AudioClip hurtSound;
+    [Range(0f, 1f)] public float hurtVolume = 1f;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -46,6 +53,7 @@ public class EnemyData : MonoBehaviour
         isDead = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void SetColour(bool isBlue)
@@ -65,11 +73,19 @@ public class EnemyData : MonoBehaviour
         if (!isDead && isVulnerable)
         {
             curHealth -= damage;
+            StartCoroutine(DamageFlash());
+            Debug.Log("enemy hurt cuh"); 
+            if (audioSource != null && hurtSound != null)
+            {
+                audioSource.PlayOneShot(hurtSound, hurtVolume);
+            }
 
             if (curHealth <= 0)
             {
                 isDead = true;
-                // death
+                Die();
+                Debug.Log("enemy died cuh"); 
+                return;
             }
             else
             {
@@ -98,6 +114,25 @@ public class EnemyData : MonoBehaviour
         }
 
         isVulnerable = true;
+    }
+
+    IEnumerator DamageFlash()
+    {
+        if (spriteRenderer == null || whiteFlashSprite == null) yield break;
+
+        spriteRenderer.sprite = whiteFlashSprite;
+        yield return new WaitForSeconds(flashDuration);
+        spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
+    }
+
+    private void Die()
+    {
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
+
+        Destroy(gameObject);
     }
 
     public bool isMaxHealth()
