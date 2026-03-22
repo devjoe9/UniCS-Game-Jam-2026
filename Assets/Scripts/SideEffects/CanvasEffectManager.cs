@@ -17,6 +17,10 @@ public class CanvasEffectManager : MonoBehaviour
         public float minScale = 50f;
         public float maxScale = 100f;
         
+        [Header("Duration Settings")]
+        public float customEffectDuration = 0f;
+        public float customWarningDuration = 0f;
+        
         [Header("Expanding Circle Settings (Optional)")]
         public bool useExpandingCircles = false;
         public float circleExpandSpeed = 200f;
@@ -33,6 +37,22 @@ public class CanvasEffectManager : MonoBehaviour
         public int particlesPerBeam = 30;
         public float beamSpeed = 0.5f;
         public float beamPauseDuration = 0.3f;
+        
+        [Header("No Weapons Settings (Optional)")]
+        public bool useNoWeaponsEffect = false;
+        public Sprite crossSprite;
+        public Sprite warningTriangleSprite;
+        public float crossSize = 80f;
+        public float crossOffset = 133f;
+        public float warningSize = 40f;
+        public float warningSpacing = 50f;
+        public Vector2 warningBarPosition = new Vector2(0, -250f);
+        
+        [Header("Immortality Settings (Optional)")]
+        public bool useImmortalityEffect = false;
+        public RuntimeAnimatorController angelAnimatorController;
+        public float angelSize = 150f;
+        public float angelOffset = 300f;
     }
     
     [Header("Visual Effects for Each Mode (In Wheel Order)")]
@@ -131,6 +151,9 @@ public class CanvasEffectManager : MonoBehaviour
     {
         Debug.Log($"{mode.modeName} visual effect started!");
         
+        float actualEffectDuration = mode.customEffectDuration > 0 ? mode.customEffectDuration : effectDuration;
+        float actualWarningDuration = mode.customWarningDuration > 0 ? mode.customWarningDuration : warningDuration;
+        
         if (mode.effectAudio != null && audioSource != null)
         {
             audioSource.clip = mode.effectAudio;
@@ -140,9 +163,9 @@ public class CanvasEffectManager : MonoBehaviour
         
         if (mode.useExpandingCircles)
         {
-            StartCoroutine(SpawnExpandingCircles(mode));
+            StartCoroutine(SpawnExpandingCircles(mode, actualEffectDuration, actualWarningDuration));
             
-            float normalDuration = effectDuration - warningDuration;
+            float normalDuration = actualEffectDuration - actualWarningDuration;
             if (normalDuration > 0)
             {
                 yield return new WaitForSeconds(normalDuration);
@@ -152,7 +175,27 @@ public class CanvasEffectManager : MonoBehaviour
         {
             SpawnOrbitalBeam(mode);
             
-            float normalDuration = effectDuration - warningDuration;
+            float normalDuration = actualEffectDuration - actualWarningDuration;
+            if (normalDuration > 0)
+            {
+                yield return new WaitForSeconds(normalDuration);
+            }
+        }
+        else if (mode.useNoWeaponsEffect)
+        {
+            SpawnNoWeaponsEffect(mode, actualEffectDuration, actualWarningDuration);
+            
+            float normalDuration = actualEffectDuration - actualWarningDuration;
+            if (normalDuration > 0)
+            {
+                yield return new WaitForSeconds(normalDuration);
+            }
+        }
+        else if (mode.useImmortalityEffect)
+        {
+            SpawnImmortalityEffect(mode);
+            
+            float normalDuration = actualEffectDuration - actualWarningDuration;
             if (normalDuration > 0)
             {
                 yield return new WaitForSeconds(normalDuration);
@@ -162,16 +205,16 @@ public class CanvasEffectManager : MonoBehaviour
         {
             SpawnCanvasEffects(mode);
             
-            float normalDuration = effectDuration - warningDuration;
+            float normalDuration = actualEffectDuration - actualWarningDuration;
             if (normalDuration > 0)
             {
                 yield return new WaitForSeconds(normalDuration);
             }
         }
         
-        if (warningDuration > 0)
+        if (actualWarningDuration > 0)
         {
-            yield return StartCoroutine(BlinkWarning());
+            yield return StartCoroutine(BlinkWarning(actualWarningDuration));
         }
         
         if (audioSource != null && audioSource.isPlaying)
@@ -185,7 +228,7 @@ public class CanvasEffectManager : MonoBehaviour
         Debug.Log($"{mode.modeName} visual effect ended!");
     }
     
-    IEnumerator SpawnExpandingCircles(ModeVisualEffect mode)
+    IEnumerator SpawnExpandingCircles(ModeVisualEffect mode, float effectDuration, float warningDuration)
     {
         if (mode.effectSprite == null || effectCanvas == null)
         {
@@ -246,12 +289,63 @@ public class CanvasEffectManager : MonoBehaviour
         activeEffects.Add(beamObj);
     }
     
-    IEnumerator BlinkWarning()
+    void SpawnNoWeaponsEffect(ModeVisualEffect mode, float effectDuration, float warningDuration)
+    {
+        if (mode.crossSprite == null || mode.warningTriangleSprite == null || effectCanvas == null)
+        {
+            Debug.LogWarning("Missing sprites or canvas for no weapons effect!");
+            return;
+        }
+        
+        GameObject effectObj = new GameObject($"{mode.modeName}_NoWeapons");
+        effectObj.transform.SetParent(effectCanvas.transform, false);
+        
+        RectTransform rect = effectObj.AddComponent<RectTransform>();
+        rect.anchoredPosition = Vector2.zero;
+        
+        CanvasNoWeaponsEffect noWeapons = effectObj.AddComponent<CanvasNoWeaponsEffect>();
+        noWeapons.Initialize(canvasRect, mode.crossSprite, mode.warningTriangleSprite, mode.neonColor, mode.glowIntensity);
+        noWeapons.crossSize = mode.crossSize;
+        noWeapons.crossOffset = mode.crossOffset;
+        noWeapons.warningSize = mode.warningSize;
+        noWeapons.warningSpacing = mode.warningSpacing;
+        noWeapons.warningBarPosition = mode.warningBarPosition;
+        
+        noWeapons.StartEffect(effectDuration, warningDuration);
+        
+        activeEffects.Add(effectObj);
+    }
+    
+    void SpawnImmortalityEffect(ModeVisualEffect mode)
+    {
+        if (mode.effectSprite == null || effectCanvas == null)
+        {
+            Debug.LogWarning("Missing sprite or canvas for immortality effect!");
+            return;
+        }
+        
+        GameObject effectObj = new GameObject($"{mode.modeName}_Immortality");
+        effectObj.transform.SetParent(effectCanvas.transform, false);
+        
+        RectTransform rect = effectObj.AddComponent<RectTransform>();
+        rect.anchoredPosition = Vector2.zero;
+        
+        CanvasImmortalityEffect immortality = effectObj.AddComponent<CanvasImmortalityEffect>();
+        immortality.Initialize(mode.effectSprite, mode.angelAnimatorController, mode.neonColor, mode.glowIntensity);
+        immortality.angelSize = mode.angelSize;
+        immortality.angelOffset = mode.angelOffset;
+        
+        immortality.StartEffect();
+        
+        activeEffects.Add(effectObj);
+    }
+    
+    IEnumerator BlinkWarning(float duration)
     {
         float elapsed = 0f;
         bool visible = true;
         
-        while (elapsed < warningDuration)
+        while (elapsed < duration)
         {
             visible = !visible;
             SetEffectsVisibility(visible);
@@ -269,6 +363,44 @@ public class CanvasEffectManager : MonoBehaviour
         {
             if (effect != null)
             {
+                CanvasNoWeaponsEffect noWeapons = effect.GetComponent<CanvasNoWeaponsEffect>();
+                if (noWeapons != null)
+                {
+                    List<GameObject> objects = noWeapons.GetAllEffectObjects();
+                    foreach (GameObject obj in objects)
+                    {
+                        if (obj != null)
+                        {
+                            UnityEngine.UI.Image img = obj.GetComponent<UnityEngine.UI.Image>();
+                            if (img != null)
+                            {
+                                Color color = img.color;
+                                color.a = visible ? 1f : 0f;
+                                img.color = color;
+                            }
+                        }
+                    }
+                }
+                
+                CanvasImmortalityEffect immortality = effect.GetComponent<CanvasImmortalityEffect>();
+                if (immortality != null)
+                {
+                    List<GameObject> objects = immortality.GetAllEffectObjects();
+                    foreach (GameObject obj in objects)
+                    {
+                        if (obj != null)
+                        {
+                            UnityEngine.UI.Image img = obj.GetComponent<UnityEngine.UI.Image>();
+                            if (img != null)
+                            {
+                                Color color = img.color;
+                                color.a = visible ? 1f : 0f;
+                                img.color = color;
+                            }
+                        }
+                    }
+                }
+                
                 UnityEngine.UI.Image[] images = effect.GetComponentsInChildren<UnityEngine.UI.Image>();
                 foreach (UnityEngine.UI.Image image in images)
                 {
@@ -345,6 +477,18 @@ public class CanvasEffectManager : MonoBehaviour
                 if (orbital != null)
                 {
                     orbital.StopEffect();
+                }
+                
+                CanvasNoWeaponsEffect noWeapons = effect.GetComponent<CanvasNoWeaponsEffect>();
+                if (noWeapons != null)
+                {
+                    noWeapons.CleanUp();
+                }
+                
+                CanvasImmortalityEffect immortality = effect.GetComponent<CanvasImmortalityEffect>();
+                if (immortality != null)
+                {
+                    immortality.CleanUp();
                 }
                 
                 Destroy(effect);
