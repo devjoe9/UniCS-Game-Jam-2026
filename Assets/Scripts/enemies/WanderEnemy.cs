@@ -32,7 +32,7 @@ public class WanderEnemy : MonoBehaviour
 
         // Auto-find player if not assigned
         if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+            player = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (boundary == null)
         {
