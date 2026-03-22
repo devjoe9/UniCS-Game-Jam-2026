@@ -427,10 +427,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 9183057346414648610, guid: 910824f2eaa57d3419720b21b503433f, type: 3}
-      propertyPath: topItems.Array.data[0].description
-      value: This is a sword
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
