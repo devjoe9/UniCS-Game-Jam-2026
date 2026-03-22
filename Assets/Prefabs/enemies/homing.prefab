@@ -204,11 +204,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2beff7ef8cbc042bbe2e3a2f4c78e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  blueSprite: {fileID: -4634836020715427194, guid: c6f122058e16a1a49a437d9204fb5f1f, type: 3}
+  redSprite: {fileID: -4634836020715427194, guid: c6f122058e16a1a49a437d9204fb5f1f, type: 3}
   maxHealth: 10
   invulnerableTime: 0
   flashInterval: 0.2
   defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
   flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
+  isBlue: 0
 --- !u!70 &715249543445079093
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

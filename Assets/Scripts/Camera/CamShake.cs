@@ -10,6 +10,7 @@ public class CamShake : MonoBehaviour
     {
         currentPos = transform.position;
         noise = GetComponent<CinemachineBasicMultiChannelPerlin>();
+        StopShake();
     }
 
     void Update()

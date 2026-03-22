@@ -9,4 +9,10 @@ public class SideData : MonoBehaviour
         get {return isBlue;}
         set {isBlue = value;}
     }
+
+    void Awake()
+    {
+        int colour = UnityEngine.Random.Range(0, 1);
+        isBlue = colour == 0 ? true : false;
+    }
 }

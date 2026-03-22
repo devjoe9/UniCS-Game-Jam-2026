@@ -34,6 +34,10 @@ public class EnemyOrbit : MonoBehaviour
 
         angle = Random.Range(0f, Mathf.PI * 2f);
         targetAngle = angle;
+        
+        // Auto-find player if not assigned
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         StartCoroutine(StartMoveDelay());
     }
