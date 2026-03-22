@@ -102,8 +102,8 @@ MonoBehaviour:
     spawningWeight: 20
     spawnCost: 3
   - enemyPrefab: {fileID: 7045454223621333634, guid: 112ad17abd6b3894cbd233c0e2792c14, type: 3}
-    spawningWeight: 10
-    spawnCost: 5
+    spawningWeight: 5
+    spawnCost: 10
   - enemyPrefab: {fileID: 3870068021404333012, guid: 5af205fee424c9141a8c0c7761337000, type: 3}
     spawningWeight: 10
     spawnCost: 5
