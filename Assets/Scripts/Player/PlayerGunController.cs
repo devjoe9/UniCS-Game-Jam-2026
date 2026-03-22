@@ -12,6 +12,9 @@ public class PlayerGunController : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletHoriOffset = 1;
     public float bulletVertOffset = 0.5f;
+
+    public AudioClip shootSound;
+    [Range(0f, 1f)] public float shootVolume = 1f;
     
     private float timeSinceLastShot;
     private int damage;
@@ -22,20 +25,21 @@ public class PlayerGunController : MonoBehaviour
     private SideData sideData;
     private Vector3 shootDirection;
     private bool isAutoShooting;
+    private AudioSource audioSource;
+
     public bool IsAutoShooting
     {
-        get {return isAutoShooting;}
-        set {isAutoShooting = value;}
+        get { return isAutoShooting; }
+        set { isAutoShooting = value; }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         sideData = GetComponent<SideData>();
+        audioSource = GetComponent<AudioSource>();
         isBlue = sideData.IsBlue;
         
-        // condition ? if true : if false
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
         damage = defaultDamage;
         knockbackForce = defaultKnockbackForce;
@@ -89,8 +93,14 @@ public class PlayerGunController : MonoBehaviour
         // shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
         shootDirection = transform.right;
                 
-        Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
+        Vector3 newPosition = transform.position + shootDirection * bulletHoriOffset + transform.up * bulletVertOffset;
         GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
         newBullet.GetComponent<PlayerShot>().Initialize(shootDirection, bulletSpeed, damage, knockbackForce, isBlue);
+
+        if (audioSource != null && shootSound != null)
+        {
+            Debug.Log("gun sound"); 
+            audioSource.PlayOneShot(shootSound, shootVolume);
+        }
     }
 }
