@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class HomingMelee : MonoBehaviour
@@ -13,13 +14,26 @@ public class HomingMelee : MonoBehaviour
     [Header("Respawn")]
     [SerializeField] float respawnTime = 2f;
 
+    public float knockbackDrag = 5f;
+
     private Rigidbody2D rb;
     private Vector3 spawnPosition;
+    private EnemyData data;
+    private Collider2D[] colliders;
+    private SpriteRenderer sr;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spawnPosition = transform.position;
+        data = GetComponent<EnemyData>();
+
+        colliders = GetComponents<Collider2D>(); // 👈 get BOTH colliders
+        sr = GetComponent<SpriteRenderer>();
+
+        // Auto-find player if not assigned
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     void Update()
@@ -34,13 +48,27 @@ public class HomingMelee : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (player == null) return;
+
+        // 🧲 Knockback handling
+        if (data != null && data.IsKnockedBack)
+        {
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, knockbackDrag * Time.fixedDeltaTime);
+
+            if (rb.linearVelocity.magnitude < 0.1f)
+            {
+                rb.linearVelocity = Vector2.zero;
+                data.IsKnockedBack = false;
+            }
+
+            return;
+        }
+
         MoveTowardsPlayer();
     }
 
     void MoveTowardsPlayer()
     {
-        if (player == null) return;
-
         Vector2 dir = ((Vector2)player.position - rb.position).normalized;
 
         rb.linearVelocity += dir * acceleration * Time.fixedDeltaTime;
@@ -52,18 +80,33 @@ public class HomingMelee : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // 👾 "Delete" enemy
-            gameObject.SetActive(false);
-
-            // ⏱ Respawn after delay
-            Invoke(nameof(Respawn), respawnTime);
+            StartCoroutine(RespawnRoutine());
         }
     }
 
-    void Respawn()
+    IEnumerator RespawnRoutine()
     {
+        // 💀 "Death"
+        rb.linearVelocity = Vector2.zero;
+
+        // Disable ALL colliders
+        foreach (Collider2D col in colliders)
+            col.enabled = false;
+
+        // Hide sprite
+        if (sr != null)
+            sr.enabled = false;
+
+        yield return new WaitForSeconds(respawnTime);
+
+        // 🔄 Respawn
         transform.position = spawnPosition;
         rb.linearVelocity = Vector2.zero;
-        gameObject.SetActive(true);
+
+        foreach (Collider2D col in colliders)
+            col.enabled = true;
+
+        if (sr != null)
+            sr.enabled = true;
     }
 }

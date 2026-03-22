@@ -20,7 +20,7 @@ public class PlayerData : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        curHealth = maxHealth-5;
+        curHealth = maxHealth;
         isVulnerable = true;
         isDead = false;
     }
@@ -41,6 +41,7 @@ public class PlayerData : MonoBehaviour
             {
                 isDead = true;
                 // death
+                Debug.Log("you died cuh"); //remove this 
             }
             else
             {

@@ -3,9 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
   tags:
+  - PlayerTrail
   - PlayerShot
+  - Enemy
+  - Bullet
+  - Boundary
   layers:
   - Default
   - TransparentFX
@@ -14,9 +17,9 @@ TagManager:
   - Water
   - UI
   - border
-  - enemies
+  - enemiesBody
   - player
-  - 
+  - EnemyTrigger
   - 
   - 
   - 

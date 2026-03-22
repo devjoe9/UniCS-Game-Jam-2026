@@ -22,7 +22,7 @@ public class LoadoutSelectManager : MonoBehaviour
 
     [Header("Center Player (optional)")]
     public Image centerPlayerFrame;
-    public Image centerPlayerImage;
+    public Sprite centerPlayerImage;
     public TextMeshProUGUI centerPlayerLabel;
 
     [Header("Preview Pips Around Center (optional)")]
@@ -255,8 +255,8 @@ public class LoadoutSelectManager : MonoBehaviour
         if (centerPlayerFrame != null)
             centerPlayerFrame.color = Color.white;
 
-        if (centerPlayerImage != null)
-            centerPlayerImage.color = Color.white;
+        // if (centerPlayerImage != null)
+        //     centerPlayerImage.color = Color.white;
     }
 
     private void RefreshFocusVisuals()
@@ -318,7 +318,8 @@ public class LoadoutSelectManager : MonoBehaviour
             {
                 side = (LoadoutData.Side)i,
                 itemIndex = currentIndex[i],
-                itemName = item != null ? item.displayName : "None"
+                itemName = item != null ? item.displayName : "None",
+                itemData = item
             };
         }
 
@@ -364,6 +365,8 @@ public class SlotItemData
     public Sprite previewSprite;
     public Sprite slotFrameSprite;
     public Color pipColor = Color.cyan;
+    public GameObject prefab;
+    public bool isBlue;
 }
 
 public class LoadoutData
@@ -376,6 +379,7 @@ public class LoadoutData
         public Side side;
         public int itemIndex;
         public string itemName;
+        public SlotItemData itemData;
     }
 
     public Selection[] selections = new Selection[4];

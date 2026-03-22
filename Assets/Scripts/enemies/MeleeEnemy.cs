@@ -28,9 +28,17 @@ public class MeleeEnemy : MonoBehaviour
 
     private bool canChainDash = true;
 
+    private EnemyData data;
+    public float knockbackDrag = 5f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        data = GetComponent<EnemyData>();
+
+        // Auto-find player if not assigned
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     void Update()
@@ -59,6 +67,20 @@ public class MeleeEnemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Taking knockback
+        if (data.IsKnockedBack)
+        {
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, knockbackDrag * Time.fixedDeltaTime);
+
+            if (rb.linearVelocity.magnitude < 0.1f)
+            {
+                rb.linearVelocity = Vector2.zero;
+                data.IsKnockedBack = false;
+            }
+
+            return;
+        }
+
         if (isDashing)
         {
             DashMovement();
@@ -145,12 +167,14 @@ public class MeleeEnemy : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
+{
+    if (other.CompareTag("Player"))
     {
-        if (other.CompareTag("Player"))
-        {
-            TryChainDash();
-        }
+        Debug.Log("HIT PLAYER"); // 👈 add this line
+
+        TryChainDash();
     }
+}
 
     void TryChainDash()
     {

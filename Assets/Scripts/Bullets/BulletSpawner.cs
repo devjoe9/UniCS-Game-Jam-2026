@@ -20,6 +20,8 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private float bulletLifetime = 5f;
     [SerializeField] private Bullet.BulletType bulletType = Bullet.BulletType.BlueBullet;
     [SerializeField] private bool startFiringOnStart = true;
+    [SerializeField] private bool overrideBulletSize = false;
+    [SerializeField] private float bulletSizeOverride = 1f;
 
     [Header("Pattern Selection")]
     [SerializeField] private FirePattern firePattern = FirePattern.Burst;
@@ -97,9 +99,7 @@ public class BulletSpawner : MonoBehaviour
             FireBulletInDirection(GetAimDirection());
 
             if (i < bulletsPerBurst - 1)
-            {
                 yield return new WaitForSeconds(timeBetweenBurstShots);
-            }
         }
 
         yield return new WaitForSeconds(timeBetweenBursts);
@@ -111,9 +111,7 @@ public class BulletSpawner : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenSweepShots);
 
         if (!sweepContinuously)
-        {
             yield return null;
-        }
     }
 
     private IEnumerator RandomArcRoutine()
@@ -128,14 +126,10 @@ public class BulletSpawner : MonoBehaviour
 
         float halfArc = sweepArcAngle * 0.5f;
 
-        float t = 0f;
-        if (sweepSteps > 1)
-        {
-            t = (float)sweepIndex / (sweepSteps - 1);
-        }
+        float t = sweepSteps > 1 ? (float)sweepIndex / (sweepSteps - 1) : 0f;
 
         float localAngle = Mathf.Lerp(-halfArc, halfArc, t);
-        Vector2 direction = RotateVector(firePoint.right, localAngle);
+        Vector2 direction = RotateVector(GetAimDirection(), localAngle);
 
         FireBulletInDirection(direction);
 
@@ -165,14 +159,10 @@ public class BulletSpawner : MonoBehaviour
         FireBulletInDirection(direction);
     }
 
+    // ✅ FIXED: always use forward (matches your rotation system)
     private Vector2 GetAimDirection()
     {
-        if (player != null)
-        {
-            return ((Vector2)(player.position - firePoint.position)).normalized;
-        }
-
-        return firePoint.right;
+        return -firePoint.up;
     }
 
     private void FireBulletInDirection(Vector2 direction)
@@ -181,10 +171,17 @@ public class BulletSpawner : MonoBehaviour
 
         GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
+        // 🔥 Rotate bullet to match direction
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bulletObj.transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
+
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         if (bullet != null)
         {
-            bullet.Initialize(direction, bulletSpeed, bulletLifetime, bulletType);
+            if (overrideBulletSize)
+                bullet.Initialize(direction, bulletSpeed, bulletLifetime, bulletType, bulletSizeOverride);
+            else
+                bullet.Initialize(direction, bulletSpeed, bulletLifetime, bulletType);
         }
     }
 

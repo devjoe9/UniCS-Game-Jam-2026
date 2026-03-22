@@ -28,7 +28,7 @@ public class HealerSpawnScript : MonoBehaviour
         }
         healerExtents = healerCollider.bounds.extents;
 
-        playerData = FindFirstObjectByType<PlayerData>();
+        playerData = FindAnyObjectByType<PlayerData>();
 
         StartCoroutine(SpawnHealer(minSpawnInterval, maxSpawnInterval));
     }
