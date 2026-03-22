@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -3344450969707329085}
   m_Layer: 7
   m_Name: Wander
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,12 +156,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.21133333}
-  m_Size: {x: 1, y: 1}
+  m_Offset: {x: 0.0028953552, y: -0.02319189}
+  m_Size: {x: 0.8494403, y: 0.9420936}
   m_Direction: 0
 --- !u!114 &3224057191173645043
 MonoBehaviour:
@@ -379,9 +379,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6194932588044036684}
   - component: {fileID: 8222702952751036943}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -431,9 +431,9 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: -0.02895379}
+  m_Radius: 0.5289536

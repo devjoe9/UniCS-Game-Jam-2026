@@ -7,7 +7,9 @@ public class PlayerSwordController : MonoBehaviour
     public Sprite blueSprite;
     public Sprite redSprite;
     public int defaultDamage = 5;
-    public float defaultKnockbackForce = 5;
+    public float bonusDamageAtMaxBoostSpeed = 5;
+    public float defaultKnockbackForce = 30;
+    public float bonusKnockbackAtMaxBoostSpeed = 30;
     
     private int damage;
     private float knockbackForce;
@@ -15,6 +17,7 @@ public class PlayerSwordController : MonoBehaviour
     private string initialDirection;
     private SpriteRenderer spriteRenderer;
     private SideData sideData;
+    private PlayerController playerController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +25,7 @@ public class PlayerSwordController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         sideData = GetComponent<SideData>();
         isBlue = sideData.IsBlue;
+        playerController = FindAnyObjectByType<PlayerController>();
         
         // condition ? if true : if false
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
@@ -31,7 +35,7 @@ public class PlayerSwordController : MonoBehaviour
         initialDirection = transform.parent.name;
         if (initialDirection.Equals("L"))
         {
-            spriteRenderer.flipX = true;
+            transform.Rotate(0, 0, 180);
             transform.localPosition = new Vector3(-1.5f, 0, 0);
         }
         else if (initialDirection.Equals("U"))
@@ -50,15 +54,19 @@ public class PlayerSwordController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
+        Debug.Log("in trigger");
+        Debug.Log("Hit object: " + collision.name);
         if (collision.CompareTag("Enemy"))
         {
+            Debug.Log($"In compare tag, isBlue = {isBlue}");
             EnemyData enemyData = collision.GetComponent<EnemyData>();
-            if (enemyData != null && !enemyData.IsDead)
+            if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue) && enemyData.IsVulnerable)
             {
-                enemyData.TakeDamage(damage);
-                enemyData.TakeKnockback(transform.right, knockbackForce);
+                Debug.Log("Sword colliding with enemy");
+                enemyData.TakeDamage(damage + bonusDamageAtMaxBoostSpeed * ((playerController.CurPlayerSpeed - playerController.maxSpeed) / (playerController.maxBoostingSpeed - playerController.maxSpeed)));
+                enemyData.TakeKnockback(transform.right, knockbackForce + bonusKnockbackAtMaxBoostSpeed * ((playerController.CurPlayerSpeed - playerController.maxSpeed) / (playerController.maxBoostingSpeed - playerController.maxSpeed)));
             }
         }
     }

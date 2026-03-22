@@ -50,21 +50,21 @@ public class PlayerGunController : MonoBehaviour
         if (initialDirection.Equals("L"))
         {
             spriteRenderer.flipX = true;
-            transform.localPosition = new Vector3(-1.5f, 0, 0);
+            transform.localPosition = new Vector3(-1.2f, 0, 0);
         }
         else if (initialDirection.Equals("U"))
         {
             transform.Rotate(0, 0, 90);
-            transform.localPosition = new Vector3(0, 1.5f, 0);
+            transform.localPosition = new Vector3(0, 1.2f, 0);
         }
         else if (initialDirection.Equals("D"))
         {
             transform.Rotate(0, 0, -90);
-            transform.localPosition = new Vector3(0, -1.5f, 0);
+            transform.localPosition = new Vector3(0, -1.2f, 0);
         }
         else
         {
-            transform.localPosition = new Vector3(1.5f, 0, 0);
+            transform.localPosition = new Vector3(1.2f, 0, 0);
         }
     }
 

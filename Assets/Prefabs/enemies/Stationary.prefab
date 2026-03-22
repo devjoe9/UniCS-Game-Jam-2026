@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6215856883692650245}
   - component: {fileID: 217412003754525615}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,12 +62,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 0.059673946}
+  m_Radius: 0.6581357
 --- !u!1 &5596442643100801233
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,12 +224,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.21133333}
-  m_Size: {x: 1, y: 1}
+  m_Offset: {x: 0, y: 0.07259178}
+  m_Size: {x: 1, y: 1.2774837}
   m_Direction: 0
 --- !u!114 &3747587650500010940
 MonoBehaviour:

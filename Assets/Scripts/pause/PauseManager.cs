@@ -6,6 +6,11 @@ public class PauseManager : MonoBehaviour
 
     [SerializeField] GameObject pauseOverlay;
 
+    // void Start()
+    // {
+    //     pauseOverlay = GameObject.FindGameObjectWithTag("Pause");
+    // }
+
     public void TogglePause()
     {
         if (isPaused)

@@ -124,7 +124,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -154,7 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blueSprite: {fileID: 4215020794576474916, guid: 7dc1fc76ce6b79a448f7e865fb728dcd, type: 3}
   redSprite: {fileID: 1414125399931500858, guid: 963754e3290df0d41a1dd41e950cc6b0, type: 3}
-  isBlue: 0
   cooldown: 5
   defaultKnockbackForce: 5
 --- !u!114 &-4849833820480370463

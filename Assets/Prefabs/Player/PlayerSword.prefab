@@ -108,9 +108,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blueSprite: {fileID: -1613646886922424301, guid: 378a47176eed57b4680d4d22ee60949c, type: 3}
   redSprite: {fileID: 4363408438007925082, guid: 071085cf8e8a7d146a7357088ad9e184, type: 3}
-  isBlue: 0
   defaultDamage: 5
-  defaultKnockbackForce: 5
+  bonusDamageAtMaxBoostSpeed: 5
+  defaultKnockbackForce: 100
+  bonusKnockbackAtMaxBoostSpeed: 100
 --- !u!61 &3462331997808169758
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,11 +142,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.03746617, y: 0.011239886}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -155,7 +156,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 0.4}
+  m_Size: {x: 2.134878, y: 0.66226244}
   m_EdgeRadius: 0
 --- !u!114 &-6777657419490731501
 MonoBehaviour:

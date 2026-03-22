@@ -7,14 +7,14 @@ public class EnemyData : MonoBehaviour
     public Sprite redSprite;
     public Sprite whiteFlashSprite;
     public float flashDuration = 0.1f;
-    public int maxHealth;
+    public float maxHealth;
     public float invulnerableTime;
     public float flashInterval = 0.2f;
     public Color defaultColour = Color.white;
     public Color flashColour = Color.white;
 
     private Rigidbody2D rb;
-    private int curHealth;
+    private float curHealth;
     public bool IsVulnerable => isVulnerable;
     private bool isVulnerable;
     public bool IsDead => isDead;
@@ -37,6 +37,13 @@ public class EnemyData : MonoBehaviour
     public AudioClip hurtSound;
     [Range(0f, 1f)] public float hurtVolume = 1f;
     private AudioSource audioSource;
+    private int pointsValue;
+    public int PointsValue
+    {
+        get => pointsValue;
+        set => pointsValue = value;
+    }
+    private EnemySpawnController waveController;
 
     void Awake()
     {
@@ -54,6 +61,7 @@ public class EnemyData : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
         audioSource = GetComponent<AudioSource>();
+        waveController = FindAnyObjectByType<EnemySpawnController>();
     }
 
     public void SetColour(bool isBlue)
@@ -68,7 +76,7 @@ public class EnemyData : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (!isDead && isVulnerable)
         {
@@ -85,7 +93,10 @@ public class EnemyData : MonoBehaviour
                 isDead = true;
                 Die();
                 Debug.Log("enemy died cuh"); 
+                waveController.CurScore = pointsValue;
+                Destroy(gameObject);
                 return;
+                // death
             }
             else
             {
@@ -95,7 +106,7 @@ public class EnemyData : MonoBehaviour
         }
     }
 
-    public void TakeHealing(int healing)
+    public void TakeHealing(float healing)
     {
         if (!isDead)
         {

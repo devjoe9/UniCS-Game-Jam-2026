@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 562686318242318081, guid: 1b6ba935c0a2eee4f908d20168c0cfb2, type: 3}
+  m_Sprite: {fileID: 2081860290900241954, guid: b4d744ed22e53ff49b13646fd6ad3c20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,18 +106,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c03ed00a66dcda4f868a1538c7bf7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  blueSprite: {fileID: 562686318242318081, guid: 1b6ba935c0a2eee4f908d20168c0cfb2, type: 3}
-  redSprite: {fileID: -6052227083387198902, guid: 1f4af3a50ccfb55468eae09809938483, type: 3}
+  blueSprite: {fileID: 2081860290900241954, guid: b4d744ed22e53ff49b13646fd6ad3c20, type: 3}
+  redSprite: {fileID: 5150997395849330157, guid: 01c7c7f39ceef284889442ded0c584be, type: 3}
   defaultDamage: 5
   defaultKnockbackForce: 5
   manualShotCooldown: 0.25
   autoShotCooldown: 0.5
-  bulletSpeed: 40
+  bulletSpeed: 100
   bulletPrefab: {fileID: 6187385120655881580, guid: ab128051467274d4585274729ac323f7, type: 3}
   bulletHoriOffset: 1.5
-  bulletVertOffset: 0.45
   shootSound: {fileID: 8300000, guid: 1dcc24ffa0d1c3b439fe87a4b1cf9eb4, type: 3}
   shootVolume: 1
+  bulletVertOffset: 0
 --- !u!114 &737843085516983510
 MonoBehaviour:
   m_ObjectHideFlags: 0

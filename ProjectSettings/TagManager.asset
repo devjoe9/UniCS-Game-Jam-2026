@@ -20,7 +20,7 @@ TagManager:
   - enemiesBody
   - player
   - EnemyTrigger
-  - 
+  - HitBorderOnly
   - 
   - 
   - 
