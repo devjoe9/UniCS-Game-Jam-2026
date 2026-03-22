@@ -54,6 +54,7 @@ public class PlayerShot : MonoBehaviour
             {
                 Debug.Log("Doing damage");
                 enemyData.TakeDamage(damage);
+                Debug.Log("bluh damaged");
                 enemyData.TakeKnockback(transform.right, knockbackForce);
                 Destroy(gameObject);
             }
