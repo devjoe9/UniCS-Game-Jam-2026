@@ -18868,6 +18868,26 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1510861211}
+    - target: {fileID: 4583329048221499255, guid: 7f1b8b47d154e2f438ab130642b97617, type: 3}
+      propertyPath: fleeRadius
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5674737239964599898, guid: 7f1b8b47d154e2f438ab130642b97617, type: 3}
+      propertyPath: m_Color.b
+      value: 0.4870374
+      objectReference: {fileID: 0}
+    - target: {fileID: 5674737239964599898, guid: 7f1b8b47d154e2f438ab130642b97617, type: 3}
+      propertyPath: m_Color.g
+      value: 0.46080744
+      objectReference: {fileID: 0}
+    - target: {fileID: 5674737239964599898, guid: 7f1b8b47d154e2f438ab130642b97617, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7953705
+      objectReference: {fileID: 0}
+    - target: {fileID: 5674737239964599898, guid: 7f1b8b47d154e2f438ab130642b97617, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8330411779233623616, guid: 7f1b8b47d154e2f438ab130642b97617, type: 3}
       propertyPath: player
       value: 
