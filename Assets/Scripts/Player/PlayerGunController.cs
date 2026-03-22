@@ -45,7 +45,8 @@ public class PlayerGunController : MonoBehaviour
         initialDirection = transform.parent.name;
         if (initialDirection.Equals("L"))
         {
-            spriteRenderer.flipX = true;
+            // spriteRenderer.flipX = true;
+            transform.Rotate(0, 0, 180);
             transform.localPosition = new Vector3(-1.2f, 0, 0);
         }
         else if (initialDirection.Equals("U"))
@@ -85,7 +86,8 @@ public class PlayerGunController : MonoBehaviour
 
     public void Shoot()
     {
-        shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
+        // shootDirection = initialDirection.Equals("L") ? -transform.right : transform.right;
+        shootDirection = transform.right;
                 
         Vector3 newPosition = transform.position + shootDirection*bulletHoriOffset + transform.up*bulletVertOffset;
         GameObject newBullet = Instantiate(bulletPrefab, newPosition, transform.rotation);
