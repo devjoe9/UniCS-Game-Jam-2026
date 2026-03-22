@@ -9,13 +9,30 @@ public class CanvasEffectManager : MonoBehaviour
     {
         public string modeName;
         public Sprite effectSprite;
-        public AudioClip effectAudio;  // NEW: Audio for this effect
+        public AudioClip effectAudio;
         public int spawnCount = 8;
         public Color neonColor = Color.cyan;
         [Range(0f, 10f)]
         public float glowIntensity = 2.5f;
         public float minScale = 50f;
         public float maxScale = 100f;
+        
+        [Header("Expanding Circle Settings (Optional)")]
+        public bool useExpandingCircles = false;
+        public float circleExpandSpeed = 200f;
+        public float circleMaxSize = 800f;
+        public float circleSpawnInterval = 0.5f;
+        
+        [Header("Orbital Beam Settings (Optional)")]
+        public bool useOrbitalBeam = false;
+        public Sprite beamParticleSprite;
+        public RuntimeAnimatorController orbAnimatorController;
+        public float orbSize = 150f;
+        public float orbOffset = 300f;
+        public float beamParticleSize = 30f;
+        public int particlesPerBeam = 30;
+        public float beamSpeed = 0.5f;
+        public float beamPauseDuration = 0.3f;
     }
     
     [Header("Visual Effects for Each Mode (In Wheel Order)")]
@@ -30,7 +47,7 @@ public class CanvasEffectManager : MonoBehaviour
     
     [Header("Effect Settings")]
     public float effectDuration = 20f;
-    public float warningDuration = 3f;  // Last 3 seconds blink warning
+    public float warningDuration = 3f;
     
     [Header("Audio Settings")]
     [Range(0f, 1f)]
@@ -48,7 +65,7 @@ public class CanvasEffectManager : MonoBehaviour
     public float pulseAmount = 0.2f;
     
     [Header("Blink Warning Settings")]
-    public float blinkSpeed = 0.2f;  // How fast to blink (seconds per blink)
+    public float blinkSpeed = 0.2f;
     
     private List<GameObject> activeEffects = new List<GameObject>();
     private bool isEffectActive = false;
@@ -76,10 +93,9 @@ public class CanvasEffectManager : MonoBehaviour
         
         canvasRect = effectCanvas.GetComponent<RectTransform>();
         
-        // Add AudioSource component
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
-        audioSource.loop = true;  // Loop the audio during effect
+        audioSource.loop = true;
     }
     
     void CreateEffectCanvas()
@@ -115,7 +131,6 @@ public class CanvasEffectManager : MonoBehaviour
     {
         Debug.Log($"{mode.modeName} visual effect started!");
         
-        // Play audio if assigned
         if (mode.effectAudio != null && audioSource != null)
         {
             audioSource.clip = mode.effectAudio;
@@ -123,33 +138,112 @@ public class CanvasEffectManager : MonoBehaviour
             audioSource.Play();
         }
         
-        // Spawn visual effects
-        SpawnCanvasEffects(mode);
-        
-        // Wait for most of the duration
-        float normalDuration = effectDuration - warningDuration;
-        if (normalDuration > 0)
+        if (mode.useExpandingCircles)
         {
-            yield return new WaitForSeconds(normalDuration);
+            StartCoroutine(SpawnExpandingCircles(mode));
+            
+            float normalDuration = effectDuration - warningDuration;
+            if (normalDuration > 0)
+            {
+                yield return new WaitForSeconds(normalDuration);
+            }
+        }
+        else if (mode.useOrbitalBeam)
+        {
+            SpawnOrbitalBeam(mode);
+            
+            float normalDuration = effectDuration - warningDuration;
+            if (normalDuration > 0)
+            {
+                yield return new WaitForSeconds(normalDuration);
+            }
+        }
+        else
+        {
+            SpawnCanvasEffects(mode);
+            
+            float normalDuration = effectDuration - warningDuration;
+            if (normalDuration > 0)
+            {
+                yield return new WaitForSeconds(normalDuration);
+            }
         }
         
-        // Start blinking warning for last 3 seconds
         if (warningDuration > 0)
         {
             yield return StartCoroutine(BlinkWarning());
         }
         
-        // Stop audio
         if (audioSource != null && audioSource.isPlaying)
         {
             audioSource.Stop();
         }
         
-        // Clean up
         ClearEffects();
         
         isEffectActive = false;
         Debug.Log($"{mode.modeName} visual effect ended!");
+    }
+    
+    IEnumerator SpawnExpandingCircles(ModeVisualEffect mode)
+    {
+        if (mode.effectSprite == null || effectCanvas == null)
+        {
+            Debug.LogWarning("Missing sprite or canvas for expanding circles!");
+            yield break;
+        }
+        
+        float elapsed = 0f;
+        float totalDuration = effectDuration - warningDuration;
+        
+        while (elapsed < totalDuration && isEffectActive)
+        {
+            GameObject circleObj = new GameObject($"{mode.modeName}_Circle");
+            circleObj.transform.SetParent(effectCanvas.transform, false);
+            
+            RectTransform rectTransform = circleObj.AddComponent<RectTransform>();
+            rectTransform.anchoredPosition = Vector2.zero;
+            
+            UnityEngine.UI.Image image = circleObj.AddComponent<UnityEngine.UI.Image>();
+            image.sprite = mode.effectSprite;
+            image.type = UnityEngine.UI.Image.Type.Simple;
+            
+            CanvasCirclePulse pulse = circleObj.AddComponent<CanvasCirclePulse>();
+            pulse.Initialize(mode.circleMaxSize, mode.circleExpandSpeed, mode.neonColor, mode.glowIntensity);
+            
+            activeEffects.Add(circleObj);
+            
+            yield return new WaitForSeconds(mode.circleSpawnInterval);
+            elapsed += mode.circleSpawnInterval;
+        }
+    }
+    
+    void SpawnOrbitalBeam(ModeVisualEffect mode)
+    {
+        if (mode.effectSprite == null || mode.beamParticleSprite == null || effectCanvas == null)
+        {
+            Debug.LogWarning("Missing sprites or canvas for orbital beam!");
+            return;
+        }
+        
+        GameObject beamObj = new GameObject($"{mode.modeName}_OrbitalBeam");
+        beamObj.transform.SetParent(effectCanvas.transform, false);
+        
+        RectTransform rect = beamObj.AddComponent<RectTransform>();
+        rect.anchoredPosition = Vector2.zero;
+        
+        CanvasOrbitalBeam orbital = beamObj.AddComponent<CanvasOrbitalBeam>();
+        orbital.Initialize(canvasRect, mode.effectSprite, mode.beamParticleSprite, mode.neonColor, mode.glowIntensity, mode.orbAnimatorController);
+        orbital.orbSize = mode.orbSize;
+        orbital.orbOffset = mode.orbOffset;
+        orbital.particleSize = mode.beamParticleSize;
+        orbital.particlesPerBeam = mode.particlesPerBeam;
+        orbital.beamSpeed = mode.beamSpeed;
+        orbital.beamPauseDuration = mode.beamPauseDuration;
+        
+        orbital.StartEffect();
+        
+        activeEffects.Add(beamObj);
     }
     
     IEnumerator BlinkWarning()
@@ -159,16 +253,13 @@ public class CanvasEffectManager : MonoBehaviour
         
         while (elapsed < warningDuration)
         {
-            // Toggle visibility
             visible = !visible;
             SetEffectsVisibility(visible);
             
-            // Wait for blink interval
             yield return new WaitForSeconds(blinkSpeed);
             elapsed += blinkSpeed;
         }
         
-        // Make sure they're visible at the end
         SetEffectsVisibility(true);
     }
     
@@ -178,12 +269,15 @@ public class CanvasEffectManager : MonoBehaviour
         {
             if (effect != null)
             {
-                UnityEngine.UI.Image image = effect.GetComponent<UnityEngine.UI.Image>();
-                if (image != null)
+                UnityEngine.UI.Image[] images = effect.GetComponentsInChildren<UnityEngine.UI.Image>();
+                foreach (UnityEngine.UI.Image image in images)
                 {
-                    Color color = image.color;
-                    color.a = visible ? 1f : 0f;  // Set alpha to 0 (invisible) or 1 (visible)
-                    image.color = color;
+                    if (image != null)
+                    {
+                        Color color = image.color;
+                        color.a = visible ? 1f : 0f;
+                        image.color = color;
+                    }
                 }
             }
         }
@@ -247,6 +341,12 @@ public class CanvasEffectManager : MonoBehaviour
         {
             if (effect != null)
             {
+                CanvasOrbitalBeam orbital = effect.GetComponent<CanvasOrbitalBeam>();
+                if (orbital != null)
+                {
+                    orbital.StopEffect();
+                }
+                
                 Destroy(effect);
             }
         }
@@ -259,7 +359,6 @@ public class CanvasEffectManager : MonoBehaviour
         {
             StopAllCoroutines();
             
-            // Stop audio
             if (audioSource != null && audioSource.isPlaying)
             {
                 audioSource.Stop();

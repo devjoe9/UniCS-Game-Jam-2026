@@ -1,0 +1,656 @@
+fileFormatVersion: 2
+guid: 37893cc43137c1e4dbf92149692ee0e6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4458334034588761858
+    second: kborbss_0
+  - first:
+      213: -429602102853106123
+    second: kborbss_1
+  - first:
+      213: 106426337174918995
+    second: kborbss_2
+  - first:
+      213: -8576966432468338013
+    second: kborbss_3
+  - first:
+      213: 2744456685850284646
+    second: kborbss_4
+  - first:
+      213: -5316555829048556185
+    second: kborbss_5
+  - first:
+      213: -157849658821197706
+    second: kborbss_6
+  - first:
+      213: 1455445228180271208
+    second: kborbss_7
+  - first:
+      213: -999946040178481454
+    second: kborbss_8
+  - first:
+      213: -8574973056920560829
+    second: kborbss_9
+  - first:
+      213: -2558066684384486322
+    second: kborbss_10
+  - first:
+      213: -5979833159909322835
+    second: kborbss_11
+  - first:
+      213: 7443908635986158045
+    second: kborbss_12
+  - first:
+      213: -125168127960777045
+    second: kborbss_13
+  - first:
+      213: -8862936816453299361
+    second: kborbss_14
+  - first:
+      213: -2813501599754663615
+    second: kborbss_15
+  - first:
+      213: 7429046127877959537
+    second: kborbss_16
+  - first:
+      213: -8552606065876132468
+    second: kborbss_17
+  - first:
+      213: -917247825507779810
+    second: kborbss_18
+  - first:
+      213: -5230231740947522006
+    second: kborbss_19
+  - first:
+      213: 3228965880422184477
+    second: kborbss_20
+  - first:
+      213: -513535021984111650
+    second: kborbss_21
+  - first:
+      213: 1410375905839654472
+    second: kborbss_22
+  - first:
+      213: 5374084645065331499
+    second: kborbss_23
+  - first:
+      213: -5719556528029041578
+    second: kborbss_24
+  - first:
+      213: -7523283612094018864
+    second: kborbss_25
+  - first:
+      213: -720817444248917538
+    second: kborbss_26
+  - first:
+      213: -6713719094651287866
+    second: kborbss_27
+  - first:
+      213: 3310847754515793554
+    second: kborbss_28
+  - first:
+      213: -8072193963321928730
+    second: kborbss_29
+  - first:
+      213: 6954659415638683361
+    second: kborbss_30
+  - first:
+      213: -7808618375900851976
+    second: kborbss_31
+  - first:
+      213: -6798627322393988379
+    second: kborbss_32
+  - first:
+      213: -706866139557175164
+    second: kborbss_33
+  - first:
+      213: -2987063720913620433
+    second: kborbss_34
+  - first:
+      213: -5113144070172390332
+    second: kborbss_35
+  - first:
+      213: -6028324073475018466
+    second: kborbss_36
+  - first:
+      213: 6231042187812503717
+    second: kborbss_37
+  - first:
+      213: -7737564244739904954
+    second: kborbss_38
+  - first:
+      213: -7074676732216895169
+    second: kborbss_39
+  - first:
+      213: 618126435531458833
+    second: kborbss_40
+  - first:
+      213: -5147310942534732763
+    second: kborbss_41
+  - first:
+      213: 3005042232196491571
+    second: kborbss_42
+  - first:
+      213: -7487893625009703754
+    second: kborbss_43
+  - first:
+      213: -2068793262885753370
+    second: kborbss_44
+  - first:
+      213: 7776056900274843729
+    second: kborbss_45
+  - first:
+      213: 6648802530998206749
+    second: kborbss_46
+  - first:
+      213: -5408566092316191000
+    second: kborbss_47
+  - first:
+      213: 1646169046142801797
+    second: kborbss_48
+  - first:
+      213: 484392117104966538
+    second: kborbss_49
+  - first:
+      213: 2450513912966526817
+    second: kborbss_50
+  - first:
+      213: -3279616376517644211
+    second: kborbss_51
+  - first:
+      213: -6320355210148821271
+    second: kborbss_52
+  - first:
+      213: 114073976892798482
+    second: kborbss_53
+  - first:
+      213: -5026314794453422477
+    second: kborbss_54
+  - first:
+      213: -3477473782500472514
+    second: kborbss_55
+  - first:
+      213: -9115090612445793004
+    second: kborbss_56
+  - first:
+      213: -6579148005165035592
+    second: kborbss_57
+  - first:
+      213: 1639155426083312629
+    second: kborbss_58
+  - first:
+      213: 4372561233845928340
+    second: kborbss_59
+  - first:
+      213: -962388785380940275
+    second: kborbss_60
+  - first:
+      213: -5207469572256849570
+    second: kborbss_61
+  - first:
+      213: 2138401801838494024
+    second: kborbss_62
+  - first:
+      213: -5338454495753282191
+    second: kborbss_63
+  - first:
+      213: 6812599668124152664
+    second: kborbss_64
+  - first:
+      213: -7334168203843946679
+    second: kborbss_65
+  - first:
+      213: -1583840320043239852
+    second: kborbss_66
+  - first:
+      213: -3025269341687268472
+    second: kborbss_67
+  - first:
+      213: 7534806389096310928
+    second: kborbss_68
+  - first:
+      213: 4359216072188783863
+    second: kborbss_69
+  - first:
+      213: 247831349948020595
+    second: kborbss_70
+  - first:
+      213: 4236577710805730842
+    second: kborbss_71
+  - first:
+      213: 7262277488278305553
+    second: kborbss_72
+  - first:
+      213: -5869901523681821678
+    second: kborbss_73
+  - first:
+      213: 6069414015100936836
+    second: kborbss_74
+  - first:
+      213: 4634068023551096885
+    second: kborbss_75
+  - first:
+      213: 3468681703841710310
+    second: kborbss_76
+  - first:
+      213: 6654641393276695978
+    second: kborbss_77
+  - first:
+      213: 9179511120968501022
+    second: kborbss_78
+  - first:
+      213: -7470538568572760571
+    second: kborbss_79
+  - first:
+      213: -1986193131512811166
+    second: kborbss_80
+  - first:
+      213: 6397624520379711936
+    second: kborbss_81
+  - first:
+      213: 5606685196445175185
+    second: kborbss_82
+  - first:
+      213: 4166800474596686815
+    second: kborbss_83
+  - first:
+      213: 1478248564429381931
+    second: kborbss_84
+  - first:
+      213: 5153411885288264248
+    second: kborbss_85
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: kborbss_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef08d4a11d0d022c0800000000000000
+      internalID: -4458334034588761858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kborbss_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5360ea0e92fb90af0800000000000000
+      internalID: -429602102853106123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kborbss_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3579e06903a1a7100800000000000000
+      internalID: 106426337174918995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kborbss_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aa764ee87e78f880800000000000000
+      internalID: -8576966432468338013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kborbss_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6625d85a0d4461620800000000000000
+      internalID: 2744456685850284646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kborbss_5
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 765470d44acc736b0800000000000000
+      internalID: -5316555829048556185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kborbss_6
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 670cb0652943fcdf0800000000000000
+      internalID: -157849658821197706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kborbss_7
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 860f8b749b7c23410800000000000000
+      internalID: 1455445228180271208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kborbss_8
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d66a98df5a7f12f0800000000000000
+      internalID: -999946040178481454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kborbss_9
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34b54b7df639ff880800000000000000
+      internalID: -8574973056920560829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kborbss_10
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4c508d57ebef7cd0800000000000000
+      internalID: -2558066684384486322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c76ba562de9fe5b41a44ee1ef7d315ae
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":80.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      kborbss_0: -4458334034588761858
+      kborbss_1: -429602102853106123
+      kborbss_10: -2558066684384486322
+      kborbss_2: 106426337174918995
+      kborbss_3: -8576966432468338013
+      kborbss_4: 2744456685850284646
+      kborbss_5: -5316555829048556185
+      kborbss_6: -157849658821197706
+      kborbss_7: 1455445228180271208
+      kborbss_8: -999946040178481454
+      kborbss_9: -8574973056920560829
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

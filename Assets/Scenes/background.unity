@@ -16670,7 +16670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 808695630}
-  - component: {fileID: 808695629}
+  - component: {fileID: 808695631}
   m_Layer: 0
   m_Name: CanvasEffectManager
   m_TagString: Untagged
@@ -16678,67 +16678,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &808695629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808695628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05f5d33c95d909c45adee85acbc012fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasEffectManager
-  noWeaponsEffect:
-    modeName: 
-    effectSprite: {fileID: 0}
-    spawnCount: 8
-    neonColor: {r: 0, g: 1, b: 1, a: 1}
-    glowIntensity: 2.5
-    minScale: 50
-    maxScale: 100
-  immortalityEffect:
-    modeName: 
-    effectSprite: {fileID: 0}
-    spawnCount: 8
-    neonColor: {r: 0, g: 1, b: 1, a: 1}
-    glowIntensity: 2.5
-    minScale: 50
-    maxScale: 100
-  timeSlowedDownEffect:
-    modeName: 
-    effectSprite: {fileID: 0}
-    spawnCount: 8
-    neonColor: {r: 0, g: 1, b: 1, a: 1}
-    glowIntensity: 2.5
-    minScale: 50
-    maxScale: 100
-  knockbackIncreasedEffect:
-    modeName: 
-    effectSprite: {fileID: 0}
-    spawnCount: 8
-    neonColor: {r: 0, g: 1, b: 1, a: 1}
-    glowIntensity: 2.5
-    minScale: 50
-    maxScale: 100
-  slipperyEffect:
-    modeName: 
-    effectSprite: {fileID: 21300000, guid: e398de9c6d592d849836a15e1cc5c2a7, type: 3}
-    spawnCount: 40
-    neonColor: {r: 0.21568628, g: 1, b: 0.21568628, a: 1}
-    glowIntensity: 3.5
-    minScale: 60
-    maxScale: 120
-  effectCanvas: {fileID: 0}
-  effectDuration: 20
-  enableMovement: 1
-  minSpeed: 150
-  maxSpeed: 300
-  horizontalBias: 0.7
-  enablePulseAnimation: 1
-  pulseSpeed: 2
-  pulseAmount: 0.2
 --- !u!4 &808695630
 Transform:
   m_ObjectHideFlags: 0
@@ -16754,6 +16693,140 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &808695631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808695628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543b8b620fb472e4f90326ab778d5fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasEffectManager
+  noWeaponsEffect:
+    modeName: 
+    effectSprite: {fileID: 0}
+    effectAudio: {fileID: 0}
+    spawnCount: 8
+    neonColor: {r: 0, g: 1, b: 1, a: 1}
+    glowIntensity: 2.5
+    minScale: 50
+    maxScale: 100
+    useExpandingCircles: 0
+    circleExpandSpeed: 200
+    circleMaxSize: 800
+    circleSpawnInterval: 0.5
+    useOrbitalBeam: 0
+    beamParticleSprite: {fileID: 0}
+    orbAnimatorController: {fileID: 0}
+    orbSize: 80
+    orbOffset: 300
+    beamParticleSize: 30
+    particlesPerBeam: 30
+    beamSpeed: 0.5
+    beamPauseDuration: 0.3
+  immortalityEffect:
+    modeName: 
+    effectSprite: {fileID: 0}
+    effectAudio: {fileID: 0}
+    spawnCount: 8
+    neonColor: {r: 0, g: 1, b: 1, a: 1}
+    glowIntensity: 2.5
+    minScale: 50
+    maxScale: 100
+    useExpandingCircles: 0
+    circleExpandSpeed: 200
+    circleMaxSize: 800
+    circleSpawnInterval: 0.5
+    useOrbitalBeam: 0
+    beamParticleSprite: {fileID: 0}
+    orbAnimatorController: {fileID: 0}
+    orbSize: 80
+    orbOffset: 300
+    beamParticleSize: 30
+    particlesPerBeam: 30
+    beamSpeed: 0.5
+    beamPauseDuration: 0.3
+  timeSlowedDownEffect:
+    modeName: Time Slowed Down
+    effectSprite: {fileID: 21300000, guid: 7cc48b3b99a5b0f48bcc1a871ec0779b, type: 3}
+    effectAudio: {fileID: 8300000, guid: 0e205f2be462e8a4aa6089a8b9c21f7c, type: 3}
+    spawnCount: 0
+    neonColor: {r: 0, g: 1, b: 1, a: 1}
+    glowIntensity: 3
+    minScale: 50
+    maxScale: 100
+    useExpandingCircles: 1
+    circleExpandSpeed: 200
+    circleMaxSize: 800
+    circleSpawnInterval: 2
+    useOrbitalBeam: 0
+    beamParticleSprite: {fileID: 0}
+    orbAnimatorController: {fileID: 0}
+    orbSize: 80
+    orbOffset: 300
+    beamParticleSize: 30
+    particlesPerBeam: 30
+    beamSpeed: 0.5
+    beamPauseDuration: 0.3
+  knockbackIncreasedEffect:
+    modeName: Knockback Increased
+    effectSprite: {fileID: -4458334034588761858, guid: 4f4deb5370d068045bf48f2fb7172908, type: 3}
+    effectAudio: {fileID: 8300000, guid: 8a540d44ce6c1d4468038b05dd99e4e1, type: 3}
+    spawnCount: 0
+    neonColor: {r: 1, g: 0.701668, b: 0, a: 1}
+    glowIntensity: 3.5
+    minScale: 50
+    maxScale: 100
+    useExpandingCircles: 0
+    circleExpandSpeed: 100
+    circleMaxSize: 800
+    circleSpawnInterval: 0.5
+    useOrbitalBeam: 1
+    beamParticleSprite: {fileID: 7954337709097107777, guid: 18c0330260ec4b849a1d269b6a8e59a9, type: 3}
+    orbAnimatorController: {fileID: 9100000, guid: 7bf211753621d0a4b940aff5a0eaf824, type: 2}
+    orbSize: 100
+    orbOffset: 300
+    beamParticleSize: 30
+    particlesPerBeam: 75
+    beamSpeed: 0.5
+    beamPauseDuration: 0.3
+  slipperyEffect:
+    modeName: Slippery
+    effectSprite: {fileID: 21300000, guid: e398de9c6d592d849836a15e1cc5c2a7, type: 3}
+    effectAudio: {fileID: 8300000, guid: c7d5fd22e8e2cfd4ca56ae3486c2ceec, type: 3}
+    spawnCount: 27
+    neonColor: {r: 0.21568628, g: 1, b: 0.21568628, a: 1}
+    glowIntensity: 3.5
+    minScale: 50
+    maxScale: 100
+    useExpandingCircles: 0
+    circleExpandSpeed: 200
+    circleMaxSize: 800
+    circleSpawnInterval: 0.5
+    useOrbitalBeam: 0
+    beamParticleSprite: {fileID: 0}
+    orbAnimatorController: {fileID: 0}
+    orbSize: 80
+    orbOffset: 300
+    beamParticleSize: 30
+    particlesPerBeam: 30
+    beamSpeed: 0.5
+    beamPauseDuration: 0.3
+  effectCanvas: {fileID: 0}
+  effectDuration: 20
+  warningDuration: 3
+  audioVolume: 0.5
+  enableMovement: 1
+  minSpeed: 100
+  maxSpeed: 300
+  horizontalBias: 0.7
+  enablePulseAnimation: 1
+  pulseSpeed: 2
+  pulseAmount: 0.2
+  blinkSpeed: 0.2
 --- !u!1 &845186277
 GameObject:
   m_ObjectHideFlags: 0
@@ -16956,6 +17029,104 @@ MonoBehaviour:
   positiveSound: {fileID: 8300000, guid: 4cf8da5829d76ab48bfccda00c2e2a43, type: 3}
   negativeSound: {fileID: 8300000, guid: 403f9dfa3bbaf07408c7b6afb3d1c629, type: 3}
   neutralSound: {fileID: 8300000, guid: 386db3d7bd4161c438d713413796cc4b, type: 3}
+--- !u!1 &1032359631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1032359632}
+  - component: {fileID: 1032359634}
+  - component: {fileID: 1032359633}
+  - component: {fileID: 1032359635}
+  m_Layer: 5
+  m_Name: OrbAnimationSetup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1032359632
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032359631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1910522180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1000, y: -292.3603}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1032359633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032359631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1032359634
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032359631}
+  m_CullTransparentMesh: 1
+--- !u!95 &1032359635
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032359631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7bf211753621d0a4b940aff5a0eaf824, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1239551777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17444,6 +17615,7 @@ RectTransform:
   - {fileID: 1921938575}
   - {fileID: 80360741}
   - {fileID: 845186278}
+  - {fileID: 1032359632}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
