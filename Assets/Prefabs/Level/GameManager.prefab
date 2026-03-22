@@ -111,7 +111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.data[1].spawnCost
@@ -120,6 +120,10 @@ PrefabInstance:
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.data[2].spawnCost
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
+      propertyPath: enemies.Array.data[4].spawnCost
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.data[1].enemyPrefab
@@ -134,12 +138,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3870068021404333012, guid: 5af205fee424c9141a8c0c7761337000, type: 3}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
+      propertyPath: enemies.Array.data[4].enemyPrefab
+      value: 
+      objectReference: {fileID: 3817622638319879617, guid: 70d9e4fd0adb01b459b62de528ac6a31, type: 3}
+    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.data[1].spawningWeight
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.data[2].spawningWeight
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
+      propertyPath: enemies.Array.data[4].spawningWeight
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7678709811450635617, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: m_Name

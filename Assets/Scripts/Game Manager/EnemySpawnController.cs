@@ -75,7 +75,7 @@ public class EnemySpawnController : MonoBehaviour
         return enemies[0]; // just in case
     }
 
-    Vector3 GetRandomSpawnPos(bool outsideCam = true)
+    Vector3 GetRandomSpawnPos(bool outsideCam = false)
     {
         float leftSpawnEdge = spawnBounds.min.x; // Left side x-coordinate
         float rightSpawnEdge = spawnBounds.max.x; // Right side x-coordinate
