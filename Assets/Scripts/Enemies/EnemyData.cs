@@ -69,6 +69,7 @@ public class EnemyData : MonoBehaviour
             if (curHealth <= 0)
             {
                 isDead = true;
+                Destroy(gameObject);
                 // death
             }
             else

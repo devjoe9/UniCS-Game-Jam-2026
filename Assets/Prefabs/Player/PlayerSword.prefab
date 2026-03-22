@@ -108,7 +108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blueSprite: {fileID: -1613646886922424301, guid: 378a47176eed57b4680d4d22ee60949c, type: 3}
   redSprite: {fileID: 4363408438007925082, guid: 071085cf8e8a7d146a7357088ad9e184, type: 3}
-  isBlue: 0
   defaultDamage: 5
   defaultKnockbackForce: 5
 --- !u!61 &3462331997808169758
@@ -141,7 +140,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

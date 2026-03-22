@@ -45,6 +45,7 @@ public class PlayerShot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Hit object: " + collision.name);
         if (collision.CompareTag("Enemy"))
         {
             EnemyData enemyData = collision.GetComponent<EnemyData>();  
