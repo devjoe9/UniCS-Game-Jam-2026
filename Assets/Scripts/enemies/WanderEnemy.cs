@@ -24,7 +24,7 @@ public class WanderEnemy : MonoBehaviour
     private EnemyData data;
     public float knockbackDrag = 5f;
 
-    void Awake()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         PickNewPoint(false);
@@ -36,8 +36,8 @@ public class WanderEnemy : MonoBehaviour
 
         if (boundary == null)
         {
-            GameObject enemySpawner = FindAnyObjectByType<EnemySpawnController>().gameObject;
-            boundary = enemySpawner.GetComponent<BoxCollider2D>();
+            GameObject gameManager = FindAnyObjectByType<PlayerManager>().gameObject;
+            boundary = gameManager.GetComponent<BoxCollider2D>();
         }
     }
 

@@ -240,8 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2beff7ef8cbc042bbe2e3a2f4c78e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  blueSprite: {fileID: 0}
-  redSprite: {fileID: 0}
+  blueSprite: {fileID: 4544439385413331186, guid: 3b5c2465a4e3a9649bed3125f6e2debe, type: 3}
+  redSprite: {fileID: 4544439385413331186, guid: 3b5c2465a4e3a9649bed3125f6e2debe, type: 3}
   maxHealth: 10
   invulnerableTime: 0
   flashInterval: 0.2
