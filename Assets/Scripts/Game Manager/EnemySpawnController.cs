@@ -14,13 +14,16 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float startingWaveInterval = 30f;
     [SerializeField] private float waveIntervalDecresePerWave = 2f;
     [SerializeField] private float minWaveInterval = 20f;
-
-    private float totalWeight;
-    private int spawnBudget;
     private Bounds spawnBounds;
     private Camera cam;
     private int currentWave;
     private bool gameOver;
+    public int curScore;
+    public int CurScore
+    {
+        get => curScore;
+        set => curScore += value;
+    }
 
     // public enum Rarity {Common = 50, Uncommon = 30, Rare = 15}
 
@@ -30,6 +33,7 @@ public class EnemySpawnController : MonoBehaviour
         public GameObject enemyPrefab;
         public float spawningWeight; // higher means more likely
         public int spawnCost;
+        public int pointsValue;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,18 +44,15 @@ public class EnemySpawnController : MonoBehaviour
         cam = FindAnyObjectByType<Camera>();
         currentWave = 0;
         gameOver = false;
-
-        foreach(var enemy in enemies)
-        {
-            totalWeight += enemy.spawningWeight;
-        }
+        curScore = 0;
 
         StartCoroutine(WaveLoop());
     }
 
-    void SpawnEnemy(GameObject enemy, Vector3 spawnPos)
+    void SpawnEnemy(GameObject enemy, Vector3 spawnPos, int points)
     {
-        Instantiate(enemy, spawnPos, Quaternion.identity);
+        GameObject obj = Instantiate(enemy, spawnPos, Quaternion.identity);
+        obj.GetComponent<EnemyData>().PointsValue = points;
     }
 
     EnemyInfo GetRandomEnemy(List<EnemyInfo> list)
@@ -129,9 +130,9 @@ public class EnemySpawnController : MonoBehaviour
         return new Vector3(randomX, randomY, 0);
     }
 
-    List<GameObject> GenerateWave(int budget)
+    List<EnemyInfo> GenerateWave(int budget)
     {
-        List<GameObject> wave = new List<GameObject>();
+        List<EnemyInfo> wave = new List<EnemyInfo>();
 
         while (budget > 0)
         {
@@ -145,18 +146,18 @@ public class EnemySpawnController : MonoBehaviour
             if (validEnemies.Count == 0) break;
 
             EnemyInfo chosen = GetRandomEnemy(validEnemies);
-            wave.Add(chosen.enemyPrefab);
+            wave.Add(chosen);
             budget -= chosen.spawnCost;
         }
 
         return wave;
     }
 
-    IEnumerator SpawnWave(List<GameObject> wave, float timeBetweenSpawns)
+    IEnumerator SpawnWave(List<EnemyInfo> wave, float timeBetweenSpawns)
     {
         foreach (var enemy in wave)
         {
-            SpawnEnemy(enemy, GetRandomSpawnPos());
+            SpawnEnemy(enemy.enemyPrefab, GetRandomSpawnPos(), enemy.pointsValue);
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
     }
@@ -169,7 +170,7 @@ public class EnemySpawnController : MonoBehaviour
             float timeBetweenSpawns = Mathf.Max(startingSpawnInterval - currentWave * spawnIntervalDecreasePerWave, minSpawnInterval);
             float timeBetweenWaves = Mathf.Max(startingWaveInterval - currentWave * waveIntervalDecresePerWave, minWaveInterval);
 
-            List<GameObject> wave = GenerateWave(budget);
+            List<EnemyInfo> wave = GenerateWave(budget);
 
             yield return StartCoroutine(SpawnWave(wave, timeBetweenSpawns));
 

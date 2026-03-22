@@ -453,10 +453,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 521732483448070370, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
-      propertyPath: pauseOverlay
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1375212833943310375, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: m_LocalPosition.x
       value: -82.63009

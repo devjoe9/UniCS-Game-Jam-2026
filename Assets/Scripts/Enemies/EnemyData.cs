@@ -30,6 +30,13 @@ public class EnemyData : MonoBehaviour
         set {isBlue = value;}
     }
     private SpriteRenderer spriteRenderer;
+    private int pointsValue;
+    public int PointsValue
+    {
+        get => pointsValue;
+        set => pointsValue = value;
+    }
+    private EnemySpawnController waveController;
 
     void Awake()
     {
@@ -46,6 +53,7 @@ public class EnemyData : MonoBehaviour
         isDead = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
+        waveController = FindAnyObjectByType<EnemySpawnController>();
     }
 
     public void SetColour(bool isBlue)
@@ -69,6 +77,7 @@ public class EnemyData : MonoBehaviour
             if (curHealth <= 0)
             {
                 isDead = true;
+                waveController.CurScore = pointsValue;
                 Destroy(gameObject);
                 // death
             }
