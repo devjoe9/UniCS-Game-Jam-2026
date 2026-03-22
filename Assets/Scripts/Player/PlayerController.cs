@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public ContactFilter2D movementFilter;
 
     private Vector2 movementInput;
+    public float CurPlayerSpeed => currentVelocity.magnitude;
     private Vector2 currentVelocity;
     private Rigidbody2D rb;
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();

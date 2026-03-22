@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    public int maxHealth;
+    public float maxHealth;
     public float invulnerableTime;
     public float flashInterval = 0.2f;
     public Color defaultColour = new Color(1f, 0.922f, 0.016f, 1f);
     public Color flashColour = new Color(1f, 0.922f, 0.016f, 0.5f);
 
 
-    private int curHealth;
+    private float curHealth;
     public bool IsVulnerable => isVulnerable;
     private bool isVulnerable;
     public bool IsDead => isDead;
@@ -31,7 +31,7 @@ public class PlayerData : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (!isDead && isVulnerable)
         {
@@ -51,7 +51,7 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    public void TakeHealing(int healing)
+    public void TakeHealing(float healing)
     {
         if (!isDead)
         {

@@ -44,9 +44,14 @@ public class BulletSpawner : MonoBehaviour
     private Coroutine firingRoutine;
     private int sweepIndex = 0;
     private int sweepDirection = 1;
+    private bool isBlue;
 
     private IEnumerator Start()
     {
+        EnemyData enemyData = GetComponent<EnemyData>();
+        isBlue = enemyData.IsBlue;
+        bulletType = isBlue ? Bullet.BulletType.BlueBullet : Bullet.BulletType.RedBullet;
+
         if (startFiringOnStart)
         {
             yield return null;

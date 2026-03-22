@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1375212833943310375}
   - component: {fileID: 7476918501805295781}
   - component: {fileID: 7812485093513125518}
+  - component: {fileID: 521732483448070370}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -61,6 +62,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   camObj: {fileID: 0}
+--- !u!114 &521732483448070370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072056715052848403}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a98086e50247e04f90902207f2e96c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseManager
+  pauseOverlay: {fileID: 0}
 --- !u!1001 &608578659290770366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -110,8 +124,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
+      propertyPath: minWaveInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
+      propertyPath: startingWaveInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
+      propertyPath: startingSpawnInterval
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.data[1].spawnCost
