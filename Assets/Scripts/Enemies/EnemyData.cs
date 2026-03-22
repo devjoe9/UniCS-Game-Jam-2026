@@ -40,7 +40,7 @@ public class EnemyData : MonoBehaviour
 
     void Awake()
     {
-        int colour = Random.Range(0, 1);
+        int colour = Random.Range(0, 2);
         isBlue = colour == 0 ? true : false;
     }
 
@@ -144,5 +144,10 @@ public class EnemyData : MonoBehaviour
     {
         isKnockedBack = true;
         rb.linearVelocity = direction * force;
+    }
+
+    public void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }

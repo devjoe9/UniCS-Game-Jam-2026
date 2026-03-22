@@ -110,7 +110,7 @@ MonoBehaviour:
   startingSpawnInterval: 2
   spawnIntervalDecreasePerWave: 0.25
   minSpawnInterval: 0.2
-  startingSpawnBudget: 10
+  startingSpawnBudget: 5
   budgetIncreasePerWave: 5
   startingWaveInterval: 30
   waveIntervalDecresePerWave: 2

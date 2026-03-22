@@ -583,11 +583,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845186277}
   m_CullTransparentMesh: 1
---- !u!1 &893971628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 875274758106799059, guid: db4ce180550677f428b16074e7ee575e, type: 3}
-  m_PrefabInstance: {fileID: 3912138968277064433}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &893971629 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3338944301410487951, guid: db4ce180550677f428b16074e7ee575e, type: 3}
@@ -914,45 +909,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c4c1b4f9b31d248898dd95f5a046ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SideEffectDisplay
-  panel: {fileID: 893971628}
-  eventIcon: {fileID: 2128162460}
-  frameImage: {fileID: 1942449583}
+  panel: {fileID: 0}
+  eventIcon: {fileID: 0}
+  frameImage: {fileID: 0}
   eventLabel: {fileID: 0}
   eventDescription: {fileID: 0}
   eventIcons:
-  - {fileID: -8009282776257233064, guid: acdf90a92a858ed4caad473580dd44fe, type: 3}
-  - {fileID: -4423524739251770109, guid: 12523ba35e5a2c440995fc8c418969ce, type: 3}
-  - {fileID: 3876083705487405034, guid: f751824e7cb8d7c4dbcb6447e4c1fa81, type: 3}
-  - {fileID: 2786576479641537990, guid: 598f9d502e02dea44891d0d511ebc5f1, type: 3}
-  - {fileID: -1538822072061837155, guid: 5a2440ad8c9bd2048be9abd48eecdf9e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  eventSign: {fileID: 0}
+  signSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  effectDuration: 8
   eventNames:
+  - NO WEAPONS
   - IMMORTALITY
-  - KNOCKBACK
   - SLOW TIME
-  - HACKED
+  - KNOCKBACK
   - SLIPPERY
   eventDescriptions:
-  - You cannot be harmed!
-  - Enemies get knocked back!
-  - Time slows to a crawl...
   - All weapons are hacked!
+  - You cannot be harmed!
+  - Time slows to a crawl...
+  - Enemies get knocked back!
   - Movement is slippery!
   eventColors:
-  - {r: 0.2, g: 1, b: 0.35, a: 1}
-  - {r: 1, g: 0.55, b: 0.1, a: 1}
-  - {r: 0.2, g: 0.6, b: 1, a: 1}
   - {r: 1, g: 0.15, b: 0.15, a: 1}
+  - {r: 1, g: 0.85, b: 0, a: 1}
+  - {r: 0.2, g: 0.6, b: 1, a: 1}
   - {r: 1, g: 0.55, b: 0.1, a: 1}
+  - {r: 0.2, g: 1, b: 0.35, a: 1}
   startInterval: 0.08
   endInterval: 0.5
   spinDuration: 4
   holdDuration: 3
-  spinAudioSource: {fileID: 1921938574}
-  resultAudioSource: {fileID: 80360740}
-  spinSound: {fileID: 8300000, guid: 3796a56010e1858459c2eafdf5043a44, type: 3}
-  positiveSound: {fileID: 8300000, guid: 4cf8da5829d76ab48bfccda00c2e2a43, type: 3}
-  negativeSound: {fileID: 8300000, guid: 403f9dfa3bbaf07408c7b6afb3d1c629, type: 3}
-  neutralSound: {fileID: 8300000, guid: 386db3d7bd4161c438d713413796cc4b, type: 3}
+  visualEffectDelay: 2
+  spinAudioSource: {fileID: 0}
+  resultAudioSource: {fileID: 0}
+  spinSound: {fileID: 0}
+  positiveSound: {fileID: 0}
+  negativeSound: {fileID: 0}
+  neutralSound: {fileID: 0}
+  canvasEffectManager: {fileID: 0}
 --- !u!1 &1921938573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,17 +1091,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1942449583 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2828515732242148656, guid: db4ce180550677f428b16074e7ee575e, type: 3}
-  m_PrefabInstance: {fileID: 3912138968277064433}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &1985893346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1159,17 +1153,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1626553425855599679, guid: 82c1ba1e3d879ba4bac1fa933d32eb1d, type: 3}
   m_PrefabInstance: {fileID: 1985893346}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2128162460 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2100947967961285957, guid: db4ce180550677f428b16074e7ee575e, type: 3}
-  m_PrefabInstance: {fileID: 3912138968277064433}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &2966170496892411522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1222,14 +1205,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: minWaveInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: startingWaveInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: startingSpawnInterval
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7476918501805295781, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1985893347}
-    - target: {fileID: 7639071823656343728, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7812485093513125518, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: camObj
       value: 
