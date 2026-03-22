@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealerData
   explosionEffectPrefab: {fileID: 3817492590214144181, guid: 889e604953041d14884648f02b060490, type: 3}
-  lifetime: 10
-  flashAfterTime: 7
+  lifetime: 5
+  flashAfterTime: 3
   flashInterval: 0.2
   defaultColour: {r: 0.54901963, g: 1, b: 0.5529412, a: 1}
   flashColour: {r: 1, g: 1, b: 1, a: 1}

@@ -766,7 +766,7 @@ MonoBehaviour:
   - {fileID: 7062773840642939582}
   topItems:
   - displayName: BlueSword
-    description: 
+    description: This is a sword
     sprite: {fileID: -1613646886922424301, guid: 378a47176eed57b4680d4d22ee60949c, type: 3}
     previewSprite: {fileID: 0}
     slotFrameSprite: {fileID: 0}
