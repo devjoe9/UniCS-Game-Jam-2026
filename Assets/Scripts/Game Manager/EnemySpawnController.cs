@@ -165,8 +165,6 @@ public class EnemySpawnController : MonoBehaviour
     {
         while (!gameOver)
         {
-            currentWave++;
-
             int budget = startingSpawnBudget + currentWave * budgetIncreasePerWave;
             float timeBetweenSpawns = Mathf.Max(startingSpawnInterval - currentWave * spawnIntervalDecreasePerWave, minSpawnInterval);
             float timeBetweenWaves = Mathf.Max(startingWaveInterval - currentWave * waveIntervalDecresePerWave, minWaveInterval);
@@ -176,13 +174,15 @@ public class EnemySpawnController : MonoBehaviour
             yield return StartCoroutine(SpawnWave(wave, timeBetweenSpawns));
 
             yield return StartCoroutine(WaitForNextWave(timeBetweenWaves));
+
+            currentWave++;
         }
     }
 
     IEnumerator WaitForNextWave(float duration)
     {
         float timeElapsed = 0;
-        while (timeElapsed < duration || GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+        while (timeElapsed < duration && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
         {
             timeElapsed += Time.deltaTime;
             yield return null;
