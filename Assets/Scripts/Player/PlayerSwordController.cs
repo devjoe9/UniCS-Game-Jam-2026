@@ -7,7 +7,9 @@ public class PlayerSwordController : MonoBehaviour
     public Sprite blueSprite;
     public Sprite redSprite;
     public int defaultDamage = 5;
-    public float defaultKnockbackForce = 5;
+    public float bonusDamageAtMaxBoostSpeed = 5;
+    public float defaultKnockbackForce = 30;
+    public float bonusKnockbackAtMaxBoostSpeed = 30;
     
     private int damage;
     private float knockbackForce;
@@ -15,6 +17,7 @@ public class PlayerSwordController : MonoBehaviour
     private string initialDirection;
     private SpriteRenderer spriteRenderer;
     private SideData sideData;
+    private PlayerController playerController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +25,7 @@ public class PlayerSwordController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         sideData = GetComponent<SideData>();
         isBlue = sideData.IsBlue;
+        playerController = FindAnyObjectByType<PlayerController>();
         
         // condition ? if true : if false
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
@@ -61,8 +65,8 @@ public class PlayerSwordController : MonoBehaviour
             if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue) && enemyData.IsVulnerable)
             {
                 Debug.Log("Sword colliding with enemy");
-                enemyData.TakeDamage(damage);
-                enemyData.TakeKnockback(transform.right, knockbackForce);
+                enemyData.TakeDamage(damage + bonusDamageAtMaxBoostSpeed * ((playerController.CurPlayerSpeed - playerController.maxSpeed) / (playerController.maxBoostingSpeed - playerController.maxSpeed)));
+                enemyData.TakeKnockback(transform.right, knockbackForce + bonusKnockbackAtMaxBoostSpeed * ((playerController.CurPlayerSpeed - playerController.maxSpeed) / (playerController.maxBoostingSpeed - playerController.maxSpeed)));
             }
         }
     }

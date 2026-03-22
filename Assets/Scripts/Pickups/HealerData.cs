@@ -9,7 +9,7 @@ public class HealerData : MonoBehaviour
     public float flashInterval = 0.2f;
     public Color defaultColour = new Color(1f, 0.922f, 0.016f, 1f);
     public Color flashColour = new Color(1f, 0.922f, 0.016f, 0.5f);
-    public int healing = 1;
+    public float healing = 1;
     private bool isActive;
     private SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
