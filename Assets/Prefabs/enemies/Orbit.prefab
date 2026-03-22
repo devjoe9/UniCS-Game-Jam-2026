@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &816905889789510141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 127160213245970622}
+  m_Layer: 7
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &127160213245970622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816905889789510141}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2386827865695225351}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1843510451732313080
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,6 +113,7 @@ GameObject:
   - component: {fileID: 1250273903557223457}
   - component: {fileID: 481518332367533083}
   - component: {fileID: 2231387796572609971}
+  - component: {fileID: 4687086426024864671}
   m_Layer: 7
   m_Name: Orbit
   m_TagString: Enemy
@@ -103,6 +135,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3039970447857652340}
+  - {fileID: 127160213245970622}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6818194599039022601
@@ -262,10 +295,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   blueSprite: {fileID: -4582246601903468699, guid: 065748d25702315459fa21a1dc91567d, type: 3}
-  redSprite: {fileID: -4582246601903468699, guid: 065748d25702315459fa21a1dc91567d, type: 3}
+  redSprite: {fileID: -8673939771519881181, guid: ad55c58a4e1c1ac42ba3ea3ba0746c67, type: 3}
   maxHealth: 10
   invulnerableTime: 0
   flashInterval: 0.2
   defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
   flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
   isBlue: 0
+--- !u!114 &4687086426024864671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3870068021404333012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de6504ab4f3e0f41ad8a0d8523e2f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletSpawner
+  bulletPrefab: {fileID: 3587487694791285624, guid: 620eead620e87a6479843f4174863a34, type: 3}
+  firePoint: {fileID: 127160213245970622}
+  player: {fileID: 0}
+  bulletSpeed: 20
+  bulletLifetime: 5
+  bulletType: 1
+  startFiringOnStart: 1
+  overrideBulletSize: 0
+  bulletSizeOverride: 1
+  firePattern: 2
+  bulletsPerBurst: 3
+  timeBetweenBurstShots: 0.12
+  timeBetweenBursts: 1.2
+  sweepArcAngle: 180
+  sweepSteps: 12
+  timeBetweenSweepShots: 0.08
+  sweepContinuously: 1
+  randomArcAngle: 90
+  timeBetweenRandomShots: 0.08

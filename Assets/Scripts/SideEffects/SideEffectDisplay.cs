@@ -15,32 +15,37 @@ public class SideEffectDisplay : MonoBehaviour
     [Header("Event Icons (5 - in order)")]
     public Sprite[] eventIcons = new Sprite[5];
 
+    [Header("Event Sign")]
+    public EventSign eventSign;
+    public Sprite[]  signSprites  = new Sprite[5];
+    public float     effectDuration = 8f;
+
     [Header("Event Data")]
     public string[] eventNames = new string[]
     {
+        "NO WEAPONS",
         "IMMORTALITY",
-        "KNOCKBACK",
         "SLOW TIME",
-        "HACKED",
+        "KNOCKBACK",
         "SLIPPERY"
     };
 
     public string[] eventDescriptions = new string[]
     {
-        "You cannot be harmed!",
-        "Enemies get knocked back!",
-        "Time slows to a crawl...",
         "All weapons are hacked!",
+        "You cannot be harmed!",
+        "Time slows to a crawl...",
+        "Enemies get knocked back!",
         "Movement is slippery!"
     };
 
     public Color[] eventColors = new Color[]
     {
-        new Color(0.2f, 1f,    0.35f),   // green  - immortality
-        new Color(1f,   0.55f, 0.1f),    // orange - knockback
+        new Color(1f,   0.15f, 0.15f),   // red    - no weapons
+        new Color(1f,   0.85f, 0f),      // yellow - immortality
         new Color(0.2f, 0.6f,  1f),      // blue   - slow time
-        new Color(1f,   0.15f, 0.15f),   // red    - hacked
-        new Color(1f,   0.55f, 0.1f),    // orange - slippery
+        new Color(1f,   0.55f, 0.1f),    // orange - knockback
+        new Color(0.2f, 1f,    0.35f),   // green  - slippery
     };
 
     [Header("Timing")]
@@ -48,19 +53,37 @@ public class SideEffectDisplay : MonoBehaviour
     public float endInterval    = 0.5f;
     public float spinDuration   = 4f;
     public float holdDuration   = 3f;
+    public float visualEffectDelay = 2f; // Delay before visual effects start
 
     [Header("Audio")]
-    public AudioSource spinAudioSource;   // looping spin sound
-    public AudioSource resultAudioSource; // one shot result sound
+    public AudioSource spinAudioSource;
+    public AudioSource resultAudioSource;
     public AudioClip   spinSound;
     public AudioClip   positiveSound;
     public AudioClip   negativeSound;
     public AudioClip   neutralSound;
 
+    [Header("Visual Effects")]
+    public CanvasEffectManager canvasEffectManager;
+
     // 0=positive 1=neutral 2=negative
-    private int[] eventCategory = new int[] { 2, 0, 1, 1, 1};
+    // Order: No Weapons, Immortality, Slow Time, Knockback, Slippery
+    private int[] eventCategory = new int[] { 2, 0, 1, 1, 1 };
 
     private bool isAnimating = false;
+
+    void Start()
+    {
+        // Find CanvasEffectManager if not assigned
+        if (canvasEffectManager == null)
+        {
+            canvasEffectManager = FindAnyObjectByType<CanvasEffectManager>();
+            if (canvasEffectManager == null)
+            {
+                Debug.LogError("[SideEffectDisplay] CanvasEffectManager not found in scene!");
+            }
+        }
+    }
 
     public void TriggerRandomEvent()
     {
@@ -120,7 +143,7 @@ public class SideEffectDisplay : MonoBehaviour
             yield return null;
         }
 
-        // Stop spin sound — fade out
+        // Stop spin sound
         StartCoroutine(FadeOutSpin());
 
         // Show result
@@ -129,7 +152,18 @@ public class SideEffectDisplay : MonoBehaviour
         StartCoroutine(PunchScale(eventIcon.transform));
         StartCoroutine(FlashFrame(eventColors[finalIndex]));
 
+        // Show event sign
+        Debug.Log($"Calling ShowSign | eventSign null: {eventSign == null} | index: {finalIndex} | sprites length: {signSprites.Length}");
+        if (eventSign != null && finalIndex < signSprites.Length)
+            eventSign.ShowSign(signSprites[finalIndex], effectDuration);
+        else
+            Debug.Log($"ShowSign SKIPPED - eventSign null: {eventSign == null} | index valid: {finalIndex < signSprites.Length}");
+
         Debug.Log($"[SideEffectDisplay] Result: {eventNames[finalIndex]}");
+
+        // Wait 2 seconds THEN start visual effect
+        yield return new WaitForSeconds(visualEffectDelay);
+        StartVisualEffect(finalIndex);
 
         yield return new WaitForSeconds(holdDuration);
 
@@ -137,11 +171,45 @@ public class SideEffectDisplay : MonoBehaviour
         isAnimating = false;
     }
 
+    private void StartVisualEffect(int index)
+    {
+        if (canvasEffectManager == null)
+        {
+            Debug.LogWarning("[SideEffectDisplay] CanvasEffectManager is null! Cannot start visual effect.");
+            return;
+        }
+
+        Debug.Log($"[SideEffectDisplay] Starting visual effect for: {eventNames[index]} (index {index})");
+
+        // Wheel order: No Weapons, Immortality, Slow Time, Knockback, Slippery
+        // Effect Manager order: No Weapons, Immortality, Time Slowed Down, Knockback Increased, Slippery
+        switch (index)
+        {
+            case 0: // No Weapons
+                canvasEffectManager.StartNoWeaponsMode();
+                break;
+            case 1: // Immortality
+                canvasEffectManager.StartImmortalityMode();
+                break;
+            case 2: // Slow Time
+                canvasEffectManager.StartTimeSlowedDownMode();
+                break;
+            case 3: // Knockback
+                canvasEffectManager.StartKnockbackIncreasedMode();
+                break;
+            case 4: // Slippery
+                canvasEffectManager.StartSlipperyMode();
+                break;
+            default:
+                Debug.LogWarning($"[SideEffectDisplay] Unknown effect index: {index}");
+                break;
+        }
+    }
+
     private IEnumerator FadeOutSpin()
     {
         if (spinAudioSource == null) yield break;
-        float dur = 0.3f;
-        float e   = 0f;
+        float dur = 0.3f; float e = 0f;
         float startVol = spinAudioSource.volume;
         while (e < dur)
         {
@@ -172,7 +240,6 @@ public class SideEffectDisplay : MonoBehaviour
         {
             eventIcon.sprite = eventIcons[index];
             eventIcon.color  = Color.white;
-            if (isFinal) StartCoroutine(PunchScale(eventIcon.transform));
         }
 
         if (eventLabel != null)

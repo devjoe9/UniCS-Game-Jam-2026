@@ -1,0 +1,238 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4976465891748063906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1141892334677734181}
+  - component: {fileID: 9127261432526476839}
+  m_Layer: 0
+  m_Name: CanvasEffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1141892334677734181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976465891748063906}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9127261432526476839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976465891748063906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543b8b620fb472e4f90326ab778d5fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasEffectManager
+  noWeaponsEffect:
+    modeName: No Weapons
+    effectSprite: {fileID: 0}
+    effectAudio: {fileID: 8300000, guid: 0002bfe8c47e00c4889036d2212bc21d, type: 3}
+    spawnCount: 8
+    neonColor: {r: 1, g: 0, b: 0.009544373, a: 1}
+    glowIntensity: 2.5
+    minScale: 50
+    maxScale: 100
+    customEffectDuration: 10
+    customWarningDuration: 3
+    useExpandingCircles: 0
+    circleExpandSpeed: 200
+    circleMaxSize: 800
+    circleSpawnInterval: 0.5
+    useOrbitalBeam: 0
+    beamParticleSprite: {fileID: 0}
+    orbAnimatorController: {fileID: 0}
+    orbSize: 80
+    orbOffset: 300
+    beamParticleSize: 30
+    particlesPerBeam: 30
+    beamSpeed: 0.5
+    beamPauseDuration: 0.3
+    useNoWeaponsEffect: 1
+    crossSprite: {fileID: 41187725596619138, guid: a0a365e3941dd9646afa7441c1297948, type: 3}
+    warningTriangleSprite: {fileID: 4493008359578353588, guid: 418d4fa6fc118b246887a79beea32da0, type: 3}
+    crossSize: 80
+    crossOffset: 100
+    warningSize: 60
+    warningSpacing: 80
+    warningBarPosition: {x: 0, y: -250}
+    useImmortalityEffect: 0
+    angelAnimatorController: {fileID: 0}
+    angelSize: 150
+    angelOffset: 300
+  immortalityEffect:
+    modeName: 
+    effectSprite: {fileID: -2745295686902667881, guid: 8309904a5fb44a24c9f6787f71465f39, type: 3}
+    effectAudio: {fileID: 8300000, guid: 153a354984258d34fb02ed7ea2bfd115, type: 3}
+    spawnCount: 0
+    neonColor: {r: 1, g: 1, b: 0.5411765, a: 1}
+    glowIntensity: 10
+    minScale: 50
+    maxScale: 100
+    customEffectDuration: 10
+    customWarningDuration: 3
+    useExpandingCircles: 0
+    circleExpandSpeed: 200
+    circleMaxSize: 800
+    circleSpawnInterval: 0.5
+    useOrbitalBeam: 0
+    beamParticleSprite: {fileID: 0}
+    orbAnimatorController: {fileID: 0}
+    orbSize: 80
+    orbOffset: 300
+    beamParticleSize: 30
+    particlesPerBeam: 30
+    beamSpeed: 0.5
+    beamPauseDuration: 0.3
+    useNoWeaponsEffect: 0
+    crossSprite: {fileID: 0}
+    warningTriangleSprite: {fileID: 0}
+    crossSize: 80
+    crossOffset: 200
+    warningSize: 60
+    warningSpacing: 80
+    warningBarPosition: {x: 0, y: -400}
+    useImmortalityEffect: 1
+    angelAnimatorController: {fileID: 9100000, guid: a99ac9e61b2e1864aa0c21d96d50f6ea, type: 2}
+    angelSize: 150
+    angelOffset: 300
+  timeSlowedDownEffect:
+    modeName: Time Slowed Down
+    effectSprite: {fileID: 21300000, guid: 7cc48b3b99a5b0f48bcc1a871ec0779b, type: 3}
+    effectAudio: {fileID: 8300000, guid: 0e205f2be462e8a4aa6089a8b9c21f7c, type: 3}
+    spawnCount: 0
+    neonColor: {r: 0, g: 1, b: 1, a: 1}
+    glowIntensity: 3
+    minScale: 50
+    maxScale: 100
+    customEffectDuration: 0
+    customWarningDuration: 0
+    useExpandingCircles: 1
+    circleExpandSpeed: 200
+    circleMaxSize: 800
+    circleSpawnInterval: 2
+    useOrbitalBeam: 0
+    beamParticleSprite: {fileID: 0}
+    orbAnimatorController: {fileID: 0}
+    orbSize: 80
+    orbOffset: 300
+    beamParticleSize: 30
+    particlesPerBeam: 30
+    beamSpeed: 0.5
+    beamPauseDuration: 0.3
+    useNoWeaponsEffect: 0
+    crossSprite: {fileID: 0}
+    warningTriangleSprite: {fileID: 0}
+    crossSize: 80
+    crossOffset: 200
+    warningSize: 60
+    warningSpacing: 80
+    warningBarPosition: {x: 0, y: -400}
+    useImmortalityEffect: 0
+    angelAnimatorController: {fileID: 0}
+    angelSize: 150
+    angelOffset: 300
+  knockbackIncreasedEffect:
+    modeName: Knockback Increased
+    effectSprite: {fileID: -4458334034588761858, guid: 4f4deb5370d068045bf48f2fb7172908, type: 3}
+    effectAudio: {fileID: 8300000, guid: 8a540d44ce6c1d4468038b05dd99e4e1, type: 3}
+    spawnCount: 0
+    neonColor: {r: 1, g: 0.701668, b: 0, a: 1}
+    glowIntensity: 3.5
+    minScale: 50
+    maxScale: 100
+    customEffectDuration: 0
+    customWarningDuration: 0
+    useExpandingCircles: 0
+    circleExpandSpeed: 100
+    circleMaxSize: 800
+    circleSpawnInterval: 0.5
+    useOrbitalBeam: 1
+    beamParticleSprite: {fileID: 7954337709097107777, guid: 18c0330260ec4b849a1d269b6a8e59a9, type: 3}
+    orbAnimatorController: {fileID: 9100000, guid: 7bf211753621d0a4b940aff5a0eaf824, type: 2}
+    orbSize: 100
+    orbOffset: 300
+    beamParticleSize: 30
+    particlesPerBeam: 75
+    beamSpeed: 0.5
+    beamPauseDuration: 0.3
+    useNoWeaponsEffect: 0
+    crossSprite: {fileID: 0}
+    warningTriangleSprite: {fileID: 0}
+    crossSize: 80
+    crossOffset: 200
+    warningSize: 60
+    warningSpacing: 80
+    warningBarPosition: {x: 0, y: -400}
+    useImmortalityEffect: 0
+    angelAnimatorController: {fileID: 0}
+    angelSize: 150
+    angelOffset: 300
+  slipperyEffect:
+    modeName: Slippery
+    effectSprite: {fileID: 21300000, guid: e398de9c6d592d849836a15e1cc5c2a7, type: 3}
+    effectAudio: {fileID: 8300000, guid: c7d5fd22e8e2cfd4ca56ae3486c2ceec, type: 3}
+    spawnCount: 27
+    neonColor: {r: 0.21568628, g: 1, b: 0.21568628, a: 1}
+    glowIntensity: 3.5
+    minScale: 50
+    maxScale: 100
+    customEffectDuration: 0
+    customWarningDuration: 0
+    useExpandingCircles: 0
+    circleExpandSpeed: 200
+    circleMaxSize: 800
+    circleSpawnInterval: 0.5
+    useOrbitalBeam: 0
+    beamParticleSprite: {fileID: 0}
+    orbAnimatorController: {fileID: 0}
+    orbSize: 80
+    orbOffset: 300
+    beamParticleSize: 30
+    particlesPerBeam: 30
+    beamSpeed: 0.5
+    beamPauseDuration: 0.3
+    useNoWeaponsEffect: 0
+    crossSprite: {fileID: 0}
+    warningTriangleSprite: {fileID: 0}
+    crossSize: 80
+    crossOffset: 200
+    warningSize: 60
+    warningSpacing: 80
+    warningBarPosition: {x: 0, y: -400}
+    useImmortalityEffect: 0
+    angelAnimatorController: {fileID: 0}
+    angelSize: 150
+    angelOffset: 300
+  effectCanvas: {fileID: 0}
+  effectDuration: 20
+  warningDuration: 3
+  audioVolume: 0.5
+  enableMovement: 1
+  minSpeed: 100
+  maxSpeed: 300
+  horizontalBias: 0.7
+  enablePulseAnimation: 1
+  pulseSpeed: 2
+  pulseAmount: 0.2
+  blinkSpeed: 0.2

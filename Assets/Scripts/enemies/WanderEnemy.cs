@@ -26,19 +26,18 @@ public class WanderEnemy : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        PickNewPoint(false);
-        data = GetComponent<EnemyData>();
-
-        // Auto-find player if not assigned
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         if (boundary == null)
-        {
-            GameObject gameManager = FindAnyObjectByType<PlayerManager>().gameObject;
-            boundary = gameManager.GetComponent<BoxCollider2D>();
-        }
+            boundary = GameObject.FindGameObjectWithTag("Boundary")?.GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        PickNewPoint(false);
+        data = GetComponent<EnemyData>();
+
+
+
+
     }
 
     void Update()
