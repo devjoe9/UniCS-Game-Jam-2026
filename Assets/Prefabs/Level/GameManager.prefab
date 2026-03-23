@@ -106,7 +106,7 @@ MonoBehaviour:
   noWeaponsDuration: 10
   immortalityDuration: 10
   timeSlowDuration: 1.25
-  timeSlowMult: 0.25
+  timeSlowMult: 0.5
   knockbackDuration: 10
   knockbackMult: 5
   slipperyDuration: 10

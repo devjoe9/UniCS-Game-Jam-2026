@@ -96,24 +96,6 @@ public class PlayerController : MonoBehaviour
             knockbackVelocity = rb.linearVelocity;
         }
 
-        // Boosting
-        if (isBoosting)
-        {
-            Vector2 totalBoost = Vector2.zero;
-            foreach (var booster in boosters)
-            {
-                if (booster != null && !booster.IsDisabled)
-                {
-                    totalBoost += booster.ThrustDirection * booster.boostForce;
-                }
-            }
-
-            if (totalBoost != Vector2.zero)
-            {
-                currentVelocity = Vector2.ClampMagnitude(currentVelocity += totalBoost * Time.fixedDeltaTime, maxBoostingSpeed);
-            }
-        }
-
         // Calculate target velocity based on input
         Vector2 targetVelocity = movementInput * maxSpeed;
 
@@ -137,8 +119,21 @@ public class PlayerController : MonoBehaviour
             );
         }
 
+        // Boosting
+        Vector2 totalBoost = Vector2.zero;
+        if (isBoosting)
+        {
+            foreach (var booster in boosters)
+            {
+                if (booster != null && !booster.IsDisabled)
+                {
+                    totalBoost += booster.ThrustDirection * booster.boostForce;
+                }
+            }
+        }
+
         // Calculate the new position
-        Vector2 finalVelocity = currentVelocity + knockbackVelocity;
+        Vector2 finalVelocity = Vector2.ClampMagnitude(currentVelocity + knockbackVelocity + totalBoost, maxBoostingSpeed);
         float distance = finalVelocity.magnitude * Time.fixedDeltaTime;
 
         // Check for collisions using raycast

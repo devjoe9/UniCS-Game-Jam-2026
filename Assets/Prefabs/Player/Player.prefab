@@ -224,9 +224,9 @@ MonoBehaviour:
   boostOrthChangeTime: 0.1
   boostShakeAmplitude: 2
   boostShakeFrequency: 5
-  acceleration: 70
-  deceleration: 70
-  collisionOffset: 0.05
+  defaultAcceleration: 200
+  defaultDeceleration: 200
+  collisionOffset: 0.1
   rotateCooldown: 0.15
   rotationSpeed: 1000
   knockbackDrag: 5
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef88d63ea9387f4cbf24bf3ab729128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxHealth: 5
+  maxHealth: 10
   invulnerableTime: 1
   flashInterval: 0.2
   defaultColour: {r: 1, g: 1, b: 1, a: 1}
