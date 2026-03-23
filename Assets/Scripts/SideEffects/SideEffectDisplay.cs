@@ -112,10 +112,10 @@ public class SideEffectDisplay : MonoBehaviour
         panel.SetActive(true);
 
         // Show result
-        ShowIcon(finalIndex, true);
+        // ShowIcon(finalIndex, true);
         PlayResultSound(finalIndex);
-        StartCoroutine(PunchScale(eventIcon.transform));
-        StartCoroutine(FlashFrame(eventColors[finalIndex]));
+        // StartCoroutine(PunchScale(eventIcon.transform));
+        // StartCoroutine(FlashFrame(eventColors[finalIndex]));
 
         // Show event sign
         Debug.Log($"Calling ShowSign | eventSign null: {eventSign == null} | index: {finalIndex} | sprites length: {signSprites.Length}");

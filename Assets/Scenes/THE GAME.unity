@@ -448,8 +448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SideEffectDisplay
   panel: {fileID: 305056097}
-  eventIcon: {fileID: 586327219}
-  frameImage: {fileID: 1355762585}
+  eventIcon: {fileID: 0}
+  frameImage: {fileID: 0}
   eventLabel: {fileID: 0}
   eventDescription: {fileID: 0}
   eventIcons:
@@ -1002,8 +1002,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SideEffectDisplay
   panel: {fileID: 305056097}
-  eventIcon: {fileID: 586327219}
-  frameImage: {fileID: 1355762585}
+  eventIcon: {fileID: 0}
+  frameImage: {fileID: 0}
   eventLabel: {fileID: 0}
   eventDescription: {fileID: 0}
   eventIcons:
@@ -1123,17 +1123,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3146138865271536433, guid: 9cbaaa992d57d604583e78fd09c54155, type: 3}
   m_PrefabInstance: {fileID: 265762354}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &586327219 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2100947967961285957, guid: db4ce180550677f428b16074e7ee575e, type: 3}
-  m_PrefabInstance: {fileID: 2114925493}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &684358696 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8896519820047962869, guid: 1be7876ecfd9cb7428e8b8a1e050b667, type: 3}
@@ -1158,7 +1147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214407163144534788, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: orthographic size
-      value: 6.4
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 6523397875792066129, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1752,7 +1741,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 521732483448070370, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
   m_PrefabInstance: {fileID: 2966170496892411522}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2966170496892411523}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a98086e50247e04f90902207f2e96c9, type: 3}
@@ -1890,17 +1879,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318381438}
   m_CullTransparentMesh: 1
---- !u!114 &1355762585 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2828515732242148656, guid: db4ce180550677f428b16074e7ee575e, type: 3}
-  m_PrefabInstance: {fileID: 2114925493}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &1373452119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2242,6 +2220,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 138555116}
     m_Modifications:
+    - target: {fileID: 491019631958672843, guid: db4ce180550677f428b16074e7ee575e, type: 3}
+      propertyPath: eventIcon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 491019631958672843, guid: db4ce180550677f428b16074e7ee575e, type: 3}
+      propertyPath: frameImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 875274758106799059, guid: db4ce180550677f428b16074e7ee575e, type: 3}
       propertyPath: m_Name
       value: SideEffectPanel
@@ -2326,8 +2312,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 3580376272211897072, guid: db4ce180550677f428b16074e7ee575e, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 5332508218188225761, guid: db4ce180550677f428b16074e7ee575e, type: 3}
+    - {fileID: 8411800774671574954, guid: db4ce180550677f428b16074e7ee575e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3338944301410487951, guid: db4ce180550677f428b16074e7ee575e, type: 3}
       insertIndex: -1
@@ -2489,14 +2478,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2158564219757527885, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
-      propertyPath: maxSpawnInterval
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158564219757527885, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
-      propertyPath: minSpawnInterval
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4072056715052848403, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2509,32 +2490,15 @@ PrefabInstance:
       propertyPath: camObj
       value: 
       objectReference: {fileID: 1373452120}
+    - target: {fileID: 8494867118407693361, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: healthBarForegroundImg
+      value: 
+      objectReference: {fileID: 993025319}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4072056715052848403, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2966170496892411524}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
---- !u!1 &2966170496892411523 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4072056715052848403, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
-  m_PrefabInstance: {fileID: 2966170496892411522}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2966170496892411524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2966170496892411523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35b7eee996c652438563d17adfdff5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthBarsUI
-  healthBarForegroundImg: {fileID: 993025319}
 --- !u!1001 &3787946904753338759
 PrefabInstance:
   m_ObjectHideFlags: 0
