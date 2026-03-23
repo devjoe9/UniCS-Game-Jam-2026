@@ -16,17 +16,22 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float startingWaveInterval = 30f;
     [SerializeField] private float waveIntervalDecresePerWave = 2f;
     [SerializeField] private float minWaveInterval = 20f;
+    [SerializeField] private int startingMaxEnemiesAlive = 5;
+    [SerializeField] private int maxEnemiesAliveIncreasePerWave = 1;
+    [SerializeField] private int maxMaxEnemiesAlive = 10;
     private TMP_Text scoreText; 
     private Bounds spawnBounds;
     private Camera cam;
     private int currentWave;
     private bool gameOver;
-    public int curScore;
+    private int curScore;
     public int CurScore
     {
         get => curScore;
         set => curScore += value;
     }
+
+    private int numEnemiesAlive = 0;
 
     // public enum Rarity {Common = 50, Uncommon = 30, Rare = 15}
 
@@ -62,6 +67,7 @@ public class EnemySpawnController : MonoBehaviour
     {
         GameObject obj = Instantiate(enemy, spawnPos, Quaternion.identity);
         obj.GetComponent<EnemyData>().PointsValue = points;
+        numEnemiesAlive++;
     }
 
     EnemyInfo GetRandomEnemy(List<EnemyInfo> list)
@@ -164,8 +170,14 @@ public class EnemySpawnController : MonoBehaviour
 
     IEnumerator SpawnWave(List<EnemyInfo> wave, float timeBetweenSpawns)
     {
+        int maxAliveThisWave = Mathf.Min(startingMaxEnemiesAlive + currentWave*maxEnemiesAliveIncreasePerWave, maxMaxEnemiesAlive);
         foreach (var enemy in wave)
         {
+            while (numEnemiesAlive >= maxAliveThisWave)
+            {
+                yield return null;
+            }
+
             SpawnEnemy(enemy.enemyPrefab, GetRandomSpawnPos(), enemy.pointsValue);
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
@@ -197,5 +209,10 @@ public class EnemySpawnController : MonoBehaviour
             timeElapsed += Time.deltaTime;
             yield return null;
         }
+    }
+
+    public void EnemyKilled()
+    {
+        numEnemiesAlive = Mathf.Max(0, numEnemiesAlive - 1);
     }
 }

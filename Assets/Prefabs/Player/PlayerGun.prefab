@@ -108,11 +108,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blueSprite: {fileID: 2081860290900241954, guid: b4d744ed22e53ff49b13646fd6ad3c20, type: 3}
   redSprite: {fileID: 5150997395849330157, guid: 01c7c7f39ceef284889442ded0c584be, type: 3}
-  defaultDamage: 5
+  defaultDamage: 2
   defaultKnockbackForce: 5
-  manualShotCooldown: 0.25
-  autoShotCooldown: 0.5
-  bulletSpeed: 100
+  manualShotCooldown: 0.1
+  autoShotCooldown: 0.3
+  bulletSpeed: 200
   bulletPrefab: {fileID: 6187385120655881580, guid: ab128051467274d4585274729ac323f7, type: 3}
   bulletHoriOffset: 1.5
   bulletVertOffset: 0

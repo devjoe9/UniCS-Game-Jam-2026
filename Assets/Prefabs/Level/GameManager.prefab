@@ -105,13 +105,13 @@ MonoBehaviour:
   player: {fileID: 0}
   noWeaponsDuration: 10
   immortalityDuration: 10
-  timeSlowDuration: 1.25
+  timeSlowDuration: 4
   timeSlowMult: 0.5
   knockbackDuration: 10
   knockbackMult: 5
   slipperyDuration: 10
-  slipperyAccelMult: 0.2
-  slipperyDecelMult: 0.05
+  slipperyAccelMult: 0.15
+  slipperyDecelMult: 0.04
   visualEffectDelay: 2
   eventSign: {fileID: 0}
   signSprites:
@@ -178,49 +178,9 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: startingSpawnInterval
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.data[1].spawnCost
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.data[2].spawnCost
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.data[4].spawnCost
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.data[1].enemyPrefab
       value: 
       objectReference: {fileID: 2317883948780595414, guid: 0925033825c29b14fb52943837318ce0, type: 3}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.data[2].enemyPrefab
-      value: 
-      objectReference: {fileID: 7045454223621333634, guid: 112ad17abd6b3894cbd233c0e2792c14, type: 3}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.data[3].enemyPrefab
-      value: 
-      objectReference: {fileID: 3870068021404333012, guid: 5af205fee424c9141a8c0c7761337000, type: 3}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.data[4].enemyPrefab
-      value: 
-      objectReference: {fileID: 3817622638319879617, guid: 70d9e4fd0adb01b459b62de528ac6a31, type: 3}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.data[1].spawningWeight
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.data[2].spawningWeight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.data[4].spawningWeight
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 7678709811450635617, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
@@ -247,14 +207,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1375212833943310375}
     m_Modifications:
-    - target: {fileID: -4586004811669653592, guid: ee48280de3544cb44bf343e0bfe122e5, type: 3}
-      propertyPath: maxSpawnInterval
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -4586004811669653592, guid: ee48280de3544cb44bf343e0bfe122e5, type: 3}
-      propertyPath: minSpawnInterval
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3439836369393160822, guid: ee48280de3544cb44bf343e0bfe122e5, type: 3}
       propertyPath: m_Name
       value: HealerSpawner

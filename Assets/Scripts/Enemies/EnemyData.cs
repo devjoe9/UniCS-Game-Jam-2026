@@ -144,6 +144,7 @@ public class EnemyData : MonoBehaviour
 
     public void Die()
     {
+        waveController.EnemyKilled();
         if (explosionPrefab != null)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);

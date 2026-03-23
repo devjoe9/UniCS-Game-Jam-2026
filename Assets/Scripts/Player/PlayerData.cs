@@ -65,7 +65,7 @@ public class PlayerData : MonoBehaviour
                 isDead = true;
                 // death
                 Debug.Log("you died cuh"); //remove this 
-                int score = FindAnyObjectByType<EnemySpawnController>().curScore;
+                int score = FindAnyObjectByType<EnemySpawnController>().CurScore;
 
                 PlayerPrefs.SetInt("FinalScore", score);
 

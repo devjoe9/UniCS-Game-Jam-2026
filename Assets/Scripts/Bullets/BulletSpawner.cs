@@ -35,7 +35,7 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private float sweepArcAngle = 180f;
     [SerializeField] private int sweepSteps = 12;
     [SerializeField] private float timeBetweenSweepShots = 0.08f;
-    [SerializeField] private bool sweepContinuously = true;
+    // [SerializeField] private bool sweepContinuously = true;
     [SerializeField] private float sweepActiveTime = 2f;
     [SerializeField] private float sweepPauseTime = 1f;
 

@@ -148,8 +148,9 @@ MonoBehaviour:
   despawnSound: {fileID: 8300000, guid: 660242a15eade714ca89e0dbaadbc291, type: 3}
   pickupVolume: 1
   despawnVolume: 1
-  lifetime: 5
-  flashAfterTime: 3
+  effectCanvas: {fileID: 0}
+  lifetime: 10
+  flashAfterTime: 7
   flashInterval: 0.2
   defaultColour: {r: 0.54901963, g: 1, b: 0.5529412, a: 1}
   flashColour: {r: 1, g: 1, b: 1, a: 1}

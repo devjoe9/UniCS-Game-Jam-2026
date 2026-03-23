@@ -219,10 +219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxSpeed: 26
-  maxBoostingSpeed: 60
+  maxBoostingSpeed: 50
   boostOrthMult: 1.25
   boostOrthChangeTime: 0.1
-  boostShakeAmplitude: 2
+  boostShakeAmplitude: 5
   boostShakeFrequency: 5
   defaultAcceleration: 200
   defaultDeceleration: 200
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxHealth: 10
-  invulnerableTime: 1
+  invulnerableTime: 2
   flashInterval: 0.2
   defaultColour: {r: 1, g: 1, b: 1, a: 1}
   flashColour: {r: 0, g: 0, b: 0, a: 0.5529412}
