@@ -7,9 +7,9 @@ public class PlayerData : MonoBehaviour
     public float invulnerableTime;
     public float flashInterval = 0.2f;
     public Color defaultColour = new Color(1f, 1f, 1f, 1f);
-    public Color flashColour = new Color(1f, 0f, 0f, 0.5f); 
+    public Color flashColour = new Color(1f, 0f, 0f, 0.5f);
 
-
+    public float CurHealth => curHealth;
     private float curHealth;
     public bool IsVulnerable => isVulnerable;
     private bool isVulnerable;
@@ -20,6 +20,7 @@ public class PlayerData : MonoBehaviour
     public AudioClip hurtSound;
     [Range(0f, 1f)] public float hurtVolume = 1f;
     private AudioSource audioSource;
+    private HealthBarUI healthBar;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,6 +31,7 @@ public class PlayerData : MonoBehaviour
         isDead = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        healthBar = FindAnyObjectByType<HealthBarUI>();
         if (spriteRenderer != null)
         {
             spriteRenderer.color = defaultColour;
@@ -47,6 +49,7 @@ public class PlayerData : MonoBehaviour
         if (!isDead && isVulnerable)
         {
             curHealth -= damage;
+            healthBar.UpdatePlayerHealthBar(this);
             if (audioSource != null && hurtSound != null)
             {
                 audioSource.PlayOneShot(hurtSound, hurtVolume);
@@ -71,6 +74,7 @@ public class PlayerData : MonoBehaviour
         if (!isDead)
         {
             curHealth = Mathf.Min(maxHealth, curHealth += healing);
+            healthBar.UpdatePlayerHealthBar(this);
         }
     }
 
