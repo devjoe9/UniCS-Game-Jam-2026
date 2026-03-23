@@ -99,7 +99,6 @@ public class PlayerGunController : MonoBehaviour
 
         if (audioSource != null && shootSound != null)
         {
-            Debug.Log("gun sound"); 
             audioSource.PlayOneShot(shootSound, shootVolume);
         }
     }

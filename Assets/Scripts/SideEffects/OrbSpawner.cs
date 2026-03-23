@@ -45,7 +45,6 @@ public class OrbSpawner : MonoBehaviour
             script.OnPickedUp += OnOrbPickedUp;
 
         activeOrbCount++;
-        Debug.Log($"[OrbSpawner] Spawned at {pos} | Active: {activeOrbCount}/{maxOrbs}");
     }
 
     private Vector2 GetRandomPositionInBounds()
@@ -59,6 +58,5 @@ public class OrbSpawner : MonoBehaviour
     private void OnOrbPickedUp()
     {
         activeOrbCount = Mathf.Max(0, activeOrbCount - 1);
-        Debug.Log($"[OrbSpawner] Orb picked up. Active: {activeOrbCount}/{maxOrbs}");
     }
 }

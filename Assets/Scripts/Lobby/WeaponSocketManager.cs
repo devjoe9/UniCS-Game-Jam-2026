@@ -43,7 +43,6 @@ public class WeaponSocketManager : MonoBehaviour
 
         if (loadout == null)
         {
-            Debug.LogWarning("[WeaponSocketManager] No loadout data found. Was LoadoutData.Selected set before scene load?");
             ApplyFallback();
             return;
         }
@@ -52,28 +51,23 @@ public class WeaponSocketManager : MonoBehaviour
         ApplyToSocket(rightSocket,  rightWeaponSprites,  loadout.selections[1].itemIndex, "RIGHT");
         ApplyToSocket(bottomSocket, bottomWeaponSprites, loadout.selections[2].itemIndex, "BOTTOM");
         ApplyToSocket(leftSocket,   leftWeaponSprites,   loadout.selections[3].itemIndex, "LEFT");
-
-        Debug.Log("[WeaponSocketManager] Loadout applied successfully.");
     }
 
     private void ApplyToSocket(SpriteRenderer socket, Sprite[] sprites, int index, string sideName)
     {
         if (socket == null)
         {
-            Debug.LogWarning($"[WeaponSocketManager] {sideName} socket is not assigned.");
             return;
         }
 
         if (sprites == null || sprites.Length == 0)
         {
-            Debug.LogWarning($"[WeaponSocketManager] No sprites assigned for {sideName} slot.");
             if (hideSocketIfMissing) socket.enabled = false;
             return;
         }
 
         if (index < 0 || index >= sprites.Length)
         {
-            Debug.LogWarning($"[WeaponSocketManager] Index {index} out of range for {sideName} sprites (length {sprites.Length}).");
             if (hideSocketIfMissing) socket.enabled = false;
             return;
         }

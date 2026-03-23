@@ -94,7 +94,6 @@ public class SideEffectDisplay : MonoBehaviour
         {
             sideEffectsManager = gameManager.GetComponent<SideEffectsManager>();
         }
-        Debug.Log($"SideEffectsManager null: {sideEffectsManager == null}");
 
         // Find CanvasEffectManager if not assigned
         if (canvasEffectManager == null)
@@ -121,7 +120,6 @@ public class SideEffectDisplay : MonoBehaviour
 
     private IEnumerator StartRandomEvent(int finalIndex)
     {
-        Debug.Log("Start random event");
         isAnimating = true;
         panel.SetActive(true);
 
@@ -139,155 +137,6 @@ public class SideEffectDisplay : MonoBehaviour
         panel.SetActive(false);
         isAnimating = false;
     }
-
-    // private IEnumerator Spin(int finalIndex)
-    // {
-    //     isAnimating = true;
-    //     panel.SetActive(true);
-
-    //     // Start looping spin sound
-    //     if (spinAudioSource != null && spinSound != null)
-    //     {
-    //         spinAudioSource.clip   = spinSound;
-    //         spinAudioSource.loop   = true;
-    //         spinAudioSource.volume = 1f;
-    //         spinAudioSource.Play();
-    //     }
-
-    //     float elapsed         = 0f;
-    //     float timeSinceSwitch = 0f;
-    //     int   currentIndex    = Random.Range(0, eventNames.Length);
-
-    //     while (elapsed < spinDuration)
-    //     {
-    //         elapsed         += Time.deltaTime;
-    //         timeSinceSwitch += Time.deltaTime;
-
-    //         float t        = elapsed / spinDuration;
-    //         float eased    = t * t * t;
-    //         float interval = Mathf.Lerp(startInterval, endInterval, eased);
-
-    //         if (timeSinceSwitch >= interval)
-    //         {
-    //             timeSinceSwitch = 0f;
-
-    //             if (elapsed > spinDuration * 0.85f)
-    //             {
-    //                 currentIndex = (currentIndex + 1) % eventNames.Length;
-    //                 if (currentIndex == finalIndex && elapsed > spinDuration * 0.93f)
-    //                     break;
-    //             }
-    //             else
-    //             {
-    //                 int next = Random.Range(0, eventNames.Length);
-    //                 while (next == currentIndex && eventNames.Length > 1)
-    //                     next = Random.Range(0, eventNames.Length);
-    //                 currentIndex = next;
-    //             }
-
-    //             ShowIcon(currentIndex, false);
-    //         }
-
-    //         yield return null;
-    //     }
-
-    //     // Stop spin sound
-    //     StartCoroutine(FadeOutSpin());
-
-    //     // Show result
-    //     ShowIcon(finalIndex, true);
-    //     PlayResultSound(finalIndex);
-    //     StartCoroutine(PunchScale(eventIcon.transform));
-    //     StartCoroutine(FlashFrame(eventColors[finalIndex]));
-
-    //     // Show event sign
-    //     Debug.Log($"Calling ShowSign | eventSign null: {eventSign == null} | index: {finalIndex} | sprites length: {signSprites.Length}");
-    //     if (eventSign != null && finalIndex < signSprites.Length)
-    //         eventSign.ShowSign(signSprites[finalIndex], effectDuration, );
-    //     else
-    //         Debug.Log($"ShowSign SKIPPED - eventSign null: {eventSign == null} | index valid: {finalIndex < signSprites.Length}");
-
-    //     Debug.Log($"[SideEffectDisplay] Result: {eventNames[finalIndex]}");
-
-    //     // Wait 2 seconds THEN start visual effect
-    //     yield return new WaitForSeconds(visualEffectDelay);
-    //     StartSideEffect(finalIndex);
-
-    //     yield return new WaitForSeconds(holdDuration);
-
-    //     panel.SetActive(false);
-    //     isAnimating = false;
-    // }
-
-    // private void StartSideEffect(int index)
-    // {
-    //     if (canvasEffectManager == null)
-    //     {
-    //         Debug.LogWarning("[SideEffectDisplay] CanvasEffectManager is null! Cannot start visual effect.");
-    //         return;
-    //     }
-
-    //     Debug.Log($"[SideEffectDisplay] Starting visual effect for: {eventNames[index]} (index {index})");
-
-    //     // Wheel order: No Weapons, Immortality, Slow Time, Knockback, Slippery
-    //     // Effect Manager order: No Weapons, Immortality, Time Slowed Down, Knockback Increased, Slippery
-    //     switch (index)
-    //     {
-    //         case 0: // No Weapons
-    //             canvasEffectManager.StartNoWeaponsMode();
-    //             break;
-    //         case 1: // Immortality
-    //             canvasEffectManager.StartImmortalityMode();
-    //             break;
-    //         case 2: // Slow Time
-    //             canvasEffectManager.StartTimeSlowedDownMode();
-    //             break;
-    //         case 3: // Knockback
-    //             canvasEffectManager.StartKnockbackIncreasedMode();
-    //             break;
-    //         case 4: // Slippery
-    //             canvasEffectManager.StartSlipperyMode();
-    //             break;
-    //         default:
-    //             Debug.LogWarning($"[SideEffectDisplay] Unknown effect index: {index}");
-    //             break;
-    //     }
-    // }
-
-    // private void StartSideEffect(int index)
-    // {
-    //     if (canvasEffectManager == null)
-    //     {
-    //         Debug.LogWarning("[SideEffectDisplay] CanvasEffectManager is null! Cannot start visual effect.");
-    //         return;
-    //     }
-
-    //     Debug.Log($"[SideEffectDisplay] Starting visual effect for: {eventNames[index]} (index {index})");
-
-    //     // Wheel order: No Weapons, Immortality, Slow Time, Knockback, Slippery
-    //     // Effect Manager order: No Weapons, Immortality, Time Slowed Down, Knockback Increased, Slippery
-    //     switch (index)
-    //     {
-    //         case 0: // No Weapons
-    //             canvasEffectManager.StartNoWeaponsMode();
-    //             break;
-    //         case 1: // Immortality
-    //             canvasEffectManager.StartImmortalityMode();
-    //             break;
-    //         case 2: // Slow Time
-    //             canvasEffectManager.StartTimeSlowedDownMode();
-    //             break;
-    //         case 3: // Knockback
-    //             canvasEffectManager.StartKnockbackIncreasedMode();
-    //             break;
-    //         case 4: // Slippery
-    //             canvasEffectManager.StartSlipperyMode();
-    //             break;
-    //         default:
-    //             Debug.LogWarning($"[SideEffectDisplay] Unknown effect index: {index}");
-    //             break;
-    //     }
-    // }
 
     private IEnumerator FadeOutSpin()
     {

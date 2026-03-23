@@ -69,8 +69,6 @@ public class CanvasNoWeaponsEffect : MonoBehaviour
         
         // Make sure crosses are visible for the final warning blink
         SetCrossesVisibility(true);
-        
-        Debug.Log("No Weapons effect - continuous blinking stopped, warning phase starting");
     }
     
     IEnumerator BlinkCrossesContinuously(float duration)

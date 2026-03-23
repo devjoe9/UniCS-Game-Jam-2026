@@ -31,7 +31,6 @@ public class WeaponSlotUI : MonoBehaviour
 
         if (items == null || items.Count == 0)
         {
-            Debug.LogWarning($"[{name}] No sprites assigned to WeaponSlotUI.");
             if (itemImage != null)
                 itemImage.enabled = false;
             return;
@@ -88,14 +87,11 @@ public class WeaponSlotUI : MonoBehaviour
     {
         if (itemImage == null)
         {
-            Debug.LogWarning($"[{name}] itemImage is not assigned.");
             return;
         }
 
         itemImage.enabled = true;
         itemImage.sprite = items[currentIndex];
         itemImage.preserveAspect = true;
-
-        Debug.Log($"[{name}] Showing item {currentIndex}: {items[currentIndex].name}");
     }
 }

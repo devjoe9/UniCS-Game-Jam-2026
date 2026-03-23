@@ -45,16 +45,12 @@ public class PlayerShot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Debug.Log("Hit object: " + collision.name);
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log("In compare tag");
             EnemyData enemyData = collision.GetComponent<EnemyData>();  
             if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue))
             {
-                Debug.Log("Doing damage");
                 enemyData.TakeDamage(damage);
-                Debug.Log("bluh damaged");
                 enemyData.TakeKnockback(transform.right, knockbackForce);
                 Destroy(gameObject);
             }

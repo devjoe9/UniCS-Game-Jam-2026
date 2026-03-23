@@ -89,7 +89,6 @@ public class EnemyData : MonoBehaviour
         {
             curHealth -= damage;
             StartCoroutine(DamageFlash());
-            Debug.Log("enemy hurt cuh"); 
             if (audioSource != null && hurtSound != null)
             {
                 audioSource.PlayOneShot(hurtSound, hurtVolume);
@@ -99,7 +98,6 @@ public class EnemyData : MonoBehaviour
             {
                 isDead = true;
                 Die();
-                Debug.Log("enemy died cuh"); 
                 waveController.CurScore = pointsValue;
                 return;
                 // death

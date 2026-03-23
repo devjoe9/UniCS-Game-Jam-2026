@@ -59,12 +59,10 @@ public class PlayerShieldController : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log("Collision");
             EnemyData enemyData = collision.GetComponentInParent<EnemyData>();
             HomingMelee homingEnemy = collision.GetComponentInParent<HomingMelee>();
             if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue))
             {
-                Debug.Log("In deep");
                 if (audioSource != null && shieldSound != null)
                 {
                     audioSource.PlayOneShot(shieldSound, shieldVolume);
@@ -94,7 +92,6 @@ public class PlayerShieldController : MonoBehaviour
 
             if (bulletMatchesShield)
             {
-                Debug.Log("blocked");
                 if (audioSource != null && shieldSound != null)
                 {
                     audioSource.PlayOneShot(shieldSound, shieldVolume);

@@ -54,7 +54,6 @@ public class SideEffectsManager : MonoBehaviour
 
     public IEnumerator StartSideEffect(int index)
     {
-        Debug.Log("In StartSideEffect");
         if (isEffectActive)
         {
             StopCurrentEffect();
@@ -125,7 +124,6 @@ public class SideEffectsManager : MonoBehaviour
 
     private void StartNoWeaponsMode()
     {
-        Debug.Log("No weapons");
         for (int i = 0; i < player.transform.childCount; i++)
         {
             GameObject child = player.transform.GetChild(i).gameObject;
@@ -151,7 +149,6 @@ public class SideEffectsManager : MonoBehaviour
 
     private void StartImmortalityMode()
     {
-        Debug.Log("Immortality");
         if (playerData.ActiveInvulnerability != null) StopCoroutine(playerData.ActiveInvulnerability);
         playerData.IsVulnerable = false;
     }
@@ -163,7 +160,6 @@ public class SideEffectsManager : MonoBehaviour
 
     private void StartTimeSlowedDownMode()
     {
-        Debug.Log("Time slow");
         Time.timeScale = timeSlowMult;
         curTimeScale = timeSlowMult;
     }
@@ -176,19 +172,16 @@ public class SideEffectsManager : MonoBehaviour
 
     private void StartKnockbackIncreasedMode()
     {
-        Debug.Log(curKnockbackMult);
         curKnockbackMult = knockbackMult;
     }
 
     private void StopKnockbackIncreasedMode()
     {
-        Debug.Log(curKnockbackMult);
         curKnockbackMult = 1f;
     }
 
     private void StartSlipperyMode()
     {
-        Debug.Log("Slippery");
         playerController.Acceleration = playerController.defaultAcceleration * slipperyAccelMult;
         playerController.Deceleration = playerController.defaultDeceleration * slipperyDecelMult;
     }
@@ -213,7 +206,6 @@ public class SideEffectsManager : MonoBehaviour
 
     private IEnumerator StartRandomEvent(int finalIndex)
     {
-        Debug.Log("Start random event");
         isAnimating = true;
         panel.SetActive(true);
 

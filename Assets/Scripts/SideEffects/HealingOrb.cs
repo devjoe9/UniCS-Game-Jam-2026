@@ -36,7 +36,6 @@ public class HealingOrb : MonoBehaviour
         if (!other.CompareTag(playerTag)) return;
 
         pickedUp = true;
-        Debug.Log("[HealingOrb] Player picked up orb!");
         OnPickedUp?.Invoke();
         Destroy(gameObject);
     }

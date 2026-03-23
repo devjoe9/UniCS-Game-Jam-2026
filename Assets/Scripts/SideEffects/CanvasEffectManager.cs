@@ -139,7 +139,6 @@ public class CanvasEffectManager : MonoBehaviour
     {
         if (isEffectActive)
         {
-            Debug.Log($"Effect already active! Stopping previous and starting {mode.modeName}");
             StopCurrentEffect();
         }
         
@@ -149,8 +148,6 @@ public class CanvasEffectManager : MonoBehaviour
     
     IEnumerator ModeEffectCoroutine(ModeVisualEffect mode)
     {
-        Debug.Log($"{mode.modeName} visual effect started!");
-        
         float actualEffectDuration = mode.customEffectDuration > 0 ? mode.customEffectDuration : effectDuration;
         float actualWarningDuration = mode.customWarningDuration > 0 ? mode.customWarningDuration : warningDuration;
         
@@ -225,14 +222,12 @@ public class CanvasEffectManager : MonoBehaviour
         ClearEffects();
         
         isEffectActive = false;
-        Debug.Log($"{mode.modeName} visual effect ended!");
     }
     
     IEnumerator SpawnExpandingCircles(ModeVisualEffect mode, float effectDuration, float warningDuration)
     {
         if (mode.effectSprite == null || effectCanvas == null)
         {
-            Debug.LogWarning("Missing sprite or canvas for expanding circles!");
             yield break;
         }
         
@@ -265,7 +260,6 @@ public class CanvasEffectManager : MonoBehaviour
     {
         if (mode.effectSprite == null || mode.beamParticleSprite == null || effectCanvas == null)
         {
-            Debug.LogWarning("Missing sprites or canvas for orbital beam!");
             return;
         }
         
@@ -463,8 +457,6 @@ public class CanvasEffectManager : MonoBehaviour
             
             activeEffects.Add(effectObj);
         }
-        
-        Debug.Log($"Spawned {mode.spawnCount} canvas effects for {mode.modeName}");
     }
     
     void ClearEffects()

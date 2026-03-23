@@ -170,8 +170,6 @@ public class LoadoutSelectManager : MonoBehaviour
 
     public void CycleSlot(int slotIndex, int direction)
     {
-        Debug.Log($"CycleSlot called | slot={slotIndex} | direction={direction}");
-        
         if (!IsValidSlotIndex(slotIndex)) return;
         if (GetItemCount(slotIndex) == 0) return;
 
@@ -323,8 +321,6 @@ public class LoadoutSelectManager : MonoBehaviour
 
         LoadoutData.Selected = result;
         PlaySound(confirmClip);
-
-        Debug.Log("[LoadoutSelect] Starting game with:\n" + result);
     }
 
     private SlotItemData GetCurrentItem(int slotIndex)
