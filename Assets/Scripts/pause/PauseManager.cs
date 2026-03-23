@@ -19,11 +19,6 @@ public class PauseManager : MonoBehaviour
             Pause();
     }
 
-    void OnPause()
-    {
-        TogglePause();
-    }
-
     public void Pause()
     {
         Time.timeScale = 0f;
