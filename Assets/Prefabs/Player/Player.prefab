@@ -259,8 +259,8 @@ MonoBehaviour:
   maxHealth: 5
   invulnerableTime: 1
   flashInterval: 0.2
-  defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
-  flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
+  defaultColour: {r: 1, g: 1, b: 1, a: 1}
+  flashColour: {r: 0, g: 0, b: 0, a: 0.5529412}
   hurtSound: {fileID: 8300000, guid: 614a0037757705b4f9a92ec7e251476c, type: 3}
   hurtVolume: 1
 --- !u!114 &4165729114830810877
