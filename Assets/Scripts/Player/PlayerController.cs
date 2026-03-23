@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private PlayerBoosterController[] boosters;
     private CameraManager cameraManager;
     private PlayerGunController[] guns;
+    private PauseManager pauseManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         movementFilter.SetLayerMask(LayerMask.GetMask("border"));
         cameraManager = FindAnyObjectByType<CameraManager>();
         guns = GetComponentsInChildren<PlayerGunController>(true);
+        pauseManager = FindAnyObjectByType<PauseManager>();
     }
 
     private void FixedUpdate()
@@ -201,6 +203,11 @@ public class PlayerController : MonoBehaviour
         {
             gun.TryManualShot();
         }
+    }
+
+    void OnPause()
+    {
+        pauseManager.TogglePause();
     }
 
     IEnumerator ResetRotateCooldown()
