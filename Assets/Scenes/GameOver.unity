@@ -1024,6 +1024,7 @@ GameObject:
   - component: {fileID: 1263356770}
   - component: {fileID: 1263356769}
   - component: {fileID: 1263356768}
+  - component: {fileID: 1263356771}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -1150,6 +1151,22 @@ RectTransform:
   m_AnchoredPosition: {x: 170, y: 195}
   m_SizeDelta: {x: 600, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1263356771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263356767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4962e50f45014e4cb33aa347f96c3e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UILogoFloat
+  floatAmount: 15
+  floatSpeed: 1
+  glowIntensity: 0.3
+  glowSpeed: 1.2
 --- !u!1 &1305356423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,6 +1441,7 @@ GameObject:
   - component: {fileID: 1586297686}
   - component: {fileID: 1586297687}
   - component: {fileID: 1586297688}
+  - component: {fileID: 1586297689}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1550,6 +1568,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1586297689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586297685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4962e50f45014e4cb33aa347f96c3e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UILogoFloat
+  floatAmount: 15
+  floatSpeed: 1
+  glowIntensity: 0.3
+  glowSpeed: 1.2
 --- !u!1 &1643590556
 GameObject:
   m_ObjectHideFlags: 0
