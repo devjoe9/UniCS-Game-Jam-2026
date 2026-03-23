@@ -70,7 +70,7 @@ public class PlayerData : MonoBehaviour
     {
         if (!isDead)
         {
-            curHealth += healing;
+            curHealth = Mathf.Min(maxHealth, curHealth += healing);
         }
     }
 
