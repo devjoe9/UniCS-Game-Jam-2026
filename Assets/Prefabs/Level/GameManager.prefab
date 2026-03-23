@@ -108,7 +108,7 @@ MonoBehaviour:
   timeSlowDuration: 1.25
   timeSlowMult: 0.25
   knockbackDuration: 10
-  knockbackMult: 2
+  knockbackMult: 5
   slipperyDuration: 10
   slipperyAccelMult: 0.2
   slipperyDecelMult: 0.05
@@ -224,6 +224,10 @@ PrefabInstance:
     - target: {fileID: 7678709811450635617, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678709811450635617, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

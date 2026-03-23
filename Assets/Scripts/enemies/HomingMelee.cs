@@ -15,12 +15,15 @@ public class HomingMelee : MonoBehaviour
     [SerializeField] float respawnTime = 2f;
 
     public float knockbackDrag = 5f;
+    public float knockbackForce = 20f;
+    public int damage = 1;
 
     private Rigidbody2D rb;
     private Vector3 spawnPosition;
     private EnemyData data;
     private Collider2D[] colliders;
     private SpriteRenderer sr;
+    private PlayerController playerController;
 
     void Start()
     {
@@ -30,6 +33,7 @@ public class HomingMelee : MonoBehaviour
 
         colliders = GetComponents<Collider2D>(); // 👈 get BOTH colliders
         sr = GetComponent<SpriteRenderer>();
+        playerController = FindAnyObjectByType<PlayerController>();
 
         // Auto-find player if not assigned
         if (player == null)
@@ -84,7 +88,9 @@ public class HomingMelee : MonoBehaviour
 
             if (playerData != null && playerData.IsVulnerable)
             {
-                playerData.TakeDamage(1);
+                Vector2 knockbackDir = (other.transform.position - transform.position).normalized;
+                playerData.TakeDamage(damage);
+                playerController.TakeKnockback(knockbackDir, knockbackForce);
             }
 
             if (data != null)

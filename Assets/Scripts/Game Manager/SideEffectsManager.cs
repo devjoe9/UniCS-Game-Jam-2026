@@ -200,12 +200,12 @@ public class SideEffectsManager : MonoBehaviour
     {
         if (isAnimating)
         {
-            eventSign.HideSign();
+            eventSign.HideSign(); 
             StopCurrentEffect();
         }
         int finalIndex = Random.Range(0, signSprites.Length);
         // StartCoroutine(StartRandomEvent(finalIndex));
-        StartCoroutine(StartRandomEvent(3));
+        StartCoroutine(StartRandomEvent(finalIndex));
     }
 
     private IEnumerator StartRandomEvent(int finalIndex)
