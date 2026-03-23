@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawnController : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float startingWaveInterval = 30f;
     [SerializeField] private float waveIntervalDecresePerWave = 2f;
     [SerializeField] private float minWaveInterval = 20f;
+    private TMP_Text scoreText; 
     private Bounds spawnBounds;
     private Camera cam;
     private int currentWave;
@@ -45,8 +48,14 @@ public class EnemySpawnController : MonoBehaviour
         currentWave = 0;
         gameOver = false;
         curScore = 0;
+        scoreText = FindAnyObjectByType<TMP_Text>(FindObjectsInactive.Include);
 
         StartCoroutine(WaveLoop());
+    }
+
+    void Update()
+    {
+        scoreText.text = curScore.ToString();
     }
 
     void SpawnEnemy(GameObject enemy, Vector3 spawnPos, int points)
