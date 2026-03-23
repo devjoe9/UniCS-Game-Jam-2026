@@ -14,7 +14,21 @@ public class SideEffectsManager : MonoBehaviour
     [SerializeField] private float slipperyDuration = 10f;
     [SerializeField] private float slipperyAccelMult = 0.5f;
     [SerializeField] private float slipperyDecelMult = 0.25f;
+    [SerializeField] float visualEffectDelay = 2f;
 
+    [Header("UI References")]
+    public EventSign eventSign;
+    public Sprite[]  signSprites  = new Sprite[5];
+    public GameObject panel;
+
+    [Header("Audio")]
+    public AudioSource resultAudioSource;
+    public AudioClip   positiveSound;
+    public AudioClip   negativeSound;
+    public AudioClip   neutralSound;
+
+    private int[] eventCategory = new int[] { 2, 0, 1, 1, 1 };
+    private float[] effectDurations;
     private float curTimeScale;
     public float CurTimeScale => curTimeScale;
     private float curKnockbackMult;
@@ -23,6 +37,7 @@ public class SideEffectsManager : MonoBehaviour
     private int curEffectIndex;
     private PlayerController playerController;
     private PlayerData playerData;
+    private bool isAnimating = false;
     
     void Start()
     {
@@ -31,6 +46,7 @@ public class SideEffectsManager : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
         playerData = player.GetComponent<PlayerData>();
         curTimeScale = 1;
+        effectDurations = new float[] {noWeaponsDuration, immortalityDuration, timeSlowDuration, knockbackDuration, slipperyDuration};
     }
 
     public IEnumerator StartSideEffect(int index)
@@ -178,5 +194,47 @@ public class SideEffectsManager : MonoBehaviour
         playerController.Deceleration = playerController.defaultDeceleration;
     }
 
+    public void TriggerRandomEvent()
+    {
+        if (isAnimating)
+        {
+            eventSign.HideSign();
+            StopCurrentEffect();
+        }
+        int finalIndex = Random.Range(0, signSprites.Length);
+        StartCoroutine(StartRandomEvent(finalIndex));
+        // StartCoroutine(Spin(finalIndex));
+    }
+
+    private IEnumerator StartRandomEvent(int finalIndex)
+    {
+        Debug.Log("Start random event");
+        isAnimating = true;
+        panel.SetActive(true);
+
+        PlayResultSound(finalIndex);
+
+        // Show event sign
+        if (eventSign != null && finalIndex < signSprites.Length)
+            eventSign.ShowSign(signSprites[finalIndex], effectDurations[finalIndex], visualEffectDelay);
+
+        yield return new WaitForSeconds(visualEffectDelay);
+        StartCoroutine(StartSideEffect(finalIndex));
+
+        // yield return new WaitForSeconds(holdDuration);
+
+        // panel.SetActive(false);
+        isAnimating = false;
+    }
     
+    private void PlayResultSound(int index)
+    {
+        if (resultAudioSource == null) return;
+        int category = eventCategory[index];
+        AudioClip clip = category == 0 ? positiveSound :
+                         category == 2 ? negativeSound :
+                         neutralSound;
+        if (clip != null)
+            resultAudioSource.PlayOneShot(clip);
+    }
 }

@@ -103,10 +103,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 0}
+  noWeaponsDuration: 10
+  immortalityDuration: 10
+  timeSlowDuration: 1.25
   timeSlowMult: 0.25
+  knockbackDuration: 10
   knockbackMult: 2
-  slipperyAccelMult: 0.5
-  slipperyDecelMult: 0.25
+  slipperyDuration: 10
+  slipperyAccelMult: 0.2
+  slipperyDecelMult: 0.05
+  visualEffectDelay: 2
+  eventSign: {fileID: 0}
+  signSprites:
+  - {fileID: 21300000, guid: f6e295019fa56394481820038a0901d9, type: 3}
+  - {fileID: 21300000, guid: a86388fb3c6ceaa478e35761cbb95a99, type: 3}
+  - {fileID: 21300000, guid: 05598118586ac8249bc1118fd1f8dc39, type: 3}
+  - {fileID: 21300000, guid: a3ba37ac3280eff4a90d765d88b9cfe7, type: 3}
+  - {fileID: 21300000, guid: f2d83302f75171049b0c3e971e51cd40, type: 3}
+  panel: {fileID: 0}
+  resultAudioSource: {fileID: 0}
+  positiveSound: {fileID: 8300000, guid: 4cf8da5829d76ab48bfccda00c2e2a43, type: 3}
+  negativeSound: {fileID: 8300000, guid: 403f9dfa3bbaf07408c7b6afb3d1c629, type: 3}
+  neutralSound: {fileID: 8300000, guid: 386db3d7bd4161c438d713413796cc4b, type: 3}
 --- !u!1001 &608578659290770366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158,6 +176,10 @@ PrefabInstance:
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
+      propertyPath: startingSpawnInterval
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.data[1].spawnCost

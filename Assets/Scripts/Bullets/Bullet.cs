@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifetime = 5f;
     [SerializeField] private float bulletSize = 1f;
     [SerializeField] private int damage = 1;
+    [SerializeField] private float knockbackForce = 100;
 
     [SerializeField] private BulletType bulletType = BulletType.RedBullet;
 
@@ -90,10 +91,13 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerData playerData = other.GetComponentInParent<PlayerData>();
+            PlayerController playerController = other.GetComponentInParent<PlayerController>();
 
             if (playerData != null && playerData.IsVulnerable)
             {
+                Vector2 knockbackDir = (other.transform.position - transform.position).normalized;
                 playerData.TakeDamage(damage);
+                playerController.TakeKnockback(knockbackDir, knockbackForce);
                 Destroy(gameObject);
             }
         }
