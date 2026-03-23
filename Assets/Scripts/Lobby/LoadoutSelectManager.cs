@@ -307,7 +307,7 @@ public class LoadoutSelectManager : MonoBehaviour
             infoPanelFrame.color = item.pipColor;
     }
 
-    private void OnStartClicked()
+    public void OnStartClicked()
     {
         LoadoutData result = new LoadoutData();
 
