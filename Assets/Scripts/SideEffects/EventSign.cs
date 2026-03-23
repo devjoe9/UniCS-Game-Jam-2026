@@ -20,6 +20,7 @@ public class EventSign : MonoBehaviour
     [Header("Flicker Settings")]
     public int   flickerCount    = 4;
     public float flickerOnTime   = 0.1f;
+    public float totalFlickerTime = 2f;
     private Coroutine activeCoroutine;
 
 
@@ -49,6 +50,8 @@ public class EventSign : MonoBehaviour
     {
         if (signImage != null)
             signImage.sprite = sprite;
+        
+        if (delay == 0) delay = totalFlickerTime;
 
         // flicker IN
         float timeElapsed = 0;

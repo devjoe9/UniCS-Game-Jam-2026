@@ -234,7 +234,7 @@ MonoBehaviour:
   firePattern: 0
   bulletsPerBurst: 4
   timeBetweenBurstShots: 0.12
-  timeBetweenBursts: 1.2
+  timeBetweenBursts: 4
   sweepArcAngle: 180
   sweepSteps: 12
   timeBetweenSweepShots: 0.08

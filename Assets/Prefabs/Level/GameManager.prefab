@@ -112,7 +112,7 @@ MonoBehaviour:
   slipperyDuration: 10
   slipperyAccelMult: 0.15
   slipperyDecelMult: 0.04
-  visualEffectDelay: 2
+  visualEffectDelay: 0
   eventSign: {fileID: 0}
   signSprites:
   - {fileID: 21300000, guid: f6e295019fa56394481820038a0901d9, type: 3}
