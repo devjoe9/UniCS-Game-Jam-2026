@@ -9,6 +9,7 @@ public class CameraManager : MonoBehaviour
     private CinemachineCamera cineCam;
     private float defaultOrthSize;
     private CamShake camShake;
+    private Coroutine zoomCoroutine;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +22,8 @@ public class CameraManager : MonoBehaviour
     public void ChangeOrthSize(float mult, float duration, bool toDefault)
     {
         float targetOrthSize = toDefault ? defaultOrthSize : defaultOrthSize * mult;
+        if (zoomCoroutine != null) StopCoroutine(zoomCoroutine);
+
         StartCoroutine(SmoothOrthSizeChange(targetOrthSize, duration));
     }
 
@@ -31,14 +34,14 @@ public class CameraManager : MonoBehaviour
 
         while (timeElapsed < duration)
         {
-            timeElapsed += Time.deltaTime;
+            timeElapsed += Time.fixedDeltaTime;
 
             float t = timeElapsed / duration;
             float newOrthSize = Mathf.Lerp(startOrthSize, targetOrthSize, t);
 
             cineCam.Lens.OrthographicSize = newOrthSize;
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         cineCam.Lens.OrthographicSize = targetOrthSize;

@@ -1246,7 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a113a60ca4a92b4e8282585d8fc7d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
-  gameSceneName: DO NOT TOUCH
+  gameSceneName: THE GAME
 --- !u!1 &1932534388676425615
 GameObject:
   m_ObjectHideFlags: 0
