@@ -3,13 +3,14 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     public static bool isPaused = false;
+    private SideEffectsManager sideEffectsManager;
 
     [SerializeField] GameObject pauseOverlay;
 
-    // void Start()
-    // {
-    //     pauseOverlay = GameObject.FindGameObjectWithTag("Pause");
-    // }
+    void Start()
+    {
+        sideEffectsManager = FindAnyObjectByType<SideEffectsManager>();
+    }
 
     public void TogglePause()
     {
@@ -29,7 +30,7 @@ public class PauseManager : MonoBehaviour
 
     public void Resume()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = sideEffectsManager.CurTimeScale;
         isPaused = false;
         pauseOverlay.SetActive(false);
     }

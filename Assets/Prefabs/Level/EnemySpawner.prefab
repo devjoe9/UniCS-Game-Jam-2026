@@ -112,12 +112,12 @@ MonoBehaviour:
     spawningWeight: 10
     spawnCost: 5
     pointsValue: 100
-  startingSpawnInterval: 2
+  startingSpawnInterval: 5
   spawnIntervalDecreasePerWave: 0.25
   minSpawnInterval: 0.2
   startingSpawnBudget: 5
   budgetIncreasePerWave: 5
   startingWaveInterval: 30
-  waveIntervalDecresePerWave: 2
+  waveIntervalDecresePerWave: 1
   minWaveInterval: 20
   curScore: 0

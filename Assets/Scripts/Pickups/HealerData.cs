@@ -8,6 +8,7 @@ public class HealerData : MonoBehaviour
     [SerializeField] private AudioClip despawnSound;
     [Range(0f, 1f)] [SerializeField] private float pickupVolume = 1f;
     [Range(0f, 1f)] [SerializeField] private float despawnVolume = 1f;
+    [SerializeField] private Canvas effectCanvas;
 
     public float lifetime = 5f;
     public float flashAfterTime = 3f;
@@ -19,12 +20,14 @@ public class HealerData : MonoBehaviour
     private bool isActive;
     private SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
+    private SideEffectsManager sideEffectsManager;
 
     void Start()
     {
         isActive = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        sideEffectsManager = FindAnyObjectByType<SideEffectsManager>();
 
         if (audioSource != null)
         {
@@ -49,6 +52,7 @@ public class HealerData : MonoBehaviour
             {
                 playerData.TakeHealing(healing);
                 isActive = false;
+                sideEffectsManager.TriggerRandomEvent();
 
                 if (pickupSound != null)
                 {

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MeleeEnemy : MonoBehaviour
 {
+    public int damage = 2;
+    public float knockbackForce = 20f;
     [Header("References")]
     [SerializeField] Transform player;
 
@@ -29,6 +31,7 @@ public class MeleeEnemy : MonoBehaviour
     private bool canChainDash = true;
 
     private EnemyData data;
+    private PlayerController playerController;
     public float knockbackDrag = 5f;
 
     void Start()
@@ -39,6 +42,7 @@ public class MeleeEnemy : MonoBehaviour
         // Auto-find player if not assigned
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        playerController = player.GetComponent<PlayerController>();
     }
 
     void Update()
@@ -170,6 +174,15 @@ public class MeleeEnemy : MonoBehaviour
 {
     if (other.CompareTag("Player"))
     {
+        PlayerData playerData = other.GetComponentInParent<PlayerData>();
+
+            if (playerData != null && playerData.IsVulnerable)
+            {
+                Vector2 knockbackDir = (other.transform.position - transform.position).normalized;
+                playerData.TakeDamage(damage);
+                playerController.TakeKnockback(knockbackDir, knockbackForce);
+            }
+            
         TryChainDash();
     }
 }

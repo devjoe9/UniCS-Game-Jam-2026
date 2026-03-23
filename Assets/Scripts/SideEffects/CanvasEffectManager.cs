@@ -154,12 +154,12 @@ public class CanvasEffectManager : MonoBehaviour
         float actualEffectDuration = mode.customEffectDuration > 0 ? mode.customEffectDuration : effectDuration;
         float actualWarningDuration = mode.customWarningDuration > 0 ? mode.customWarningDuration : warningDuration;
         
-        if (mode.effectAudio != null && audioSource != null)
-        {
-            audioSource.clip = mode.effectAudio;
-            audioSource.volume = audioVolume;
-            audioSource.Play();
-        }
+        // if (mode.effectAudio != null && audioSource != null)
+        // {
+        //     audioSource.clip = mode.effectAudio;
+        //     audioSource.volume = audioVolume;
+        //     audioSource.Play();
+        // }
         
         if (mode.useExpandingCircles)
         {

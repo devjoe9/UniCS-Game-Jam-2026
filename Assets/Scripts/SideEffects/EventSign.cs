@@ -20,8 +20,6 @@ public class EventSign : MonoBehaviour
     [Header("Flicker Settings")]
     public int   flickerCount    = 4;
     public float flickerOnTime   = 0.1f;
-    public float flickerOffTime  = 0.1f;
-
     private Coroutine activeCoroutine;
 
 
@@ -30,12 +28,12 @@ public class EventSign : MonoBehaviour
     /// sprite   = the event sign sprite
     /// duration = how long effect lasts (sign stays this long)
     /// </summary>
-    public void ShowSign(Sprite sprite, float duration)
+    public void ShowSign(Sprite sprite, float duration, float delay)
     {
         if (activeCoroutine != null)
             StopCoroutine(activeCoroutine);
 
-        activeCoroutine = StartCoroutine(FlickerThenStay(sprite, duration));
+        activeCoroutine = StartCoroutine(FlickerThenStay(sprite, duration, delay));
     }
 
     public void HideSign()
@@ -47,25 +45,39 @@ public class EventSign : MonoBehaviour
             panel.SetActive(false);
     }
 
-    private IEnumerator FlickerThenStay(Sprite sprite, float duration)
+    private IEnumerator FlickerThenStay(Sprite sprite, float duration, float delay)
     {
         if (signImage != null)
             signImage.sprite = sprite;
 
-        // Flicker 4 times
-        for (int i = 0; i < flickerCount; i++)
+        // flicker IN
+        float timeElapsed = 0;
+        bool flickerOn = false;
+        while (timeElapsed < delay)
         {
-            panel.SetActive(true);
+            flickerOn = !flickerOn;
+            panel.SetActive(flickerOn);
             yield return new WaitForSeconds(flickerOnTime);
-            panel.SetActive(false);
-            yield return new WaitForSeconds(flickerOffTime);
-        }
+            timeElapsed += flickerOnTime;
+        };
 
-        // Stay on for effect duration
+        // don't flicker before flicker out
+        float stayTime = Mathf.Max(0, duration - delay);
         panel.SetActive(true);
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(stayTime);
 
-        // Hide
+        // flicker out
+        timeElapsed = 0;
+        flickerOn = false;
+        while (timeElapsed < delay)
+        {
+            flickerOn = !flickerOn;
+            panel.SetActive(flickerOn);
+            yield return new WaitForSeconds(flickerOnTime);
+            timeElapsed += flickerOnTime;
+        };
+
+        // Final OFF
         panel.SetActive(false);
         activeCoroutine = null;
     }

@@ -13,14 +13,26 @@ public class PlayerController : MonoBehaviour
     public float boostOrthChangeTime = 0.1f;
     public float boostShakeAmplitude = 2f;
     public float boostShakeFrequency = 5f;
-    public float acceleration = 50f; // How quickly the player accelerates
-    public float deceleration = 30f; // How quickly the player slows down
-    public float collisionOffset = 0.05f;
+    public float defaultAcceleration = 50f; // How quickly the player accelerates
+    public float defaultDeceleration = 30f; // How quickly the player slows down
+    public float collisionOffset = 0.1f;
     public float rotateCooldown = 0.5f;
     public float rotationSpeed = 5f;
     public float knockbackDrag = 5f;
     public ContactFilter2D movementFilter;
 
+    private float acceleration;
+    public float Acceleration
+    {
+        get => acceleration;
+        set => acceleration = value;
+    }
+    public float Deceleration
+    {
+        get => deceleration;
+        set => deceleration = value;
+    }
+    private float deceleration;
     private Vector2 movementInput;
     public float CurPlayerSpeed => currentVelocity.magnitude;
     private Vector2 currentVelocity;
@@ -31,15 +43,29 @@ public class PlayerController : MonoBehaviour
     private float targetAngle;
     private bool isKnockedBack;
     private bool isBoosting;
+    public bool IsBoosting
+    {
+        get => isBoosting;
+        set => isBoosting = value;
+    }
     private PlayerBoosterController[] boosters;
     private CameraManager cameraManager;
     private PlayerGunController[] guns;
     private PauseManager pauseManager;
+    private SideEffectsManager sideEffectsManager;
+    private bool noWeaponsEffect = false;
+    public bool NoWeaponsEffect
+    {
+        get => noWeaponsEffect;
+        set => noWeaponsEffect = value;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        acceleration = defaultAcceleration;
+        deceleration = defaultDeceleration;
         canRotate = true;
         isRotating = false;
         isKnockedBack = false;
@@ -50,11 +76,13 @@ public class PlayerController : MonoBehaviour
         cameraManager = FindAnyObjectByType<CameraManager>();
         guns = GetComponentsInChildren<PlayerGunController>(true);
         pauseManager = FindAnyObjectByType<PauseManager>(FindObjectsInactive.Include);
+        sideEffectsManager = FindAnyObjectByType<SideEffectsManager>();
     }
 
     private void FixedUpdate()
     {
         // Taking knockback
+        Vector2 knockbackVelocity = Vector2.zero;
         if (isKnockedBack)
         {
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, knockbackDrag * Time.fixedDeltaTime);
@@ -65,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 isKnockedBack = false;
             }
 
-            return;
+            knockbackVelocity = rb.linearVelocity;
         }
 
         // Boosting
@@ -77,7 +105,6 @@ public class PlayerController : MonoBehaviour
                 if (booster != null && !booster.IsDisabled)
                 {
                     totalBoost += booster.ThrustDirection * booster.boostForce;
-
                 }
             }
 
@@ -110,26 +137,55 @@ public class PlayerController : MonoBehaviour
             );
         }
 
+        // Calculate the new position
+        Vector2 finalVelocity = currentVelocity + knockbackVelocity;
+        float distance = finalVelocity.magnitude * Time.fixedDeltaTime;
+
         // Check for collisions using raycast
         int count = rb.Cast(
-            currentVelocity.normalized,
+            finalVelocity.normalized,
             movementFilter,
             castCollisions,
-            currentVelocity.magnitude * Time.fixedDeltaTime + collisionOffset
+            distance + collisionOffset
         );
-
-        // Calculate the new position
-        Vector2 newPosition = rb.position + currentVelocity * Time.fixedDeltaTime;
 
         // Move if no collisions detected
         if (count == 0)
         {
-            rb.MovePosition(newPosition);
+            // newPosition
+            rb.MovePosition(rb.position + finalVelocity * Time.fixedDeltaTime);
         }
         else
         {
-            // Stop velocity in direction of collision
-            currentVelocity = Vector2.zero;
+            // Find closest hit
+            RaycastHit2D closestHit = castCollisions[0];
+            foreach (var hit in castCollisions)
+            {
+                if (hit.distance < closestHit.distance)
+                {
+                    closestHit = hit;
+                }
+            }
+
+            float safeDistance = Mathf.Max(closestHit.distance - collisionOffset, 0f);
+
+            // Move up to wall
+            rb.MovePosition(rb.position + finalVelocity.normalized * safeDistance);
+
+            Vector2 normal = closestHit.normal;
+
+            // Only remove velocity INTO the wall
+            float dot = Vector2.Dot(finalVelocity, normal);
+            if (dot < 0)
+            {
+                finalVelocity -= dot * normal;
+            }
+
+            // Small push away to prevent sticking
+            rb.MovePosition(rb.position + normal * 0.001f);
+
+            currentVelocity = finalVelocity;
+            rb.linearVelocity = finalVelocity;
         }
 
         // Rotation
@@ -192,7 +248,7 @@ public class PlayerController : MonoBehaviour
 
     void OnBoost(InputValue value)
     {
-        if (!(boosters.Length == 0))
+        if (!(boosters.Length == 0) && noWeaponsEffect == false)
         {
             isBoosting = value.isPressed;
             cameraManager.ChangeOrthSize(boostOrthMult, boostOrthChangeTime, !isBoosting);
@@ -206,17 +262,23 @@ public class PlayerController : MonoBehaviour
 
     void OnAutoShoot(InputValue value)
     {
-        foreach(var gun in guns)
+        if (noWeaponsEffect == false)
         {
-            gun.IsAutoShooting = value.isPressed;
+            foreach(var gun in guns)
+            {
+                gun.IsAutoShooting = value.isPressed;
+            }   
         }
     }
 
     void OnManualShoot()
     {
-        foreach (var gun in guns)
+        if (noWeaponsEffect == false)
         {
-            gun.TryManualShot();
+            foreach (var gun in guns)
+            {
+                gun.TryManualShot();
+            }
         }
     }
 
@@ -233,6 +295,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeKnockback(Vector2 direction, float force)
     {
+        force *= sideEffectsManager.CurKnockbackMult;
         isKnockedBack = true;
         rb.linearVelocity = direction * force;
     }

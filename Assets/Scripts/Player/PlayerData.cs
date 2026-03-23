@@ -11,7 +11,11 @@ public class PlayerData : MonoBehaviour
 
     public float CurHealth => curHealth;
     private float curHealth;
-    public bool IsVulnerable => isVulnerable;
+    public bool IsVulnerable
+    {
+        get => isVulnerable;
+        set => isVulnerable = value;
+    }
     private bool isVulnerable;
     public bool IsDead => isDead;
     private bool isDead;
@@ -21,7 +25,8 @@ public class PlayerData : MonoBehaviour
     [Range(0f, 1f)] public float hurtVolume = 1f;
     private AudioSource audioSource;
     private HealthBarUI healthBar;
-
+    private Coroutine activeInvulnerability;
+    public Coroutine ActiveInvulnerability => activeInvulnerability;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -76,7 +81,7 @@ public class PlayerData : MonoBehaviour
             else
             {
                 isVulnerable = false;
-                StartCoroutine(InvulnerableTimer());
+                activeInvulnerability = StartCoroutine(InvulnerableTimer());
             }
         }
     }
@@ -113,6 +118,7 @@ public class PlayerData : MonoBehaviour
         }
 
         isVulnerable = true;
+        activeInvulnerability = null;
     }
 
     public bool isMaxHealth()
