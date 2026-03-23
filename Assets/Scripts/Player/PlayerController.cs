@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour
             targetAngle = transform.eulerAngles.z + 90;
             isRotating = true;
             canRotate = false;
+            ToggleAllEnemyColours();
         }
     }
 
@@ -172,6 +173,20 @@ public class PlayerController : MonoBehaviour
             targetAngle = transform.eulerAngles.z - 90;
             isRotating = true;
             canRotate = false;
+            ToggleAllEnemyColours();
+        }
+    }
+
+    private void ToggleAllEnemyColours()
+    {
+        EnemyData[] enemies = FindObjectsByType<EnemyData>(FindObjectsSortMode.None);
+
+        foreach (EnemyData enemy in enemies)
+        {
+            if (enemy != null && !enemy.IsDead)
+            {
+                enemy.ToggleColour();
+            }
         }
     }
 

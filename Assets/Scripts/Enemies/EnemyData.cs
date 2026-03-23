@@ -70,6 +70,11 @@ public class EnemyData : MonoBehaviour
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
     }
 
+    public void ToggleColour()
+    {
+        SetColour(!isBlue);
+    }
+
     // Update is called once per frame
     void Update()
     {
