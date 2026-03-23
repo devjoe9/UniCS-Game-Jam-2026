@@ -5,6 +5,19 @@ using TMPro;
 
 public class SideEffectDisplay : MonoBehaviour
 {
+    private static SideEffectDisplay instance;
+    public static SideEffectDisplay Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindAnyObjectByType<SideEffectDisplay>();
+            }
+            return instance;
+        }
+    }
+
     [Header("UI References")]
     public GameObject      panel;
     public Image           eventIcon;
@@ -89,7 +102,38 @@ public class SideEffectDisplay : MonoBehaviour
     {
         if (isAnimating) return;
         int finalIndex = Random.Range(0, eventNames.Length);
-        StartCoroutine(Spin(finalIndex));
+        StartCoroutine(StartRandomEvent(finalIndex));
+        // StartCoroutine(Spin(finalIndex));
+    }
+
+    private IEnumerator StartRandomEvent(int finalIndex)
+    {
+        isAnimating = true;
+        panel.SetActive(true);
+
+        // Show result
+        ShowIcon(finalIndex, true);
+        PlayResultSound(finalIndex);
+        StartCoroutine(PunchScale(eventIcon.transform));
+        StartCoroutine(FlashFrame(eventColors[finalIndex]));
+
+        // Show event sign
+        Debug.Log($"Calling ShowSign | eventSign null: {eventSign == null} | index: {finalIndex} | sprites length: {signSprites.Length}");
+        if (eventSign != null && finalIndex < signSprites.Length)
+            eventSign.ShowSign(signSprites[finalIndex], effectDuration);
+        else
+            Debug.Log($"ShowSign SKIPPED - eventSign null: {eventSign == null} | index valid: {finalIndex < signSprites.Length}");
+
+        Debug.Log($"[SideEffectDisplay] Result: {eventNames[finalIndex]}");
+
+        // Wait 2 seconds THEN start visual effect
+        yield return new WaitForSeconds(visualEffectDelay);
+        StartSideEffect(finalIndex);
+
+        yield return new WaitForSeconds(holdDuration);
+
+        panel.SetActive(false);
+        isAnimating = false;
     }
 
     private IEnumerator Spin(int finalIndex)
@@ -163,7 +207,7 @@ public class SideEffectDisplay : MonoBehaviour
 
         // Wait 2 seconds THEN start visual effect
         yield return new WaitForSeconds(visualEffectDelay);
-        StartVisualEffect(finalIndex);
+        StartSideEffect(finalIndex);
 
         yield return new WaitForSeconds(holdDuration);
 
@@ -171,7 +215,7 @@ public class SideEffectDisplay : MonoBehaviour
         isAnimating = false;
     }
 
-    private void StartVisualEffect(int index)
+    private void StartSideEffect(int index)
     {
         if (canvasEffectManager == null)
         {

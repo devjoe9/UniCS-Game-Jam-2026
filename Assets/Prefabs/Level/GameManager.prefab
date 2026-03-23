@@ -124,20 +124,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: minWaveInterval
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.size
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: startingWaveInterval
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: startingSpawnInterval
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: enemies.Array.data[1].spawnCost
