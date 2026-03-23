@@ -248,7 +248,7 @@ MonoBehaviour:
   whiteFlashSprite: {fileID: 9173662768142731926, guid: 83f79b8012c69864b96e87f91bb0c409, type: 3}
   flashDuration: 0.05
   maxHealth: 10
-  invulnerableTime: 0
+  invulnerableTime: 0.1
   flashInterval: 0.2
   defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
   flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
@@ -290,7 +290,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3587487694791285624, guid: 620eead620e87a6479843f4174863a34, type: 3}
   firePoint: {fileID: 3793986850259005845}
   player: {fileID: 0}
-  bulletSpeed: 25
+  bulletSpeed: 20
   bulletLifetime: 10
   bulletType: 2
   startFiringOnStart: 1
@@ -299,11 +299,10 @@ MonoBehaviour:
   firePattern: 1
   bulletsPerBurst: 3
   timeBetweenBurstShots: 0.12
-  timeBetweenBursts: 1.2
+  timeBetweenBursts: 3
   sweepArcAngle: 180
   sweepSteps: 12
   timeBetweenSweepShots: 0.1
-  sweepContinuously: 1
   sweepActiveTime: 3
   sweepPauseTime: 1
   randomArcAngle: 0

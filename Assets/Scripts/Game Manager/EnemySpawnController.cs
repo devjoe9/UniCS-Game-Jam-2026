@@ -179,7 +179,13 @@ public class EnemySpawnController : MonoBehaviour
             }
 
             SpawnEnemy(enemy.enemyPrefab, GetRandomSpawnPos(), enemy.pointsValue);
-            yield return new WaitForSeconds(timeBetweenSpawns);
+            float timeElapsed = 0;
+
+            while (timeElapsed < timeBetweenSpawns && numEnemiesAlive > 0)
+            {
+                timeElapsed += Time.deltaTime;
+                yield return null;
+            }
         }
     }
 
@@ -204,7 +210,7 @@ public class EnemySpawnController : MonoBehaviour
     IEnumerator WaitForNextWave(float duration)
     {
         float timeElapsed = 0;
-        while (timeElapsed < duration && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+        while (timeElapsed < duration && numEnemiesAlive > 0)
         {
             timeElapsed += Time.deltaTime;
             yield return null;

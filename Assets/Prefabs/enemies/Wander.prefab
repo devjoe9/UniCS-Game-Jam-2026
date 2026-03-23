@@ -180,7 +180,7 @@ MonoBehaviour:
   whiteFlashSprite: {fileID: 5322463025592832831, guid: 6ffed3b8139db9e42b840309f49bce7a, type: 3}
   flashDuration: 0.08
   maxHealth: 10
-  invulnerableTime: 0
+  invulnerableTime: 0.1
   flashInterval: 0.2
   defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
   flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
@@ -202,13 +202,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WanderEnemy
   player: {fileID: 0}
   boundary: {fileID: 0}
-  acceleration: 300
-  maxSpeed: 80
+  acceleration: 100
+  maxSpeed: 40
   friction: 10
   pointReachDistance: 5
   wanderRadius: 30
   fleeRadius: 15
-  fleeSpeedMultiplier: 1.8
+  fleeSpeedMultiplier: 1
   knockbackDrag: 5
 --- !u!114 &6099421064553953030
 MonoBehaviour:
@@ -225,7 +225,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3587487694791285624, guid: 620eead620e87a6479843f4174863a34, type: 3}
   firePoint: {fileID: 2338618541212991191}
   player: {fileID: 0}
-  bulletSpeed: 50
+  bulletSpeed: 30
   bulletLifetime: 5
   bulletType: 0
   startFiringOnStart: 1
@@ -238,7 +238,6 @@ MonoBehaviour:
   sweepArcAngle: 180
   sweepSteps: 12
   timeBetweenSweepShots: 0.08
-  sweepContinuously: 1
   sweepActiveTime: 2
   sweepPauseTime: 1
   randomArcAngle: 90
