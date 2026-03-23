@@ -60,6 +60,18 @@ public class PlayerData : MonoBehaviour
                 isDead = true;
                 // death
                 Debug.Log("you died cuh"); //remove this 
+                int score = FindAnyObjectByType<EnemySpawnController>().curScore;
+
+                PlayerPrefs.SetInt("FinalScore", score);
+
+                int high = PlayerPrefs.GetInt("HighScore", 0);
+                if (score > high)
+                {
+                    PlayerPrefs.SetInt("HighScore", score);
+                }
+                PlayerPrefs.Save();
+                FindAnyObjectByType<SceneLoader>().LoadGameOver();
+
             }
             else
             {

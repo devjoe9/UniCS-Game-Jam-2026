@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -234.4251, y: 218.45}
+  m_AnchoredPosition: {x: -243, y: 218.45}
   m_SizeDelta: {x: 151.3932, y: 37.967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &125000800
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0000000
+  m_text: 000000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 1.4955864, z: -55.226463, w: 0}
+  m_margin: {x: 0, y: 1.4955864, z: 6.183792, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1158,7 +1158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214407163144534788, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: orthographic size
-      value: 6.4
+      value: 7.525
       objectReference: {fileID: 0}
     - target: {fileID: 6523397875792066129, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1435,11 +1435,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1395477788410308425, guid: dd7273abe1f1f764ca3876165510cf36, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -171.7
+      value: -171.69995
       objectReference: {fileID: 0}
     - target: {fileID: 1395477788410308425, guid: dd7273abe1f1f764ca3876165510cf36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -19.9
+      value: -19.900024
       objectReference: {fileID: 0}
     - target: {fileID: 1395477788410308425, guid: dd7273abe1f1f764ca3876165510cf36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
