@@ -2293,6 +2293,10 @@ PrefabInstance:
       value: NebulaBG
       objectReference: {fileID: 0}
     - target: {fileID: 658416611671152282, guid: f79a378c5a4198f46adc56b9e7cb915a, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 658416611671152282, guid: f79a378c5a4198f46adc56b9e7cb915a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -2379,6 +2383,10 @@ PrefabInstance:
     - target: {fileID: 4837711252868418018, guid: f79a378c5a4198f46adc56b9e7cb915a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656612868921302059, guid: f79a378c5a4198f46adc56b9e7cb915a, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
