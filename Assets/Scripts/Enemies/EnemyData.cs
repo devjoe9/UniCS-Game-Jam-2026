@@ -44,6 +44,7 @@ public class EnemyData : MonoBehaviour
         set => pointsValue = value;
     }
     private EnemySpawnController waveController;
+    private SideEffectsManager sideEffectsManager;
 
     void Awake()
     {
@@ -62,6 +63,7 @@ public class EnemyData : MonoBehaviour
         spriteRenderer.sprite = isBlue ? blueSprite : redSprite;
         audioSource = GetComponent<AudioSource>();
         waveController = FindAnyObjectByType<EnemySpawnController>();
+        sideEffectsManager = FindAnyObjectByType<SideEffectsManager>();
     }
 
     public void SetColour(bool isBlue)
@@ -152,6 +154,7 @@ public class EnemyData : MonoBehaviour
 
     public void TakeKnockback(Vector2 direction, float force)
     {
+        force *= sideEffectsManager.CurKnockbackMult;
         isKnockedBack = true;
         rb.linearVelocity = direction * force;
     }

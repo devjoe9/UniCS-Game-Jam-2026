@@ -434,7 +434,6 @@ MonoBehaviour:
   signImage: {fileID: 1593665014}
   flickerCount: 4
   flickerOnTime: 0.1
-  flickerOffTime: 0.1
 --- !u!114 &138555112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2105,6 +2104,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6698478756275792232, guid: 82c1ba1e3d879ba4bac1fa933d32eb1d, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2482,9 +2485,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2377231094139752899, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1985893347}
     - target: {fileID: 4072056715052848403, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: startingSpawnInterval
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7476918501805295781, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: player

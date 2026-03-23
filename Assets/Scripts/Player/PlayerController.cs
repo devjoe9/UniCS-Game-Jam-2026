@@ -13,14 +13,26 @@ public class PlayerController : MonoBehaviour
     public float boostOrthChangeTime = 0.1f;
     public float boostShakeAmplitude = 2f;
     public float boostShakeFrequency = 5f;
-    public float acceleration = 50f; // How quickly the player accelerates
-    public float deceleration = 30f; // How quickly the player slows down
+    public float defaultAcceleration = 50f; // How quickly the player accelerates
+    public float defaultDecceleration = 30f; // How quickly the player slows down
     public float collisionOffset = 0.05f;
     public float rotateCooldown = 0.5f;
     public float rotationSpeed = 5f;
     public float knockbackDrag = 5f;
     public ContactFilter2D movementFilter;
 
+    private float acceleration;
+    public float Acceleration
+    {
+        get => acceleration;
+        set => acceleration = value;
+    }
+    public float Deceleration
+    {
+        get => deceleration;
+        set => deceleration = value;
+    }
+    private float deceleration;
     private Vector2 movementInput;
     public float CurPlayerSpeed => currentVelocity.magnitude;
     private Vector2 currentVelocity;
@@ -35,11 +47,14 @@ public class PlayerController : MonoBehaviour
     private CameraManager cameraManager;
     private PlayerGunController[] guns;
     private PauseManager pauseManager;
+    private SideEffectsManager sideEffectsManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        acceleration = defaultAcceleration;
+        deceleration = defaultDecceleration;
         canRotate = true;
         isRotating = false;
         isKnockedBack = false;
@@ -50,6 +65,7 @@ public class PlayerController : MonoBehaviour
         cameraManager = FindAnyObjectByType<CameraManager>();
         guns = GetComponentsInChildren<PlayerGunController>(true);
         pauseManager = FindAnyObjectByType<PauseManager>(FindObjectsInactive.Include);
+        sideEffectsManager = FindAnyObjectByType<SideEffectsManager>();
     }
 
     private void FixedUpdate()
@@ -218,6 +234,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeKnockback(Vector2 direction, float force)
     {
+        force *= sideEffectsManager.CurKnockbackMult;
         isKnockedBack = true;
         rb.linearVelocity = direction * force;
     }

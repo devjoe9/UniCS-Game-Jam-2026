@@ -11,7 +11,11 @@ public class PlayerData : MonoBehaviour
 
     public float CurHealth => curHealth;
     private float curHealth;
-    public bool IsVulnerable => isVulnerable;
+    public bool IsVulnerable
+    {
+        get => isVulnerable;
+        set => isVulnerable = value;
+    }
     private bool isVulnerable;
     public bool IsDead => isDead;
     private bool isDead;
