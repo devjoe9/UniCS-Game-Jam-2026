@@ -72,7 +72,7 @@ public class Bullet : MonoBehaviour
         switch (bulletType)
         {
             case BulletType.BlueBullet:
-                spriteRenderer.color = new Color(0.5f, 0.7f, 1f);
+                spriteRenderer.color = new Color(0.4f, 0.6f, 0.9f);
                 break;
 
             case BulletType.RedBullet:
