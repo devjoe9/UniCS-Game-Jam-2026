@@ -736,6 +736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EffectCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6041025316785416680, guid: fab70626e8aea0043900c3aa11d8c8b2, type: 3}
+      propertyPath: m_Volume
+      value: 0.301
+      objectReference: {fileID: 0}
     - target: {fileID: 8077143694992655284, guid: fab70626e8aea0043900c3aa11d8c8b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
