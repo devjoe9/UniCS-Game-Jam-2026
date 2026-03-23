@@ -973,10 +973,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrbAnimationSetup
       objectReference: {fileID: 0}
-    - target: {fileID: 3448120510691371175, guid: 9cbaaa992d57d604583e78fd09c54155, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1161,7 +1157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214407163144534788, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: orthographic size
-      value: 6.425
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 6523397875792066129, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2039,10 +2035,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AngelAnimationSetup
       objectReference: {fileID: 0}
-    - target: {fileID: 7336242905908455458, guid: 1be7876ecfd9cb7428e8b8a1e050b667, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8896519820047962869, guid: 1be7876ecfd9cb7428e8b8a1e050b667, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2508,9 +2500,9 @@ SceneRoots:
   - {fileID: 763024814}
   - {fileID: 1373452119}
   - {fileID: 327745985}
+  - {fileID: 3787946904753338759}
   - {fileID: 155497172}
   - {fileID: 1985893346}
   - {fileID: 2966170496892411522}
   - {fileID: 119168291}
   - {fileID: 138555116}
-  - {fileID: 3787946904753338759}
