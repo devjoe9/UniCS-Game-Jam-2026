@@ -1158,7 +1158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214407163144534788, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: orthographic size
-      value: 6.4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6523397875792066129, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2492,6 +2492,18 @@ PrefabInstance:
     - target: {fileID: 4072056715052848403, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: budgetIncreasePerWave
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: startingSpawnInterval
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228699883717861246, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: enemies.Array.data[0].spawnCost
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7476918501805295781, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: player

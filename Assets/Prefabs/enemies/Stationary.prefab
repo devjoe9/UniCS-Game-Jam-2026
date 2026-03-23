@@ -304,6 +304,8 @@ MonoBehaviour:
   sweepSteps: 12
   timeBetweenSweepShots: 0.1
   sweepContinuously: 1
+  sweepActiveTime: 3
+  sweepPauseTime: 1
   randomArcAngle: 0
   timeBetweenRandomShots: 2.5
 --- !u!82 &-4540630563188306642

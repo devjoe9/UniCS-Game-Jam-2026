@@ -232,13 +232,15 @@ MonoBehaviour:
   overrideBulletSize: 1
   bulletSizeOverride: 10
   firePattern: 0
-  bulletsPerBurst: 3
+  bulletsPerBurst: 4
   timeBetweenBurstShots: 0.12
   timeBetweenBursts: 1.2
   sweepArcAngle: 180
   sweepSteps: 12
   timeBetweenSweepShots: 0.08
   sweepContinuously: 1
+  sweepActiveTime: 2
+  sweepPauseTime: 1
   randomArcAngle: 90
   timeBetweenRandomShots: 0.08
 --- !u!82 &-3344450969707329085

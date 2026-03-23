@@ -36,6 +36,8 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private int sweepSteps = 12;
     [SerializeField] private float timeBetweenSweepShots = 0.08f;
     [SerializeField] private bool sweepContinuously = true;
+    [SerializeField] private float sweepActiveTime = 2f;
+    [SerializeField] private float sweepPauseTime = 1f;
 
     [Header("Random Arc Pattern")]
     [SerializeField] private float randomArcAngle = 90f;
@@ -112,11 +114,16 @@ public class BulletSpawner : MonoBehaviour
 
     private IEnumerator SweepArcRoutine()
     {
-        FireSweepBullet();
-        yield return new WaitForSeconds(timeBetweenSweepShots);
+        float elapsed = 0f;
 
-        if (!sweepContinuously)
-            yield return null;
+        while (elapsed < sweepActiveTime)
+        {
+            FireSweepBullet();
+            yield return new WaitForSeconds(timeBetweenSweepShots);
+            elapsed += timeBetweenSweepShots;
+        }
+
+        yield return new WaitForSeconds(sweepPauseTime);
     }
 
     private IEnumerator RandomArcRoutine()
@@ -164,7 +171,7 @@ public class BulletSpawner : MonoBehaviour
         FireBulletInDirection(direction);
     }
 
-    // ✅ FIXED: always use forward (matches your rotation system)
+    // FIXED: always use forward (matches your rotation system)
     private Vector2 GetAimDirection()
     {
         return -firePoint.up;
@@ -176,7 +183,7 @@ public class BulletSpawner : MonoBehaviour
 
         GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
-        // 🔥 Rotate bullet to match direction
+        //  Rotate bullet to match direction
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         bulletObj.transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
 
