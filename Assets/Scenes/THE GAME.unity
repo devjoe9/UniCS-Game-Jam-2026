@@ -451,6 +451,7 @@ MonoBehaviour:
   frameImage: {fileID: 0}
   eventLabel: {fileID: 0}
   eventDescription: {fileID: 0}
+  gameManager: {fileID: 0}
   eventIcons:
   - {fileID: -8009282776257233064, guid: acdf90a92a858ed4caad473580dd44fe, type: 3}
   - {fileID: -4423524739251770109, guid: 12523ba35e5a2c440995fc8c418969ce, type: 3}
@@ -464,7 +465,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 05598118586ac8249bc1118fd1f8dc39, type: 3}
   - {fileID: 21300000, guid: a3ba37ac3280eff4a90d765d88b9cfe7, type: 3}
   - {fileID: 21300000, guid: f2d83302f75171049b0c3e971e51cd40, type: 3}
-  effectDuration: 3
+  effectDuration: 10
   eventNames:
   - IMMORTALITY
   - KNOCKBACK
@@ -1005,6 +1006,7 @@ MonoBehaviour:
   frameImage: {fileID: 0}
   eventLabel: {fileID: 0}
   eventDescription: {fileID: 0}
+  gameManager: {fileID: 0}
   eventIcons:
   - {fileID: -8009282776257233064, guid: acdf90a92a858ed4caad473580dd44fe, type: 3}
   - {fileID: -4423524739251770109, guid: 12523ba35e5a2c440995fc8c418969ce, type: 3}
@@ -1146,7 +1148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214407163144534788, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: orthographic size
-      value: 27
+      value: 6.4
       objectReference: {fileID: 0}
     - target: {fileID: 6523397875792066129, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2489,6 +2491,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1985893347}
+    - target: {fileID: 2377231094139752899, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: slipperyAccelMult
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377231094139752899, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
+      propertyPath: slipperyDecelMult
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4072056715052848403, guid: dab36f34ad108fc479b3ea4120c44115, type: 3}
       propertyPath: m_Name
       value: GameManager

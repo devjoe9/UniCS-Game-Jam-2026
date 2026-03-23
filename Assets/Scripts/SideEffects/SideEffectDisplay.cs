@@ -24,6 +24,7 @@ public class SideEffectDisplay : MonoBehaviour
     public Image           frameImage;
     public TextMeshProUGUI eventLabel;
     public TextMeshProUGUI eventDescription;
+    public GameObject gameManager;
 
     [Header("Event Icons (5 - in order)")]
     public Sprite[] eventIcons = new Sprite[5];
@@ -89,6 +90,12 @@ public class SideEffectDisplay : MonoBehaviour
     void Start()
     {
         sideEffectsManager = FindAnyObjectByType<SideEffectsManager>();
+        if (sideEffectsManager == null)
+        {
+            sideEffectsManager = gameManager.GetComponent<SideEffectsManager>();
+        }
+        Debug.Log($"SideEffectsManager null: {sideEffectsManager == null}");
+
         // Find CanvasEffectManager if not assigned
         if (canvasEffectManager == null)
         {
@@ -102,7 +109,11 @@ public class SideEffectDisplay : MonoBehaviour
 
     public void TriggerRandomEvent()
     {
-        if (isAnimating) return;
+        if (isAnimating)
+        {
+            eventSign.HideSign();
+            sideEffectsManager.StopCurrentEffect();
+        }
         int finalIndex = Random.Range(0, eventNames.Length);
         StartCoroutine(StartRandomEvent(finalIndex));
         // StartCoroutine(Spin(finalIndex));
@@ -110,6 +121,7 @@ public class SideEffectDisplay : MonoBehaviour
 
     private IEnumerator StartRandomEvent(int finalIndex)
     {
+        Debug.Log("Start random event");
         isAnimating = true;
         panel.SetActive(true);
 
@@ -120,7 +132,7 @@ public class SideEffectDisplay : MonoBehaviour
             eventSign.ShowSign(signSprites[finalIndex], effectDuration, visualEffectDelay);
 
         yield return new WaitForSeconds(visualEffectDelay);
-        sideEffectsManager.StartSideEffect(finalIndex, effectDuration);
+        StartCoroutine(sideEffectsManager.StartSideEffect(finalIndex));
 
         yield return new WaitForSeconds(holdDuration);
 
@@ -207,40 +219,40 @@ public class SideEffectDisplay : MonoBehaviour
     //     isAnimating = false;
     // }
 
-    private void StartSideEffect(int index)
-    {
-        if (canvasEffectManager == null)
-        {
-            Debug.LogWarning("[SideEffectDisplay] CanvasEffectManager is null! Cannot start visual effect.");
-            return;
-        }
+    // private void StartSideEffect(int index)
+    // {
+    //     if (canvasEffectManager == null)
+    //     {
+    //         Debug.LogWarning("[SideEffectDisplay] CanvasEffectManager is null! Cannot start visual effect.");
+    //         return;
+    //     }
 
-        Debug.Log($"[SideEffectDisplay] Starting visual effect for: {eventNames[index]} (index {index})");
+    //     Debug.Log($"[SideEffectDisplay] Starting visual effect for: {eventNames[index]} (index {index})");
 
-        // Wheel order: No Weapons, Immortality, Slow Time, Knockback, Slippery
-        // Effect Manager order: No Weapons, Immortality, Time Slowed Down, Knockback Increased, Slippery
-        switch (index)
-        {
-            case 0: // No Weapons
-                canvasEffectManager.StartNoWeaponsMode();
-                break;
-            case 1: // Immortality
-                canvasEffectManager.StartImmortalityMode();
-                break;
-            case 2: // Slow Time
-                canvasEffectManager.StartTimeSlowedDownMode();
-                break;
-            case 3: // Knockback
-                canvasEffectManager.StartKnockbackIncreasedMode();
-                break;
-            case 4: // Slippery
-                canvasEffectManager.StartSlipperyMode();
-                break;
-            default:
-                Debug.LogWarning($"[SideEffectDisplay] Unknown effect index: {index}");
-                break;
-        }
-    }
+    //     // Wheel order: No Weapons, Immortality, Slow Time, Knockback, Slippery
+    //     // Effect Manager order: No Weapons, Immortality, Time Slowed Down, Knockback Increased, Slippery
+    //     switch (index)
+    //     {
+    //         case 0: // No Weapons
+    //             canvasEffectManager.StartNoWeaponsMode();
+    //             break;
+    //         case 1: // Immortality
+    //             canvasEffectManager.StartImmortalityMode();
+    //             break;
+    //         case 2: // Slow Time
+    //             canvasEffectManager.StartTimeSlowedDownMode();
+    //             break;
+    //         case 3: // Knockback
+    //             canvasEffectManager.StartKnockbackIncreasedMode();
+    //             break;
+    //         case 4: // Slippery
+    //             canvasEffectManager.StartSlipperyMode();
+    //             break;
+    //         default:
+    //             Debug.LogWarning($"[SideEffectDisplay] Unknown effect index: {index}");
+    //             break;
+    //     }
+    // }
 
     // private void StartSideEffect(int index)
     // {

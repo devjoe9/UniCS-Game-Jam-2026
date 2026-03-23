@@ -4,8 +4,14 @@ using UnityEngine;
 public class SideEffectsManager : MonoBehaviour
 {
     [SerializeField] private GameObject player;
+    [SerializeField] private float noWeaponsDuration = 10f;
+    [SerializeField] private float immortalityDuration = 10f;
+    [Tooltip("Divide duration by timeSlowMult for TRUE duration")]
+    [SerializeField] private float timeSlowDuration = 1.25f;
     [SerializeField] private float timeSlowMult = 0.25f;
+    [SerializeField] private float knockbackDuration = 10f;
     [SerializeField] private float knockbackMult = 2f;
+    [SerializeField] private float slipperyDuration = 10f;
     [SerializeField] private float slipperyAccelMult = 0.5f;
     [SerializeField] private float slipperyDecelMult = 0.25f;
 
@@ -27,11 +33,12 @@ public class SideEffectsManager : MonoBehaviour
         curTimeScale = 1;
     }
 
-    public IEnumerator StartSideEffect(int index, float effectDuration)
+    public IEnumerator StartSideEffect(int index)
     {
+        Debug.Log("In StartSideEffect");
         if (isEffectActive)
         {
-            StopCurrentEffect(curEffectIndex);
+            StopCurrentEffect();
         }
         
         isEffectActive = true;
@@ -42,59 +49,55 @@ public class SideEffectsManager : MonoBehaviour
         {
             case 0: // No Weapons
                 StartNoWeaponsMode();
-                yield return new WaitForSeconds(effectDuration);
-                StopCurrentEffect(index);
+                yield return new WaitForSeconds(noWeaponsDuration);
+                StopCurrentEffect();
                 break;
             case 1: // Immortality
                 StartImmortalityMode();
-                yield return new WaitForSeconds(effectDuration);
-                StopCurrentEffect(index);
+                yield return new WaitForSeconds(immortalityDuration);
+                StopCurrentEffect();
                 break;
             case 2: // Slow Time
                 StartTimeSlowedDownMode();
-                yield return new WaitForSeconds(effectDuration);
-                StopCurrentEffect(index);
+                yield return new WaitForSeconds(timeSlowDuration);
+                StopCurrentEffect();
                 break;
             case 3: // Knockback
                 StartKnockbackIncreasedMode();
-                yield return new WaitForSeconds(effectDuration);
-                StopCurrentEffect(index);
+                yield return new WaitForSeconds(knockbackDuration);
+                StopCurrentEffect();
                 break;
             case 4: // Slippery
                 StartSlipperyMode();
-                yield return new WaitForSeconds(effectDuration);
-                StopCurrentEffect(index);
+                yield return new WaitForSeconds(slipperyDuration);
+                StopCurrentEffect();
                 break;
             default:
                 break;
         }
     }
 
-    private void StopCurrentEffect(int index)
+    public void StopCurrentEffect()
     {
-        if (isEffectActive)
+        switch (curEffectIndex)
         {
-            switch (index)
-            {
-                case 0: // No Weapons
-                    StopNoWeaponsMode();
-                    break;
-                case 1: // Immortality
-                    StopImmortalityMode();
-                    break;
-                case 2: // Slow Time
-                    StopTimeSlowedDownMode();
-                    break;
-                case 3: // Knockback
-                    StopKnockbackIncreasedMode();
-                    break;
-                case 4: // Slippery
-                    StopSlipperyMode();
-                    break;
-                default:
-                    Debug.LogWarning($"[SideEffectDisplay] Unknown effect index: {index}");
-                    break;
-            }
+            case 0: // No Weapons
+                StopNoWeaponsMode();
+                break;
+            case 1: // Immortality
+                StopImmortalityMode();
+                break;
+            case 2: // Slow Time
+                StopTimeSlowedDownMode();
+                break;
+            case 3: // Knockback
+                StopKnockbackIncreasedMode();
+                break;
+            case 4: // Slippery
+                StopSlipperyMode();
+                break;
+            default:
+                break;
         }
         
         isEffectActive = false;
@@ -103,31 +106,33 @@ public class SideEffectsManager : MonoBehaviour
 
     private void StartNoWeaponsMode()
     {
-        GameObject[] children = new GameObject[player.transform.childCount];
-
+        Debug.Log("No weapons");
         for (int i = 0; i < player.transform.childCount; i++)
         {
-            children[i] = player.transform.GetChild(i).gameObject;
-            if (children[i].name.Length == 1)
+            GameObject child = player.transform.GetChild(i).gameObject;
+            if (child.name.Length == 1)
             {
-                children[i].SetActive(false);
+                child.SetActive(false);
             }
         }
+        playerController.NoWeaponsEffect = true;
+        playerController.IsBoosting = false;
     }
 
     private void StopNoWeaponsMode()
     {
-        GameObject[] children = new GameObject[player.transform.childCount];
-
         for (int i = 0; i < player.transform.childCount; i++)
         {
-            children[i] = player.transform.GetChild(i).gameObject;
-            children[i].SetActive(true);
+            GameObject child = player.transform.GetChild(i).gameObject;
+            child.SetActive(true);
         }
+        playerController.NoWeaponsEffect = false;
     }
 
     private void StartImmortalityMode()
     {
+        Debug.Log("Immortality");
+        if (playerData.ActiveInvulnerability != null) StopCoroutine(playerData.ActiveInvulnerability);
         playerData.IsVulnerable = false;
     }
 
@@ -138,6 +143,7 @@ public class SideEffectsManager : MonoBehaviour
 
     private void StartTimeSlowedDownMode()
     {
+        Debug.Log("Time slow");
         Time.timeScale = timeSlowMult;
         curTimeScale = timeSlowMult;
     }
@@ -150,6 +156,7 @@ public class SideEffectsManager : MonoBehaviour
 
     private void StartKnockbackIncreasedMode()
     {
+        Debug.Log("More knockback");
         curKnockbackMult = knockbackMult;
     }
 
@@ -160,13 +167,16 @@ public class SideEffectsManager : MonoBehaviour
 
     private void StartSlipperyMode()
     {
+        Debug.Log("Slippery");
         playerController.Acceleration = playerController.defaultAcceleration * slipperyAccelMult;
-        playerController.Deceleration = playerController.defaultDecceleration * slipperyDecelMult;
+        playerController.Deceleration = playerController.defaultDeceleration * slipperyDecelMult;
     }
 
     private void StopSlipperyMode()
     {
         playerController.Acceleration = playerController.defaultAcceleration;
-        playerController.Deceleration = playerController.defaultDecceleration;
+        playerController.Deceleration = playerController.defaultDeceleration;
     }
+
+    
 }

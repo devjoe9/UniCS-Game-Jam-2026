@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float boostShakeAmplitude = 2f;
     public float boostShakeFrequency = 5f;
     public float defaultAcceleration = 50f; // How quickly the player accelerates
-    public float defaultDecceleration = 30f; // How quickly the player slows down
+    public float defaultDeceleration = 30f; // How quickly the player slows down
     public float collisionOffset = 0.05f;
     public float rotateCooldown = 0.5f;
     public float rotationSpeed = 5f;
@@ -43,18 +43,29 @@ public class PlayerController : MonoBehaviour
     private float targetAngle;
     private bool isKnockedBack;
     private bool isBoosting;
+    public bool IsBoosting
+    {
+        get => isBoosting;
+        set => isBoosting = value;
+    }
     private PlayerBoosterController[] boosters;
     private CameraManager cameraManager;
     private PlayerGunController[] guns;
     private PauseManager pauseManager;
     private SideEffectsManager sideEffectsManager;
+    private bool noWeaponsEffect = false;
+    public bool NoWeaponsEffect
+    {
+        get => noWeaponsEffect;
+        set => noWeaponsEffect = value;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         acceleration = defaultAcceleration;
-        deceleration = defaultDecceleration;
+        deceleration = defaultDeceleration;
         canRotate = true;
         isRotating = false;
         isKnockedBack = false;
@@ -193,7 +204,7 @@ public class PlayerController : MonoBehaviour
 
     void OnBoost(InputValue value)
     {
-        if (!(boosters.Length == 0))
+        if (!(boosters.Length == 0) && noWeaponsEffect == false)
         {
             isBoosting = value.isPressed;
             cameraManager.ChangeOrthSize(boostOrthMult, boostOrthChangeTime, !isBoosting);
@@ -207,17 +218,23 @@ public class PlayerController : MonoBehaviour
 
     void OnAutoShoot(InputValue value)
     {
-        foreach(var gun in guns)
+        if (noWeaponsEffect == false)
         {
-            gun.IsAutoShooting = value.isPressed;
+            foreach(var gun in guns)
+            {
+                gun.IsAutoShooting = value.isPressed;
+            }   
         }
     }
 
     void OnManualShoot()
     {
-        foreach (var gun in guns)
+        if (noWeaponsEffect == false)
         {
-            gun.TryManualShot();
+            foreach (var gun in guns)
+            {
+                gun.TryManualShot();
+            }
         }
     }
 
