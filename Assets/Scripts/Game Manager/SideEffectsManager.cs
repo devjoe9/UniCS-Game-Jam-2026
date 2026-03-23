@@ -47,6 +47,7 @@ public class SideEffectsManager : MonoBehaviour
         playerData = player.GetComponent<PlayerData>();
         curTimeScale = 1;
         effectDurations = new float[] {noWeaponsDuration, immortalityDuration, timeSlowDuration, knockbackDuration, slipperyDuration};
+        curKnockbackMult = 1;
     }
 
     public IEnumerator StartSideEffect(int index)
@@ -172,12 +173,13 @@ public class SideEffectsManager : MonoBehaviour
 
     private void StartKnockbackIncreasedMode()
     {
-        Debug.Log("More knockback");
+        Debug.Log(curKnockbackMult);
         curKnockbackMult = knockbackMult;
     }
 
     private void StopKnockbackIncreasedMode()
     {
+        Debug.Log(curKnockbackMult);
         curKnockbackMult = 1f;
     }
 
@@ -202,8 +204,8 @@ public class SideEffectsManager : MonoBehaviour
             StopCurrentEffect();
         }
         int finalIndex = Random.Range(0, signSprites.Length);
-        StartCoroutine(StartRandomEvent(finalIndex));
-        // StartCoroutine(Spin(finalIndex));
+        // StartCoroutine(StartRandomEvent(finalIndex));
+        StartCoroutine(StartRandomEvent(3));
     }
 
     private IEnumerator StartRandomEvent(int finalIndex)

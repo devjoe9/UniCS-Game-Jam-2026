@@ -20,12 +20,14 @@ public class HealerData : MonoBehaviour
     private bool isActive;
     private SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
+    private SideEffectsManager sideEffectsManager;
 
     void Start()
     {
         isActive = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        sideEffectsManager = FindAnyObjectByType<SideEffectsManager>();
 
         if (audioSource != null)
         {
@@ -50,7 +52,7 @@ public class HealerData : MonoBehaviour
             {
                 playerData.TakeHealing(healing);
                 isActive = false;
-                SideEffectDisplay.Instance.TriggerRandomEvent();
+                sideEffectsManager.TriggerRandomEvent();
 
                 if (pickupSound != null)
                 {
