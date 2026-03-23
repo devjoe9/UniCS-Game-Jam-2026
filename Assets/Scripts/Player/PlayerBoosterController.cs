@@ -9,6 +9,9 @@ public class PlayerBoosterController : MonoBehaviour
     public Sprite blueBoostingSprite;
     public Sprite redBoostingSprite;
     public float boostForce = 20f;
+
+    public AudioClip boostLoopSound;
+    [Range(0f, 1f)] public float boostLoopVolume = 1f;
     
     private Sprite defaultSprite;
     private Sprite defaultBoostingSprite;
@@ -20,6 +23,8 @@ public class PlayerBoosterController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private SideData sideData;
     private ParticleSystem[] smokeParticles;
+    private AudioSource audioSource;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,16 +32,26 @@ public class PlayerBoosterController : MonoBehaviour
         sideData = GetComponent<SideData>();
         isBlue = sideData.IsBlue;
         smokeParticles = GetComponentsInChildren<ParticleSystem>();
-        foreach(var smoke in smokeParticles)
+        audioSource = GetComponent<AudioSource>();
+
+        foreach (var smoke in smokeParticles)
         {
             smoke.Stop();
         }
         
-        // condition ? if true : if false
-        defaultSprite= isBlue ? blueSprite : redSprite;
+        defaultSprite = isBlue ? blueSprite : redSprite;
         defaultBoostingSprite = isBlue ? blueBoostingSprite : redBoostingSprite;
         spriteRenderer.sprite = defaultSprite;
         isDisabled = false;
+
+        if (audioSource != null)
+        {
+            audioSource.playOnAwake = false;
+            audioSource.loop = true;
+            audioSource.spatialBlend = 0f;
+            audioSource.volume = boostLoopVolume;
+            audioSource.clip = boostLoopSound;
+        }
 
         initialDirection = transform.parent.name;
         if (initialDirection.Equals("L"))
@@ -68,18 +83,30 @@ public class PlayerBoosterController : MonoBehaviour
     public void UseBoostingSprite(bool isBoosting)
     {
         spriteRenderer.sprite = isBoosting ? defaultBoostingSprite : defaultSprite;
+
         if (isBoosting)
         {
-            foreach(var smoke in smokeParticles)
+            foreach (var smoke in smokeParticles)
             {
                 smoke.Play();
+            }
+
+            if (audioSource != null && boostLoopSound != null && !audioSource.isPlaying)
+            {
+                audioSource.volume = boostLoopVolume;
+                audioSource.Play();
             }
         }
         else
         {
-            foreach(var smoke in smokeParticles)
+            foreach (var smoke in smokeParticles)
             {
                 smoke.Stop();
+            }
+
+            if (audioSource != null && audioSource.isPlaying)
+            {
+                audioSource.Stop();
             }
         }
     }

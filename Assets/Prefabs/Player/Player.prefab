@@ -218,14 +218,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7fd8052991d4a45ae16ea8ae9b5d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxSpeed: 20
+  maxSpeed: 26
   maxBoostingSpeed: 60
   boostOrthMult: 1.25
   boostOrthChangeTime: 0.1
   boostShakeAmplitude: 2
   boostShakeFrequency: 5
-  acceleration: 50
-  deceleration: 30
+  acceleration: 70
+  deceleration: 70
   collisionOffset: 0.05
   rotateCooldown: 0.15
   rotationSpeed: 1000

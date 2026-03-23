@@ -4,29 +4,43 @@ using UnityEngine;
 public class HealerData : MonoBehaviour
 {
     [SerializeField] private GameObject explosionEffectPrefab;
+    [SerializeField] private AudioClip pickupSound;
+    [SerializeField] private AudioClip despawnSound;
+    [Range(0f, 1f)] [SerializeField] private float pickupVolume = 1f;
+    [Range(0f, 1f)] [SerializeField] private float despawnVolume = 1f;
+
     public float lifetime = 5f;
     public float flashAfterTime = 3f;
     public float flashInterval = 0.2f;
     public Color defaultColour = new Color(1f, 0.922f, 0.016f, 1f);
     public Color flashColour = new Color(1f, 0.922f, 0.016f, 0.5f);
     public float healing = 1;
+
     private bool isActive;
     private SpriteRenderer spriteRenderer;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private AudioSource audioSource;
+
     void Start()
     {
         isActive = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource != null)
+        {
+            audioSource.playOnAwake = false;
+            audioSource.spatialBlend = 0f;
+        }
+
         StartCoroutine(DestroyHealer(lifetime, flashAfterTime));
     }
 
-    // Update is called once per frame
     void Update()
     {
 
     }
 
-     void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -35,6 +49,12 @@ public class HealerData : MonoBehaviour
             {
                 playerData.TakeHealing(healing);
                 isActive = false;
+
+                if (pickupSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(pickupSound, transform.position, pickupVolume);
+                }
+
                 Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
@@ -55,6 +75,11 @@ public class HealerData : MonoBehaviour
         
         if (isActive)
         {
+            if (despawnSound != null)
+            {
+                AudioSource.PlayClipAtPoint(despawnSound, transform.position, despawnVolume);
+            }
+
             Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
