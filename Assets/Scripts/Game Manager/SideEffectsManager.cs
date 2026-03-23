@@ -38,6 +38,7 @@ public class SideEffectsManager : MonoBehaviour
     private PlayerController playerController;
     private PlayerData playerData;
     private bool isAnimating = false;
+    private CamShake camShake;
     
     void Start()
     {
@@ -48,6 +49,7 @@ public class SideEffectsManager : MonoBehaviour
         curTimeScale = 1;
         effectDurations = new float[] {noWeaponsDuration, immortalityDuration, timeSlowDuration, knockbackDuration, slipperyDuration};
         curKnockbackMult = 1;
+        camShake = FindAnyObjectByType<CamShake>();
     }
 
     public IEnumerator StartSideEffect(int index)
@@ -144,6 +146,7 @@ public class SideEffectsManager : MonoBehaviour
             child.SetActive(true);
         }
         playerController.NoWeaponsEffect = false;
+        camShake.StopShake();
     }
 
     private void StartImmortalityMode()

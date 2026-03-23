@@ -120,3 +120,6 @@ MonoBehaviour:
   startingWaveInterval: 40
   waveIntervalDecresePerWave: 2
   minWaveInterval: 20
+  startingMaxEnemiesAlive: 5
+  maxEnemiesAliveIncreasePerWave: 1
+  maxMaxEnemiesAlive: 15

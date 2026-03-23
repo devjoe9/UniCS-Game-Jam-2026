@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CameraManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CameraManager : MonoBehaviour
     private float defaultOrthSize;
     private CamShake camShake;
     private Coroutine zoomCoroutine;
+    private PixelPerfectCamera pixelPerfectCamera;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,10 +19,12 @@ public class CameraManager : MonoBehaviour
         cineCam = camObj.GetComponent<CinemachineCamera>();
         defaultOrthSize = cineCam.Lens.OrthographicSize;
         camShake = FindAnyObjectByType<CamShake>();
+        pixelPerfectCamera = GetComponent<PixelPerfectCamera>();
     }
 
     public void ChangeOrthSize(float mult, float duration, bool toDefault)
     {
+        if (pixelPerfectCamera != null) return;
         float targetOrthSize = toDefault ? defaultOrthSize : defaultOrthSize * mult;
         if (zoomCoroutine != null) StopCoroutine(zoomCoroutine);
 
