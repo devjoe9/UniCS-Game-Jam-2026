@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/LoadoutScene.unity
-    guid: 33078909193608c468ec49888c145eb7
   - enabled: 0
     path: Assets/Scenes/Level.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
@@ -18,8 +15,17 @@ EditorBuildSettings:
     path: Assets/Scenes/DO NOT TOUCH.unity
     guid: 0ad04e9840225e949b4f001209f1fc96
   - enabled: 1
+    path: Assets/Scenes/startMenu.unity
+    guid: 3a08367e742bb2a40af45ce55e8426ba
+  - enabled: 1
+    path: Assets/Scenes/LoadoutScene.unity
+    guid: 33078909193608c468ec49888c145eb7
+  - enabled: 1
     path: Assets/Scenes/THE GAME.unity
     guid: 4e59596fa6c5be74f8936c9d741db7ff
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 686783b18b760fe4cad0ca3b6c329512
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
