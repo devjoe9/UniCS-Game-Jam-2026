@@ -177,8 +177,6 @@ public class LoadoutSelectManager : MonoBehaviour
 
         int count = GetItemCount(slotIndex);
         currentIndex[slotIndex] = (currentIndex[slotIndex] + direction + count) % count;
-       
-        Debug.Log($"New index for slot {slotIndex}: {currentIndex[slotIndex]}");
         
         RefreshSlot(slotIndex, true);
         RefreshInfoPanel(slotIndex);

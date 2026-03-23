@@ -56,15 +56,11 @@ public class PlayerSwordController : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("in trigger");
-        Debug.Log("Hit object: " + collision.name);
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log($"In compare tag, isBlue = {isBlue}");
             EnemyData enemyData = collision.GetComponent<EnemyData>();
             if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue) && enemyData.IsVulnerable)
             {
-                Debug.Log("Sword colliding with enemy");
                 enemyData.TakeDamage(damage + bonusDamageAtMaxBoostSpeed * ((playerController.CurPlayerSpeed - playerController.maxSpeed) / (playerController.maxBoostingSpeed - playerController.maxSpeed)));
                 enemyData.TakeKnockback(transform.right, knockbackForce + bonusKnockbackAtMaxBoostSpeed * ((playerController.CurPlayerSpeed - playerController.maxSpeed) / (playerController.maxBoostingSpeed - playerController.maxSpeed)));
             }

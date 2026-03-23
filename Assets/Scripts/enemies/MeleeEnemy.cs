@@ -170,8 +170,6 @@ public class MeleeEnemy : MonoBehaviour
 {
     if (other.CompareTag("Player"))
     {
-        Debug.Log("HIT PLAYER"); // 👈 add this line
-
         TryChainDash();
     }
 }

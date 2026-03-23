@@ -841,7 +841,8 @@ PrefabInstance:
       propertyPath: startButton
       value: 
       objectReference: {fileID: 971677522}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 565540959961224496, guid: 910824f2eaa57d3419720b21b503433f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3113085062757660941, guid: 910824f2eaa57d3419720b21b503433f, type: 3}
     - {fileID: 3626869755829978006, guid: 910824f2eaa57d3419720b21b503433f, type: 3}

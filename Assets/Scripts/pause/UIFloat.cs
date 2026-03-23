@@ -19,8 +19,8 @@ public class UILogoFloat : MonoBehaviour
         rt = GetComponent<RectTransform>();
         startPos = rt.anchoredPosition;
 
-        img = GetComponent<Image>();
-        baseColor = img.color;
+        // img = GetComponent<Image>();
+        // baseColor = img.color;
     }
 
     void Update()
@@ -31,6 +31,6 @@ public class UILogoFloat : MonoBehaviour
 
         // glow pulse
         float glow = 1 + Mathf.Sin(Time.time * glowSpeed) * glowIntensity;
-        img.color = baseColor * glow;
+        // img.color = baseColor * glow;
     }
 }

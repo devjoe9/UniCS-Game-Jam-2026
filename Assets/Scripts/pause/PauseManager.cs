@@ -21,6 +21,7 @@ public class PauseManager : MonoBehaviour
 
     public void Pause()
     {
+        Debug.Log(pauseOverlay);
         Time.timeScale = 0f;
         isPaused = true;
         pauseOverlay.SetActive(true);

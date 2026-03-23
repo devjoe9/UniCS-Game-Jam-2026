@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         movementFilter.SetLayerMask(LayerMask.GetMask("border"));
         cameraManager = FindAnyObjectByType<CameraManager>();
         guns = GetComponentsInChildren<PlayerGunController>(true);
-        pauseManager = FindAnyObjectByType<PauseManager>();
+        pauseManager = FindAnyObjectByType<PauseManager>(FindObjectsInactive.Include);
     }
 
     private void FixedUpdate()

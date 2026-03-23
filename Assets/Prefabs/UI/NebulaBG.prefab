@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4702270244837219243}
   - component: {fileID: 7392493615582728751}
   - component: {fileID: 8513531717295118993}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: NebulaBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 1452398193453778289}
   - component: {fileID: 7881132696573614506}
   - component: {fileID: 6760843429109862721}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Nebula BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
