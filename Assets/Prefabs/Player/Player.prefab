@@ -263,6 +263,8 @@ MonoBehaviour:
   flashColour: {r: 0, g: 0, b: 0, a: 0.5529412}
   hurtSound: {fileID: 8300000, guid: 614a0037757705b4f9a92ec7e251476c, type: 3}
   hurtVolume: 1
+  deathExplosionPrefab: {fileID: 8826836481991683473, guid: 6527819ca07b0594db871f160ac8672c, type: 3}
+  deathSceneDelay: 1
 --- !u!114 &4165729114830810877
 MonoBehaviour:
   m_ObjectHideFlags: 0
