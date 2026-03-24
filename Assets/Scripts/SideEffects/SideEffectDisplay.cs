@@ -104,6 +104,7 @@ public class SideEffectDisplay : MonoBehaviour
                 Debug.LogError("[SideEffectDisplay] CanvasEffectManager not found in scene!");
             }
         }
+        isAnimating = false;
     }
 
     public void TriggerRandomEvent()

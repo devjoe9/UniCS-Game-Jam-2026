@@ -21,7 +21,7 @@ public class SideEffectsManager : MonoBehaviour
     [Header("UI References")]
     public EventSign eventSign;
     public Sprite[]  signSprites  = new Sprite[5];
-    public GameObject panel;
+    // public GameObject panel;
 
     [Header("Audio")]
     public AudioSource resultAudioSource;
@@ -213,7 +213,7 @@ public class SideEffectsManager : MonoBehaviour
 
     private IEnumerator StartRandomEvent(int finalIndex)
     {
-        panel.SetActive(true);
+        // panel.SetActive(true);
 
         PlayResultSound(finalIndex);
 

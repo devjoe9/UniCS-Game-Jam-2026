@@ -66,7 +66,7 @@
                     "id": "d45377a7-0f48-48b5-aac0-c561d1e2497b",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Tap(duration=20)",
                     "initialStateCheck": false
                 },
                 {

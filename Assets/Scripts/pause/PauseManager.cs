@@ -10,6 +10,7 @@ public class PauseManager : MonoBehaviour
     void Start()
     {
         sideEffectsManager = FindAnyObjectByType<SideEffectsManager>();
+        isPaused = false;
     }
 
     public void TogglePause()

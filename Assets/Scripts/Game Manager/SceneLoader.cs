@@ -15,7 +15,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadGame()
     {
         EnsureUnpaused();
-        SceneManager.LoadScene("THE GAME");
+        SceneManager.LoadScene("THE GAME", LoadSceneMode.Single);
     }
 
     public void LoadMenu()
