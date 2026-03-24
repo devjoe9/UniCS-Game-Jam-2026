@@ -27,6 +27,8 @@ public class PlayerData : MonoBehaviour
     private HealthBarUI healthBar;
     private Coroutine activeInvulnerability;
     public Coroutine ActiveInvulnerability => activeInvulnerability;
+    [SerializeField] private GameObject deathExplosionPrefab;
+    [SerializeField] private float deathSceneDelay = 0.6f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -63,19 +65,8 @@ public class PlayerData : MonoBehaviour
             if (curHealth <= 0)
             {
                 isDead = true;
-                // death
-                int score = FindAnyObjectByType<EnemySpawnController>().CurScore;
-
-                PlayerPrefs.SetInt("FinalScore", score);
-
-                int high = PlayerPrefs.GetInt("HighScore", 0);
-                if (score > high)
-                {
-                    PlayerPrefs.SetInt("HighScore", score);
-                }
-                PlayerPrefs.Save();
-                FindAnyObjectByType<SceneLoader>().LoadGameOver();
-
+                StartCoroutine(DeathSequence());
+                return;
             }
             else
             {
@@ -118,6 +109,44 @@ public class PlayerData : MonoBehaviour
 
         isVulnerable = true;
         activeInvulnerability = null;
+    }
+
+    IEnumerator DeathSequence()
+    {
+        PlayerController controller = GetComponent<PlayerController>();
+        if (controller != null)
+        {
+            controller.enabled = false;
+        }
+
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+        if (deathExplosionPrefab != null)
+        {
+            Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
+        }
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = false;
+        }
+
+        int score = FindAnyObjectByType<EnemySpawnController>().CurScore;
+        PlayerPrefs.SetInt("FinalScore", score);
+
+        int high = PlayerPrefs.GetInt("HighScore", 0);
+        if (score > high)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+
+        PlayerPrefs.Save();
+
+        yield return new WaitForSeconds(deathSceneDelay);
+
+        FindAnyObjectByType<SceneLoader>().LoadGameOver();
     }
 
     public bool isMaxHealth()
