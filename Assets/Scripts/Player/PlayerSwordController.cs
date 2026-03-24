@@ -59,10 +59,13 @@ public class PlayerSwordController : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             EnemyData enemyData = collision.GetComponent<EnemyData>();
-            if (enemyData != null && !enemyData.IsDead && enemyData.IsBlue.Equals(isBlue) && enemyData.IsVulnerable)
+            if (enemyData != null && enemyData.IsBlue.Equals(isBlue) && enemyData.IsVulnerable)
             {
-                enemyData.TakeDamage(damage + bonusDamageAtMaxBoostSpeed * ((playerController.CurPlayerSpeed - playerController.maxSpeed) / (playerController.maxBoostingSpeed - playerController.maxSpeed)));
-                enemyData.TakeKnockback(transform.right, knockbackForce + bonusKnockbackAtMaxBoostSpeed * ((playerController.CurPlayerSpeed - playerController.maxSpeed) / (playerController.maxBoostingSpeed - playerController.maxSpeed)));
+                float speedFraction = Mathf.Clamp01((playerController.CurPlayerSpeed - playerController.maxSpeed) 
+                                    / (playerController.maxBoostingSpeed - playerController.maxSpeed));
+                                    
+                enemyData.TakeDamage(damage + bonusDamageAtMaxBoostSpeed * speedFraction);
+                enemyData.TakeKnockback(transform.right, knockbackForce + bonusKnockbackAtMaxBoostSpeed * speedFraction);
             }
         }
     }

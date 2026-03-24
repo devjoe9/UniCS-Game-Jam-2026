@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   blueSprite: {fileID: 4215020794576474916, guid: 7dc1fc76ce6b79a448f7e865fb728dcd, type: 3}
   redSprite: {fileID: 1414125399931500858, guid: 963754e3290df0d41a1dd41e950cc6b0, type: 3}
-  cooldown: 5
+  cooldown: 3
   defaultKnockbackForce: 100
   shieldSound: {fileID: 8300000, guid: cb34a8528ea08b5468ae1590a07be1b7, type: 3}
   shieldVolume: 0.727

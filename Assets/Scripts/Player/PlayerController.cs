@@ -149,6 +149,7 @@ public class PlayerController : MonoBehaviour
         {
             // newPosition
             rb.MovePosition(rb.position + finalVelocity * Time.fixedDeltaTime);
+            currentVelocity = finalVelocity;
         }
         else
         {

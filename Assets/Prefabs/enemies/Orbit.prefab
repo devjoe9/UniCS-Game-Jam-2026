@@ -109,9 +109,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2386827865695225351}
   - component: {fileID: 6818194599039022601}
-  - component: {fileID: 5858133308027573668}
   - component: {fileID: 1250273903557223457}
   - component: {fileID: 1933312708005536348}
+  - component: {fileID: 5858133308027573668}
   - component: {fileID: 2231387796572609971}
   - component: {fileID: 4687086426024864671}
   - component: {fileID: 5533095204231428358}
@@ -198,27 +198,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &5858133308027573668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3870068021404333012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab1f51158ffa5694f8bdc2cd2f6873e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyOrbit
-  player: {fileID: 0}
-  radius: 20
-  speed: 15
-  stoppingDistance: 0.3
-  changeInterval: 2
-  angleMoveSpeed: 600
-  maxStartDelay: 1
-  angleChangeRange: 50
-  knockbackDrag: 5
 --- !u!50 &1250273903557223457
 Rigidbody2D:
   serializedVersion: 5
@@ -300,6 +279,27 @@ PolygonCollider2D:
       - {x: 0.12270054, y: 0.13481002}
       - {x: -0.06873372, y: 0.5318552}
   m_UseDelaunayMesh: 1
+--- !u!114 &5858133308027573668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3870068021404333012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1f51158ffa5694f8bdc2cd2f6873e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyOrbit
+  player: {fileID: 0}
+  radius: 20
+  speed: 15
+  stoppingDistance: 0.3
+  changeInterval: 2
+  angleMoveSpeed: 600
+  maxStartDelay: 1
+  angleChangeRange: 50
+  knockbackDrag: 5
 --- !u!114 &2231387796572609971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3587487694791285624, guid: 620eead620e87a6479843f4174863a34, type: 3}
   firePoint: {fileID: 127160213245970622}
   player: {fileID: 0}
-  bulletSpeed: 20
+  bulletSpeed: 30
   bulletLifetime: 10
   bulletType: 1
   startFiringOnStart: 1
@@ -357,6 +357,8 @@ MonoBehaviour:
   sweepPauseTime: 1
   randomArcAngle: 90
   timeBetweenRandomShots: 0.08
+  randomActiveTime: 6
+  randomPauseTime: 4
 --- !u!82 &5533095204231428358
 AudioSource:
   m_ObjectHideFlags: 0

@@ -136,6 +136,7 @@ public class BulletSpawner : MonoBehaviour
         {
             FireRandomArcBullet();
             yield return new WaitForSeconds(timeBetweenRandomShots);
+            elapsed += timeBetweenRandomShots;
         }
         
         yield return new WaitForSeconds(randomPauseTime);

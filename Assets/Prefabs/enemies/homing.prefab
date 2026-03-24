@@ -267,8 +267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomingMelee
   player: {fileID: 0}
-  acceleration: 80
-  maxSpeed: 100
+  acceleration: 90
+  maxSpeed: 130
   friction: 3
   respawnTime: 2
   knockbackDrag: 5

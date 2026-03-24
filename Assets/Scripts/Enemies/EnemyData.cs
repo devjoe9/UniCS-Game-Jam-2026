@@ -85,6 +85,7 @@ public class EnemyData : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log(damage);
         if (!isDead && isVulnerable)
         {
             curHealth -= damage;

@@ -149,12 +149,12 @@ MonoBehaviour:
   pickupVolume: 1
   despawnVolume: 1
   effectCanvas: {fileID: 0}
-  lifetime: 10
-  flashAfterTime: 7
+  lifetime: 12
+  flashAfterTime: 9
   flashInterval: 0.2
   defaultColour: {r: 0.54901963, g: 1, b: 0.5529412, a: 1}
   flashColour: {r: 1, g: 1, b: 1, a: 1}
-  healing: 1
+  healing: 2
 --- !u!82 &-6650701125225312438
 AudioSource:
   m_ObjectHideFlags: 0
