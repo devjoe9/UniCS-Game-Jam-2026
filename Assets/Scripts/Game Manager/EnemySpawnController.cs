@@ -25,6 +25,7 @@ public class EnemySpawnController : MonoBehaviour
     private Bounds spawnBounds;
     private Camera cam;
     private int currentWave;
+    public int CurrentWave => currentWave;
     private bool gameOver;
     private int curScore;
     public int CurScore
@@ -145,7 +146,7 @@ public class EnemySpawnController : MonoBehaviour
             }
         }
 
-        float distance = 0;
+        float distance;
         Vector3 playerPos = playerTransform.position;
         Vector3 spawnPos = new Vector3(0, 0, 0);
 

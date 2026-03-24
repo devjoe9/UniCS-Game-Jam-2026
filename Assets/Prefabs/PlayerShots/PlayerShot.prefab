@@ -173,5 +173,5 @@ MonoBehaviour:
   lifetime: 1.5
   damage: 0
   knockbackForce: 0
-  blueColour: {r: 0, g: 0.3529412, b: 0.83921576, a: 1}
-  redColour: {r: 0.9960785, g: 0, b: 0, a: 1}
+  blueColour: {r: 0, g: 0.90401125, b: 1, a: 1}
+  redColour: {r: 0.99607843, g: 0.18071407, b: 0, a: 1}

@@ -14,6 +14,8 @@ public class SideEffectsManager : MonoBehaviour
     [SerializeField] private float slipperyDuration = 10f;
     [SerializeField] private float slipperyAccelMult = 0.5f;
     [SerializeField] private float slipperyDecelMult = 0.25f;
+    [SerializeField] private float effectDurationIncreasePerWave = 0.25f;
+    [SerializeField] private float maxEffectDurationIncrease = 10;
     [SerializeField] float visualEffectDelay = 0;
 
     [Header("UI References")]
@@ -37,8 +39,8 @@ public class SideEffectsManager : MonoBehaviour
     private int curEffectIndex;
     private PlayerController playerController;
     private PlayerData playerData;
-    private bool isAnimating = false;
     private CamShake camShake;
+    private EnemySpawnController waveController;
     
     void Start()
     {
@@ -50,6 +52,7 @@ public class SideEffectsManager : MonoBehaviour
         effectDurations = new float[] {noWeaponsDuration, immortalityDuration, timeSlowDuration, knockbackDuration, slipperyDuration};
         curKnockbackMult = 1;
         camShake = FindAnyObjectByType<CamShake>();
+        waveController = FindAnyObjectByType<EnemySpawnController>();
     }
 
     public IEnumerator StartSideEffect(int index)
@@ -67,27 +70,32 @@ public class SideEffectsManager : MonoBehaviour
         {
             case 0: // No Weapons
                 StartNoWeaponsMode();
-                yield return new WaitForSeconds(noWeaponsDuration);
+                yield return new WaitForSeconds(Mathf.Min(
+                    noWeaponsDuration + waveController.CurrentWave*effectDurationIncreasePerWave, noWeaponsDuration + maxEffectDurationIncrease));
                 StopCurrentEffect();
                 break;
             case 1: // Immortality
                 StartImmortalityMode();
-                yield return new WaitForSeconds(immortalityDuration);
+                yield return new WaitForSeconds(Mathf.Min(
+                    immortalityDuration + waveController.CurrentWave*effectDurationIncreasePerWave, immortalityDuration + maxEffectDurationIncrease));
                 StopCurrentEffect();
                 break;
             case 2: // Slow Time
                 StartTimeSlowedDownMode();
-                yield return new WaitForSeconds(timeSlowDuration);
+                yield return new WaitForSeconds(Mathf.Min(
+                    timeSlowDuration + waveController.CurrentWave*effectDurationIncreasePerWave, timeSlowDuration + maxEffectDurationIncrease));
                 StopCurrentEffect();
                 break;
             case 3: // Knockback
                 StartKnockbackIncreasedMode();
-                yield return new WaitForSeconds(knockbackDuration);
+                yield return new WaitForSeconds(Mathf.Min(
+                    knockbackDuration + waveController.CurrentWave*effectDurationIncreasePerWave, knockbackDuration + maxEffectDurationIncrease));
                 StopCurrentEffect();
                 break;
             case 4: // Slippery
                 StartSlipperyMode();
-                yield return new WaitForSeconds(slipperyDuration);
+                yield return new WaitForSeconds(Mathf.Min(
+                    slipperyDuration + waveController.CurrentWave*effectDurationIncreasePerWave, slipperyDuration + maxEffectDurationIncrease));
                 StopCurrentEffect();
                 break;
             default:
@@ -211,7 +219,11 @@ public class SideEffectsManager : MonoBehaviour
 
         // Show event sign
         if (eventSign != null && finalIndex < signSprites.Length)
+        {
+            float duration = Mathf.Min(
+                effectDurations[finalIndex] + effectDurationIncreasePerWave*waveController.CurrentWave, effectDurations[finalIndex] + maxEffectDurationIncrease);
             eventSign.ShowSign(signSprites[finalIndex], effectDurations[finalIndex], visualEffectDelay);
+        }
 
         yield return new WaitForSeconds(visualEffectDelay);
         StartCoroutine(StartSideEffect(finalIndex));

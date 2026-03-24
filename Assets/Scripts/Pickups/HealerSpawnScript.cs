@@ -6,11 +6,14 @@ public class HealerSpawnScript : MonoBehaviour
     public GameObject healerPrefab;
     public GameObject healerSpawnParticlesPrefab;
     public float minSpawnInterval = 10f;
-    public float maxSpawnInterval = 15f;
+    public float spawnInterval = 15f;
+    public float spawnIntervalDecreasePerWave;
     public float spawnParticlesLifetime;
     private Bounds spawnBounds;
     private Vector2 healerExtents;
     private PlayerData playerData;
+    private EnemySpawnController waveController;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,7 +33,9 @@ public class HealerSpawnScript : MonoBehaviour
 
         playerData = FindAnyObjectByType<PlayerData>();
 
-        StartCoroutine(SpawnHealer(minSpawnInterval, maxSpawnInterval));
+        waveController = FindAnyObjectByType<EnemySpawnController>();
+
+        StartCoroutine(SpawnHealer());
     }
 
     // Update is called once per frame
@@ -39,11 +44,13 @@ public class HealerSpawnScript : MonoBehaviour
 
     }
 
-    IEnumerator SpawnHealer(float minSpawnInterval, float maxSpawnInterval)
+    IEnumerator SpawnHealer()
     {
+        int currentWave;
         while (!playerData.IsDead) // change to check player still alive?
         {
-            yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
+            currentWave = waveController.CurrentWave;
+            yield return new WaitForSeconds(Mathf.Max(spawnInterval - currentWave*spawnIntervalDecreasePerWave, minSpawnInterval));
             if (!playerData.isMaxHealth())
             { 
                 Vector3 spawnPos = GetRandomSpawnPosition(spawnBounds);

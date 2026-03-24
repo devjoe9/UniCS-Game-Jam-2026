@@ -112,6 +112,8 @@ MonoBehaviour:
   slipperyDuration: 10
   slipperyAccelMult: 0.15
   slipperyDecelMult: 0.04
+  effectDurationIncreasePerWave: 0.25
+  maxEffectDurationIncrease: 5
   visualEffectDelay: 0
   eventSign: {fileID: 0}
   signSprites:
