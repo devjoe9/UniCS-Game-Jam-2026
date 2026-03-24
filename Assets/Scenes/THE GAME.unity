@@ -646,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214407163144534788, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: orthographic size
-      value: 36
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6523397875792066129, guid: b56d96f4cd48f434c8922b9976c94733, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1338,6 +1338,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 8095113471528711327}
   - {fileID: 763024814}
   - {fileID: 1373452119}
   - {fileID: 327745985}
@@ -1345,4 +1346,3 @@ SceneRoots:
   - {fileID: 155497172}
   - {fileID: 1985893346}
   - {fileID: 2966170496892411522}
-  - {fileID: 8095113471528711327}

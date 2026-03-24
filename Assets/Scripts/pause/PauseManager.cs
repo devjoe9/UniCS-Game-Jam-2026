@@ -9,7 +9,7 @@ public class PauseManager : MonoBehaviour
 
     void Start()
     {
-        sideEffectsManager = FindAnyObjectByType<SideEffectsManager>();
+        sideEffectsManager = FindFirstObjectByType<SideEffectsManager>();
         isPaused = false;
     }
 
