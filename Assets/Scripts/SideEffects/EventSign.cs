@@ -51,7 +51,16 @@ public class EventSign : MonoBehaviour
         if (signImage != null)
             signImage.sprite = sprite;
         
-        if (delay == 0) delay = totalFlickerTime;
+        float stayTime = 0;
+        if (delay == 0)
+        {
+            delay = totalFlickerTime;
+            stayTime = Mathf.Max(0, duration - delay*2);
+        }
+        else
+        {
+            stayTime = Mathf.Max(0, duration - delay);
+        }
 
         // flicker IN
         float timeElapsed = 0;
@@ -65,7 +74,7 @@ public class EventSign : MonoBehaviour
         };
 
         // don't flicker before flicker out
-        float stayTime = Mathf.Max(0, duration - delay);
+        
         panel.SetActive(true);
         yield return new WaitForSeconds(stayTime);
 

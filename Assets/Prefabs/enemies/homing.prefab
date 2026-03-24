@@ -79,8 +79,8 @@ GameObject:
   - component: {fileID: 2718699981232787084}
   - component: {fileID: 6517818006551884943}
   - component: {fileID: 6664150160296394222}
-  - component: {fileID: 9215972519215774290}
   - component: {fileID: 715249543445079093}
+  - component: {fileID: 9215972519215774290}
   - component: {fileID: 4668962464178471550}
   - component: {fileID: 4670934423293133545}
   m_Layer: 7
@@ -192,31 +192,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &9215972519215774290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7045454223621333634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2beff7ef8cbc042bbe2e3a2f4c78e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  blueSprite: {fileID: -4634836020715427194, guid: c6f122058e16a1a49a437d9204fb5f1f, type: 3}
-  redSprite: {fileID: 4587582878259776375, guid: a56c67c8b26332540a9e52bf12f364f0, type: 3}
-  whiteFlashSprite: {fileID: -5294802186854614147, guid: d2e388f7c7daf964e92afcf1f84f73c9, type: 3}
-  flashDuration: 0.08
-  maxHealth: 10
-  invulnerableTime: 0.1
-  flashInterval: 0.2
-  defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
-  flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
-  isBlue: 0
-  explosionPrefab: {fileID: 8826836481991683473, guid: 6527819ca07b0594db871f160ac8672c, type: 3}
-  hurtSound: {fileID: 8300000, guid: 423e16f95a14f074894cd2941b6d568c, type: 3}
-  hurtVolume: 1
 --- !u!70 &715249543445079093
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -254,6 +229,31 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0045067472, y: 0.0010635059}
   m_Size: {x: 0.9006456, y: 0.9006459}
   m_Direction: 0
+--- !u!114 &9215972519215774290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045454223621333634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2beff7ef8cbc042bbe2e3a2f4c78e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  blueSprite: {fileID: -4634836020715427194, guid: c6f122058e16a1a49a437d9204fb5f1f, type: 3}
+  redSprite: {fileID: 4587582878259776375, guid: a56c67c8b26332540a9e52bf12f364f0, type: 3}
+  whiteFlashSprite: {fileID: -5294802186854614147, guid: d2e388f7c7daf964e92afcf1f84f73c9, type: 3}
+  flashDuration: 0.08
+  maxHealth: 8
+  invulnerableTime: 0.1
+  flashInterval: 0.2
+  defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
+  flashColour: {r: 1, g: 0.922, b: 0.016, a: 0.5}
+  isBlue: 0
+  explosionPrefab: {fileID: 8826836481991683473, guid: 6527819ca07b0594db871f160ac8672c, type: 3}
+  hurtSound: {fileID: 8300000, guid: 423e16f95a14f074894cd2941b6d568c, type: 3}
+  hurtVolume: 1
 --- !u!114 &4668962464178471550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HomingMelee
   player: {fileID: 0}
   acceleration: 80
-  maxSpeed: 80
+  maxSpeed: 100
   friction: 3
   respawnTime: 2
   knockbackDrag: 5

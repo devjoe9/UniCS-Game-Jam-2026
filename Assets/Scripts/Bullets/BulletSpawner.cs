@@ -42,6 +42,8 @@ public class BulletSpawner : MonoBehaviour
     [Header("Random Arc Pattern")]
     [SerializeField] private float randomArcAngle = 90f;
     [SerializeField] private float timeBetweenRandomShots = 0.08f;
+    [SerializeField] private float randomActiveTime = 5f;
+    [SerializeField] private float randomPauseTime = 3f;
 
     private Coroutine firingRoutine;
     private int sweepIndex = 0;
@@ -128,8 +130,15 @@ public class BulletSpawner : MonoBehaviour
 
     private IEnumerator RandomArcRoutine()
     {
-        FireRandomArcBullet();
-        yield return new WaitForSeconds(timeBetweenRandomShots);
+        float elapsed = 0f;
+
+        while (elapsed < randomActiveTime)
+        {
+            FireRandomArcBullet();
+            yield return new WaitForSeconds(timeBetweenRandomShots);
+        }
+        
+        yield return new WaitForSeconds(randomPauseTime);
     }
 
     private void FireSweepBullet()

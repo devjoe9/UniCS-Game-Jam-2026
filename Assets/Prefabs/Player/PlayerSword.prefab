@@ -110,8 +110,8 @@ MonoBehaviour:
   redSprite: {fileID: 4363408438007925082, guid: 071085cf8e8a7d146a7357088ad9e184, type: 3}
   defaultDamage: 5
   bonusDamageAtMaxBoostSpeed: 5
-  defaultKnockbackForce: 100
-  bonusKnockbackAtMaxBoostSpeed: 100
+  defaultKnockbackForce: 50
+  bonusKnockbackAtMaxBoostSpeed: 50
 --- !u!61 &3462331997808169758
 BoxCollider2D:
   m_ObjectHideFlags: 0

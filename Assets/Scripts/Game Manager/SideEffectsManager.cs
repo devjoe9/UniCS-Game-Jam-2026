@@ -14,7 +14,7 @@ public class SideEffectsManager : MonoBehaviour
     [SerializeField] private float slipperyDuration = 10f;
     [SerializeField] private float slipperyAccelMult = 0.5f;
     [SerializeField] private float slipperyDecelMult = 0.25f;
-    [SerializeField] float visualEffectDelay = 2f;
+    [SerializeField] float visualEffectDelay = 0;
 
     [Header("UI References")]
     public EventSign eventSign;
@@ -194,19 +194,17 @@ public class SideEffectsManager : MonoBehaviour
 
     public void TriggerRandomEvent()
     {
-        if (isAnimating)
+        if (isEffectActive)
         {
             eventSign.HideSign(); 
             StopCurrentEffect();
         }
         int finalIndex = Random.Range(0, signSprites.Length);
-        // StartCoroutine(StartRandomEvent(finalIndex));
         StartCoroutine(StartRandomEvent(finalIndex));
     }
 
     private IEnumerator StartRandomEvent(int finalIndex)
     {
-        isAnimating = true;
         panel.SetActive(true);
 
         PlayResultSound(finalIndex);
@@ -221,7 +219,6 @@ public class SideEffectsManager : MonoBehaviour
         // yield return new WaitForSeconds(holdDuration);
 
         // panel.SetActive(false);
-        isAnimating = false;
     }
     
     private void PlayResultSound(int index)

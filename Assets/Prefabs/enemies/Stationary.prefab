@@ -247,7 +247,7 @@ MonoBehaviour:
   redSprite: {fileID: 3005786693153841474, guid: 084773435bb6964478ffda6d930975eb, type: 3}
   whiteFlashSprite: {fileID: 9173662768142731926, guid: 83f79b8012c69864b96e87f91bb0c409, type: 3}
   flashDuration: 0.05
-  maxHealth: 10
+  maxHealth: 14
   invulnerableTime: 0.1
   flashInterval: 0.2
   defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}

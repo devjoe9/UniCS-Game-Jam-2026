@@ -113,10 +113,10 @@ MonoBehaviour:
     spawnCost: 10
     pointsValue: 500
   startingSpawnInterval: 10
-  spawnIntervalDecreasePerWave: 0.25
+  spawnIntervalDecreasePerWave: 0.5
   minSpawnInterval: 6
   startingSpawnBudget: 5
-  budgetIncreasePerWave: 3
+  budgetIncreasePerWave: 2
   startingWaveInterval: 40
   waveIntervalDecresePerWave: 2
   minWaveInterval: 20
