@@ -173,21 +173,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675310115929846976, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: enemies.Array.data[1].enemyPrefab
-      value: 
-      objectReference: {fileID: 2317883948780595414, guid: 0925033825c29b14fb52943837318ce0, type: 3}
     - target: {fileID: 7678709811450635617, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678709811450635617, guid: decaac2e0cfce4c48b7cefe3b8c74ab1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

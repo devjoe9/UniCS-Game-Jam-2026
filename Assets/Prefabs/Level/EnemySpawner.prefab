@@ -93,33 +93,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   enemies:
   - enemyPrefab: {fileID: 3817622638319879617, guid: 70d9e4fd0adb01b459b62de528ac6a31, type: 3}
-    spawningWeight: 30
+    spawningWeight: 25
     spawnCost: 1
     pointsValue: 100
-  - enemyPrefab: {fileID: 8838418337476127520, guid: 70d9e4fd0adb01b459b62de528ac6a31, type: 3}
-    spawningWeight: 30
+  - enemyPrefab: {fileID: 2317883948780595414, guid: 0925033825c29b14fb52943837318ce0, type: 3}
+    spawningWeight: 25
     spawnCost: 1
     pointsValue: 100
   - enemyPrefab: {fileID: 7045454223621333634, guid: 112ad17abd6b3894cbd233c0e2792c14, type: 3}
     spawningWeight: 20
     spawnCost: 3
-    pointsValue: 200
+    pointsValue: 150
   - enemyPrefab: {fileID: 5596442643100801233, guid: 7b9c07fa64172104aa4652b2a2f00b83, type: 3}
-    spawningWeight: 12
+    spawningWeight: 17
     spawnCost: 5
-    pointsValue: 300
+    pointsValue: 250
   - enemyPrefab: {fileID: 3870068021404333012, guid: 5af205fee424c9141a8c0c7761337000, type: 3}
-    spawningWeight: 8
-    spawnCost: 10
-    pointsValue: 500
-  startingSpawnInterval: 10
-  spawnIntervalDecreasePerWave: 0.5
-  minSpawnInterval: 6
+    spawningWeight: 13
+    spawnCost: 7
+    pointsValue: 300
+  startingSpawnInterval: 8
+  spawnIntervalDecreasePerWave: 1
+  minSpawnInterval: 1
   startingSpawnBudget: 5
-  budgetIncreasePerWave: 2
-  startingWaveInterval: 40
+  budgetIncreasePerWave: 3
+  startingWaveInterval: 60
   waveIntervalDecresePerWave: 2
-  minWaveInterval: 20
-  startingMaxEnemiesAlive: 5
+  minWaveInterval: 30
+  startingMaxEnemiesAlive: 4
   maxEnemiesAliveIncreasePerWave: 1
-  maxMaxEnemiesAlive: 15
+  maxMaxEnemiesAlive: 8

@@ -159,7 +159,7 @@ MonoBehaviour:
   redSprite: {fileID: -4168812626237603031, guid: 69761c872f1a10f4d90100abfc447e52, type: 3}
   blueBoostingSprite: {fileID: 7272162364894484529, guid: 083da054428bb494383cdbc496320c93, type: 3}
   redBoostingSprite: {fileID: 5487807211844037830, guid: 9700e0c1648d38546a0ad6bf5ccd2eed, type: 3}
-  boostForce: 100
+  boostForce: 200
   boostLoopSound: {fileID: 8300000, guid: 075fce6c6ed63214d9cc291fde5236d2, type: 3}
   boostLoopVolume: 0.213
 --- !u!114 &-5392239269145050653

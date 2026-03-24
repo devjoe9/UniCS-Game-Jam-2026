@@ -179,7 +179,7 @@ MonoBehaviour:
   redSprite: {fileID: -8190126264568729420, guid: bd768981533f2f447b175c02e4fc0609, type: 3}
   whiteFlashSprite: {fileID: 5322463025592832831, guid: 6ffed3b8139db9e42b840309f49bce7a, type: 3}
   flashDuration: 0.08
-  maxHealth: 10
+  maxHealth: 8
   invulnerableTime: 0.1
   flashInterval: 0.2
   defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
@@ -225,16 +225,16 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3587487694791285624, guid: 620eead620e87a6479843f4174863a34, type: 3}
   firePoint: {fileID: 2338618541212991191}
   player: {fileID: 0}
-  bulletSpeed: 30
+  bulletSpeed: 40
   bulletLifetime: 5
   bulletType: 0
   startFiringOnStart: 1
   overrideBulletSize: 1
   bulletSizeOverride: 10
   firePattern: 0
-  bulletsPerBurst: 4
+  bulletsPerBurst: 5
   timeBetweenBurstShots: 0.12
-  timeBetweenBursts: 4
+  timeBetweenBursts: 3
   sweepArcAngle: 180
   sweepSteps: 12
   timeBetweenSweepShots: 0.08
@@ -242,6 +242,8 @@ MonoBehaviour:
   sweepPauseTime: 1
   randomArcAngle: 90
   timeBetweenRandomShots: 0.08
+  randomActiveTime: 5
+  randomPauseTime: 3
 --- !u!82 &-3344450969707329085
 AudioSource:
   m_ObjectHideFlags: 0

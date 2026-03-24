@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxSpeed: 26
-  maxBoostingSpeed: 50
+  maxBoostingSpeed: 60
   boostOrthMult: 1.25
   boostOrthChangeTime: 0.1
   boostShakeAmplitude: 5
@@ -227,7 +227,7 @@ MonoBehaviour:
   defaultAcceleration: 200
   defaultDeceleration: 200
   collisionOffset: 0.1
-  rotateCooldown: 0.15
+  rotateCooldown: 0.1
   rotationSpeed: 1000
   knockbackDrag: 5
   movementFilter:

@@ -94,5 +94,5 @@ MonoBehaviour:
   healerPrefab: {fileID: 5621116692916179583, guid: 275d78b86ca2359488cab4aeef000f79, type: 3}
   healerSpawnParticlesPrefab: {fileID: 455335216728046349, guid: f88b62a8efa08ef499e50d1eb695dc38, type: 3}
   minSpawnInterval: 20
-  maxSpawnInterval: 30
+  maxSpawnInterval: 25
   spawnParticlesLifetime: 0.7

@@ -245,7 +245,7 @@ MonoBehaviour:
   redSprite: {fileID: 4587582878259776375, guid: a56c67c8b26332540a9e52bf12f364f0, type: 3}
   whiteFlashSprite: {fileID: -5294802186854614147, guid: d2e388f7c7daf964e92afcf1f84f73c9, type: 3}
   flashDuration: 0.08
-  maxHealth: 8
+  maxHealth: 6
   invulnerableTime: 0.1
   flashInterval: 0.2
   defaultColour: {r: 1, g: 0.922, b: 0.016, a: 1}
@@ -267,8 +267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomingMelee
   player: {fileID: 0}
-  acceleration: 90
-  maxSpeed: 130
+  acceleration: 120
+  maxSpeed: 150
   friction: 3
   respawnTime: 2
   knockbackDrag: 5

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class EnemySpawnController : MonoBehaviour
@@ -19,6 +20,7 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private int startingMaxEnemiesAlive = 5;
     [SerializeField] private int maxEnemiesAliveIncreasePerWave = 1;
     [SerializeField] private int maxMaxEnemiesAlive = 10;
+    [SerializeField] private float minSpawnDistanceFromPlayer = 20f;
     private TMP_Text scoreText; 
     private Bounds spawnBounds;
     private Camera cam;
@@ -32,6 +34,7 @@ public class EnemySpawnController : MonoBehaviour
     }
 
     private int numEnemiesAlive = 0;
+    private Transform playerTransform;
 
     // public enum Rarity {Common = 50, Uncommon = 30, Rare = 15}
 
@@ -54,6 +57,9 @@ public class EnemySpawnController : MonoBehaviour
         gameOver = false;
         curScore = 0;
         scoreText = FindAnyObjectByType<TMP_Text>(FindObjectsInactive.Include);
+
+        GameObject player = FindAnyObjectByType<PlayerController>().gameObject;
+        playerTransform = player.GetComponent<Transform>();
 
         StartCoroutine(WaveLoop());
     }
@@ -139,10 +145,18 @@ public class EnemySpawnController : MonoBehaviour
             }
         }
 
-        float randomX = UnityEngine.Random.Range(leftSpawnEdge, rightSpawnEdge);
-        float randomY = UnityEngine.Random.Range(bottomSpawnEdge, topSpawnEdge);
+        float distance = 0;
+        Vector3 playerPos = playerTransform.position;
+        Vector3 spawnPos = new Vector3(0, 0, 0);
 
-        return new Vector3(randomX, randomY, 0);
+        do
+        {
+            spawnPos.x = UnityEngine.Random.Range(leftSpawnEdge, rightSpawnEdge);
+            spawnPos.y = UnityEngine.Random.Range(bottomSpawnEdge, topSpawnEdge);
+            distance = Vector2.Distance(playerPos, spawnPos);
+        } while (distance < minSpawnDistanceFromPlayer);
+
+        return spawnPos;
     }
 
     List<EnemyInfo> GenerateWave(int budget)
